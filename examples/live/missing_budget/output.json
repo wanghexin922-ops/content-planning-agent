@@ -1,0 +1,44 @@
+{
+  "request_id": "demo-missing_budget",
+  "status": "needs_input",
+  "summary": "无法生成方案：请求中缺少预算（budget）信息。主题为推广视频字幕工具、受众为短视频创作者、截止时间为 2026-10-29T18:00:00+08:00 均已明确，但预算缺失，无法核算费用与可行性。请补充预算金额后重新提交，我将据此选择 premium/basic/slideshow 等制作方式并保存方案。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [
+    "budget"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "finish",
+      "arguments": {
+        "status": "needs_input",
+        "summary": "无法生成方案：请求中缺少预算（budget）信息。主题为推广视频字幕工具、受众为短视频创作者、截止时间为 2026-10-29T18:00:00+08:00 均已明确，但预算缺失，无法核算费用与可行性。请补充预算金额后重新提交，我将据此选择 premium/basic/slideshow 等制作方式并保存方案。",
+        "reason": "请求中只有主题、受众和截止时间，未见预算字段，无法核算成本故请求补充。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "无法生成方案：请求中缺少预算（budget）信息。主题为推广视频字幕工具、受众为短视频创作者、截止时间为 2026-10-29T18:00:00+08:00 均已明确，但预算缺失，无法核算费用与可行性。请补充预算金额后重新提交，我将据此选择 premium/basic/slideshow 等制作方式并保存方案。",
+        "missing_fields": [
+          "budget"
+        ]
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 1,
+  "model_calls": 1,
+  "runs": 1,
+  "replayed": false
+}

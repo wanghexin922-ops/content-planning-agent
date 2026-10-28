@@ -1,0 +1,44 @@
+{
+  "request_id": "demo-missing_deadline",
+  "status": "needs_input",
+  "summary": "无法开始规划：请求中缺少截止时间（deadline）。已知信息为预算 10、受众短视频创作者、主题推广视频字幕工具、初始偏好 premium（可调整）。请补充期望完成时间，我再据此检索素材、生成脚本并核算预算与串行耗时后保存方案。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [
+    "deadline"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "finish",
+      "arguments": {
+        "status": "needs_input",
+        "summary": "无法开始规划：请求中缺少截止时间（deadline）。已知信息为预算 10、受众短视频创作者、主题推广视频字幕工具、初始偏好 premium（可调整）。请补充期望完成时间，我再据此检索素材、生成脚本并核算预算与串行耗时后保存方案。",
+        "reason": "输入缺少截止时间这一必需约束，按规则不应编造，需向用户请求补充。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "无法开始规划：请求中缺少截止时间（deadline）。已知信息为预算 10、受众短视频创作者、主题推广视频字幕工具、初始偏好 premium（可调整）。请补充期望完成时间，我再据此检索素材、生成脚本并核算预算与串行耗时后保存方案。",
+        "missing_fields": [
+          "deadline"
+        ]
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 1,
+  "model_calls": 1,
+  "runs": 1,
+  "replayed": false
+}

@@ -1,0 +1,2 @@
+# Runtime uses only Python 3.10+ standard library.
+# Optional test runner: python -m pip install "pytest>=7,<10"

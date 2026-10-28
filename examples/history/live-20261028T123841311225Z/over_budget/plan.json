@@ -1,0 +1,157 @@
+{
+  "audience": "短视频创作者",
+  "campaign_brief": {
+    "audience": "短视频创作者",
+    "creative_direction": {
+      "is_product_fact": false,
+      "status": "proposal_requires_review",
+      "text": "面向短视频创作者，强调快速给视频添加并编辑字幕"
+    },
+    "deliverables": [
+      "带来源 ID 的可编辑脚本",
+      "一份按所选制作方式执行的内容成片计划",
+      "费用与阶段排期"
+    ],
+    "objective": "围绕用户主题向目标受众介绍有素材依据的功能，形成可执行内容方案",
+    "pending_confirmation": [
+      "发布渠道和账号",
+      "创意角度及最终文案",
+      "实际执行人员"
+    ],
+    "success_criteria": [
+      "费用不超过预算",
+      "串行预计完成时间不晚于截止时间",
+      "发布前完成人工审核"
+    ],
+    "theme": "推广一款视频字幕工具"
+  },
+  "estimate": {
+    "assumptions": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。",
+    "budget": 10,
+    "budget_gap": 0.0,
+    "currency": "模拟单位",
+    "deadline": "2026-10-29T18:00:00+08:00",
+    "deadline_gap_minutes": 0,
+    "estimated_finish": "2026-10-28T12:00:00+08:00",
+    "feasible": true,
+    "production_mode": "basic",
+    "script_id": "script-3570300ecef5",
+    "steps": [
+      {
+        "cost": 2.0,
+        "depends_on": [],
+        "duration_minutes": 0,
+        "end": "2026-10-28T10:00:00+08:00",
+        "id": "materials",
+        "name": "素材授权/准备",
+        "start": "2026-10-28T10:00:00+08:00",
+        "status": "planned"
+      },
+      {
+        "cost": 1.0,
+        "depends_on": [
+          "materials"
+        ],
+        "duration_minutes": 20,
+        "end": "2026-10-28T10:20:00+08:00",
+        "id": "script",
+        "name": "脚本整理",
+        "start": "2026-10-28T10:00:00+08:00",
+        "status": "planned"
+      },
+      {
+        "cost": 3.0,
+        "depends_on": [
+          "script"
+        ],
+        "duration_minutes": 60,
+        "end": "2026-10-28T11:20:00+08:00",
+        "id": "production",
+        "name": "基础剪辑",
+        "start": "2026-10-28T10:20:00+08:00",
+        "status": "planned"
+      },
+      {
+        "cost": 1.0,
+        "depends_on": [
+          "production"
+        ],
+        "duration_minutes": 30,
+        "end": "2026-10-28T11:50:00+08:00",
+        "id": "review",
+        "name": "内容审核",
+        "start": "2026-10-28T11:20:00+08:00",
+        "status": "planned"
+      },
+      {
+        "cost": 1.0,
+        "depends_on": [
+          "review"
+        ],
+        "duration_minutes": 10,
+        "end": "2026-10-28T12:00:00+08:00",
+        "id": "publish",
+        "name": "人工确认与发布",
+        "start": "2026-10-28T11:50:00+08:00",
+        "status": "planned"
+      }
+    ],
+    "total_cost": 8.0,
+    "total_minutes": 120
+  },
+  "execution_status": "not_executed",
+  "request_id": "demo-over_budget",
+  "script": {
+    "angle": "面向短视频创作者，强调快速给视频添加并编辑字幕",
+    "audience": "短视频创作者",
+    "creative_direction": {
+      "is_product_fact": false,
+      "status": "proposal_requires_review",
+      "text": "面向短视频创作者，强调快速给视频添加并编辑字幕"
+    },
+    "editable": true,
+    "generator": "local_fact_template",
+    "material_ids": [
+      "P01",
+      "P02"
+    ],
+    "scenes": [
+      {
+        "index": 1,
+        "kind": "campaign_context",
+        "narration": "面向短视频创作者，本期围绕“推广一款视频字幕工具”介绍素材中已有的功能。",
+        "source_ids": [],
+        "visual": "主题标题卡：推广一款视频字幕工具"
+      },
+      {
+        "index": 2,
+        "kind": "product_fact",
+        "narration": "支持为视频添加字幕",
+        "source_ids": [
+          "P01",
+          "P02"
+        ],
+        "visual": "字幕工具产品演示 / 字幕工具图文素材"
+      },
+      {
+        "index": 3,
+        "kind": "product_fact",
+        "narration": "支持编辑字幕文本",
+        "source_ids": [
+          "P01"
+        ],
+        "visual": "字幕工具产品演示"
+      },
+      {
+        "index": 4,
+        "kind": "call_to_action",
+        "narration": "如果你也关注“推广一款视频字幕工具”，可根据自己的需求了解和体验。",
+        "source_ids": [],
+        "visual": "主题回顾与体验入口"
+      }
+    ],
+    "theme": "推广一款视频字幕工具"
+  },
+  "source_mode": "live",
+  "theme": "推广一款视频字幕工具"
+}

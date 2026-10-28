@@ -1,0 +1,239 @@
+{
+  "request_id": "demo-step_limit",
+  "status": "incomplete_limit",
+  "summary": "达到工具调用或模型轮数上限，任务未完成；成功结果已保留",
+  "mode": "mock",
+  "model": "offline-rule-simulator",
+  "evidence": "offline_mock_flow_only",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "推广一款视频字幕工具",
+        "reason": "需要找到主题对应的素材事实"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "字幕工具产品演示",
+            "topic_terms": [
+              "字幕",
+              "剪辑",
+              "caption"
+            ],
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕",
+              "支持编辑字幕文本"
+            ],
+            "cost": 2,
+            "license": "合成素材，仅用于本项目演示"
+          },
+          {
+            "id": "P02",
+            "title": "字幕工具图文素材",
+            "topic_terms": [
+              "字幕",
+              "剪辑",
+              "caption"
+            ],
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕"
+            ],
+            "cost": 0,
+            "license": "合成素材，仅用于本项目演示"
+          }
+        ],
+        "count": 2,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"
+      }
+    },
+    {
+      "step": 2,
+      "tool": "generate_script",
+      "arguments": {
+        "angle": "展示实际支持的功能",
+        "material_ids": [
+          "P01"
+        ],
+        "reason": "使用检索返回的首个相关素材生成脚本"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "script_id": "script-c0e4d9024b0f",
+        "script": {
+          "theme": "推广一款视频字幕工具",
+          "audience": "短视频创作者",
+          "angle": "展示实际支持的功能",
+          "material_ids": [
+            "P01"
+          ],
+          "creative_direction": {
+            "text": "展示实际支持的功能",
+            "status": "proposal_requires_review",
+            "is_product_fact": false
+          },
+          "scenes": [
+            {
+              "index": 1,
+              "visual": "主题标题卡：推广一款视频字幕工具",
+              "narration": "面向短视频创作者，本期围绕“推广一款视频字幕工具”介绍素材中已有的功能。",
+              "source_ids": [],
+              "kind": "campaign_context"
+            },
+            {
+              "index": 2,
+              "visual": "字幕工具产品演示",
+              "narration": "支持为视频添加字幕",
+              "source_ids": [
+                "P01"
+              ],
+              "kind": "product_fact"
+            },
+            {
+              "index": 3,
+              "visual": "字幕工具产品演示",
+              "narration": "支持编辑字幕文本",
+              "source_ids": [
+                "P01"
+              ],
+              "kind": "product_fact"
+            },
+            {
+              "index": 4,
+              "visual": "主题回顾与体验入口",
+              "narration": "如果你也关注“推广一款视频字幕工具”，可根据自己的需求了解和体验。",
+              "source_ids": [],
+              "kind": "call_to_action"
+            }
+          ],
+          "generator": "local_fact_template",
+          "editable": true
+        }
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [
+      "P01",
+      "P02"
+    ],
+    "scripts": {
+      "script-c0e4d9024b0f": {
+        "theme": "推广一款视频字幕工具",
+        "audience": "短视频创作者",
+        "angle": "展示实际支持的功能",
+        "material_ids": [
+          "P01"
+        ],
+        "creative_direction": {
+          "text": "展示实际支持的功能",
+          "status": "proposal_requires_review",
+          "is_product_fact": false
+        },
+        "scenes": [
+          {
+            "index": 1,
+            "visual": "主题标题卡：推广一款视频字幕工具",
+            "narration": "面向短视频创作者，本期围绕“推广一款视频字幕工具”介绍素材中已有的功能。",
+            "source_ids": [],
+            "kind": "campaign_context"
+          },
+          {
+            "index": 2,
+            "visual": "字幕工具产品演示",
+            "narration": "支持为视频添加字幕",
+            "source_ids": [
+              "P01"
+            ],
+            "kind": "product_fact"
+          },
+          {
+            "index": 3,
+            "visual": "字幕工具产品演示",
+            "narration": "支持编辑字幕文本",
+            "source_ids": [
+              "P01"
+            ],
+            "kind": "product_fact"
+          },
+          {
+            "index": 4,
+            "visual": "主题回顾与体验入口",
+            "narration": "如果你也关注“推广一款视频字幕工具”，可根据自己的需求了解和体验。",
+            "source_ids": [],
+            "kind": "call_to_action"
+          }
+        ],
+        "generator": "local_fact_template",
+        "editable": true
+      }
+    }
+  },
+  "tool_calls": 2,
+  "model_calls": 2,
+  "runs": 1,
+  "replayed": false
+}

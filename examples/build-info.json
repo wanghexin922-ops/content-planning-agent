@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-10-28T19:35:00+08:00",
+  "delivered_at": "2026-10-28T19:58:16.653882+08:00",
+  "ai_assisted_wall_minutes": 23.3,
+  "candidate_personal_time": "not yet provided by candidate",
+  "python": "3.12.4",
+  "tests_passed": 40,
+  "offline_cases_passed": 10,
+  "followup_cli_tests_after_utf8_fix": {
+    "passed": 4,
+    "command": "python -m pytest tests/test_cli.py -q"
+  },
+  "target_directory_smoke_test": {
+    "budget": 10,
+    "initial_cost": 12,
+    "saved_cost": 8,
+    "duplicate_reused_same_plan": true
+  },
+  "live_model_executed": false,
+  "live_model_remaining": "Fill local .env and run python scripts/evaluate.py --mode live",
+  "github_published": false,
+  "note": "AI-assisted build timing, not candidate independent work time; offline traces do not prove real model decisions."
+}

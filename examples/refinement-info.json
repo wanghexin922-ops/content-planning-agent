@@ -1,0 +1,14 @@
+{
+  "updated_at": "2026-10-28T20:42:40.946877+08:00",
+  "tests_passed": 44,
+  "mock_passed": 13,
+  "mock_total": 13,
+  "live_passed": 13,
+  "live_total": 13,
+  "model": "deepseek-flash",
+  "first_live_matrix_result": "12/13; no_materials changed original topic",
+  "fix": "Original-topic material applicability guard, explicit audience, timezone alignment, contextual script and preserved history",
+  "candidate_personal_time": "Not provided; do not infer from AI session",
+  "github_connection": "Account connection verified; target repo and local author still required",
+  "github_published": false
+}

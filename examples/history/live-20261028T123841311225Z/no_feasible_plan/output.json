@@ -1,0 +1,437 @@
+{
+  "request_id": "demo-no_feasible_plan",
+  "status": "incomplete",
+  "summary": "无法在给定约束内生成并保存方案。已检索到 2 条合成素材（P01 字幕工具产品演示，费用 2；P02 字幕工具图文素材，费用 0），并用其事实生成脚本 script-fd36bf79bae3。但按价格目录核算，最便宜的图文轮播方式仍需 6 单位（素材 2 + 脚本 1 + 制作 1 + 审核 1 + 发布 1），超预算 2 达 4 单位；基础剪辑需 8 单位、精剪视频需 12 单位，均不可行。时间上三种方式都能在 2026-10-29 18:00 前完成（最短 90 分钟），瓶颈仅在预算。缺口：需要提高预算至至少 6 单位（图文轮播）或减免必要的脚本/审核/发布环节。未保存任何方案；仅完成规划，制作、审核、发布均未执行。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": {
+    "script_id": "script-fd36bf79bae3",
+    "production_mode": "slideshow",
+    "total_cost": 6.0,
+    "currency": "模拟单位",
+    "budget": 2,
+    "budget_gap": 4.0,
+    "total_minutes": 90,
+    "estimated_finish": "2026-10-28T11:30:00+08:00",
+    "deadline": "2026-10-29T18:00:00+08:00",
+    "deadline_gap_minutes": 0,
+    "feasible": false,
+    "steps": [
+      {
+        "id": "materials",
+        "name": "素材授权/准备",
+        "depends_on": [],
+        "cost": 2.0,
+        "duration_minutes": 0,
+        "start": "2026-10-28T10:00:00+08:00",
+        "end": "2026-10-28T10:00:00+08:00",
+        "status": "planned"
+      },
+      {
+        "id": "script",
+        "name": "脚本整理",
+        "depends_on": [
+          "materials"
+        ],
+        "cost": 1.0,
+        "duration_minutes": 20,
+        "start": "2026-10-28T10:00:00+08:00",
+        "end": "2026-10-28T10:20:00+08:00",
+        "status": "planned"
+      },
+      {
+        "id": "production",
+        "name": "图文轮播视频",
+        "depends_on": [
+          "script"
+        ],
+        "cost": 1.0,
+        "duration_minutes": 30,
+        "start": "2026-10-28T10:20:00+08:00",
+        "end": "2026-10-28T10:50:00+08:00",
+        "status": "planned"
+      },
+      {
+        "id": "review",
+        "name": "内容审核",
+        "depends_on": [
+          "production"
+        ],
+        "cost": 1.0,
+        "duration_minutes": 30,
+        "start": "2026-10-28T10:50:00+08:00",
+        "end": "2026-10-28T11:20:00+08:00",
+        "status": "planned"
+      },
+      {
+        "id": "publish",
+        "name": "人工确认与发布",
+        "depends_on": [
+          "review"
+        ],
+        "cost": 1.0,
+        "duration_minutes": 10,
+        "start": "2026-10-28T11:20:00+08:00",
+        "end": "2026-10-28T11:30:00+08:00",
+        "status": "planned"
+      }
+    ],
+    "assumptions": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+  },
+  "total_cost": 6.0,
+  "missing_fields": [],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "视频字幕工具 推广 短视频创作者",
+        "reason": "需要先了解可用素材与费用目录，才能评估预算 2 与 premium 偏好是否可行。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "字幕工具产品演示",
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕",
+              "支持编辑字幕文本"
+            ],
+            "cost": 2,
+            "license": "合成素材，仅用于本项目演示"
+          },
+          {
+            "id": "P02",
+            "title": "字幕工具图文素材",
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕"
+            ],
+            "cost": 0,
+            "license": "合成素材，仅用于本项目演示"
+          }
+        ],
+        "count": 2,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "无匹配时可改写查询或请求补充；不能凭空生成产品事实"
+      }
+    },
+    {
+      "step": 2,
+      "tool": "generate_script",
+      "arguments": {
+        "material_ids": [
+          "P01",
+          "P02"
+        ],
+        "angle": "字幕工具帮你快速给视频加字幕",
+        "reason": "两条素材均与字幕工具相关，用其事实生成可追溯脚本以便核算最省成本的制作方式。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "script_id": "script-fd36bf79bae3",
+        "script": {
+          "theme": "推广一款视频字幕工具",
+          "audience": "短视频创作者",
+          "angle": "字幕工具帮你快速给视频加字幕",
+          "material_ids": [
+            "P01",
+            "P02"
+          ],
+          "creative_direction": {
+            "text": "字幕工具帮你快速给视频加字幕",
+            "status": "proposal_requires_review",
+            "is_product_fact": false
+          },
+          "scenes": [
+            {
+              "index": 1,
+              "visual": "主题标题卡：推广一款视频字幕工具",
+              "narration": "面向短视频创作者，本期围绕“推广一款视频字幕工具”介绍素材中已有的功能。",
+              "source_ids": [],
+              "kind": "campaign_context"
+            },
+            {
+              "index": 2,
+              "visual": "字幕工具产品演示 / 字幕工具图文素材",
+              "narration": "支持为视频添加字幕",
+              "source_ids": [
+                "P01",
+                "P02"
+              ],
+              "kind": "product_fact"
+            },
+            {
+              "index": 3,
+              "visual": "字幕工具产品演示",
+              "narration": "支持编辑字幕文本",
+              "source_ids": [
+                "P01"
+              ],
+              "kind": "product_fact"
+            },
+            {
+              "index": 4,
+              "visual": "主题回顾与体验入口",
+              "narration": "如果你也关注“推广一款视频字幕工具”，可根据自己的需求了解和体验。",
+              "source_ids": [],
+              "kind": "call_to_action"
+            }
+          ],
+          "generator": "local_fact_template",
+          "editable": true
+        }
+      }
+    },
+    {
+      "step": 3,
+      "tool": "estimate_plan",
+      "arguments": {
+        "script_id": "script-fd36bf79bae3",
+        "production_mode": "slideshow",
+        "reason": "预算仅 2 单位，含脚本、审核、发布固定费用，故先尝试最便宜的图文轮播方式核算是否可行。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "estimate_id": "estimate-544c6737f95f",
+        "estimate": {
+          "script_id": "script-fd36bf79bae3",
+          "production_mode": "slideshow",
+          "total_cost": 6.0,
+          "currency": "模拟单位",
+          "budget": 2,
+          "budget_gap": 4.0,
+          "total_minutes": 90,
+          "estimated_finish": "2026-10-28T11:30:00+08:00",
+          "deadline": "2026-10-29T18:00:00+08:00",
+          "deadline_gap_minutes": 0,
+          "feasible": false,
+          "steps": [
+            {
+              "id": "materials",
+              "name": "素材授权/准备",
+              "depends_on": [],
+              "cost": 2.0,
+              "duration_minutes": 0,
+              "start": "2026-10-28T10:00:00+08:00",
+              "end": "2026-10-28T10:00:00+08:00",
+              "status": "planned"
+            },
+            {
+              "id": "script",
+              "name": "脚本整理",
+              "depends_on": [
+                "materials"
+              ],
+              "cost": 1.0,
+              "duration_minutes": 20,
+              "start": "2026-10-28T10:00:00+08:00",
+              "end": "2026-10-28T10:20:00+08:00",
+              "status": "planned"
+            },
+            {
+              "id": "production",
+              "name": "图文轮播视频",
+              "depends_on": [
+                "script"
+              ],
+              "cost": 1.0,
+              "duration_minutes": 30,
+              "start": "2026-10-28T10:20:00+08:00",
+              "end": "2026-10-28T10:50:00+08:00",
+              "status": "planned"
+            },
+            {
+              "id": "review",
+              "name": "内容审核",
+              "depends_on": [
+                "production"
+              ],
+              "cost": 1.0,
+              "duration_minutes": 30,
+              "start": "2026-10-28T10:50:00+08:00",
+              "end": "2026-10-28T11:20:00+08:00",
+              "status": "planned"
+            },
+            {
+              "id": "publish",
+              "name": "人工确认与发布",
+              "depends_on": [
+                "review"
+              ],
+              "cost": 1.0,
+              "duration_minutes": 10,
+              "start": "2026-10-28T11:20:00+08:00",
+              "end": "2026-10-28T11:30:00+08:00",
+              "status": "planned"
+            }
+          ],
+          "assumptions": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "alternatives": [
+          {
+            "production_mode": "premium",
+            "total_cost": 12.0,
+            "total_minutes": 240,
+            "feasible": false,
+            "budget_gap": 10.0,
+            "deadline_gap_minutes": 0
+          },
+          {
+            "production_mode": "basic",
+            "total_cost": 8.0,
+            "total_minutes": 120,
+            "feasible": false,
+            "budget_gap": 6.0,
+            "deadline_gap_minutes": 0
+          },
+          {
+            "production_mode": "slideshow",
+            "total_cost": 6.0,
+            "total_minutes": 90,
+            "feasible": false,
+            "budget_gap": 4.0,
+            "deadline_gap_minutes": 0
+          }
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "tool": "finish",
+      "arguments": {
+        "status": "incomplete",
+        "summary": "无法在给定约束内生成并保存方案。已检索到 2 条合成素材（P01 字幕工具产品演示，费用 2；P02 字幕工具图文素材，费用 0），并用其事实生成脚本 script-fd36bf79bae3。但按价格目录核算，最便宜的图文轮播方式仍需 6 单位（素材 2 + 脚本 1 + 制作 1 + 审核 1 + 发布 1），超预算 2 达 4 单位；基础剪辑需 8 单位、精剪视频需 12 单位，均不可行。时间上三种方式都能在 2026-10-29 18:00 前完成（最短 90 分钟），瓶颈仅在预算。缺口：需要提高预算至至少 6 单位（图文轮播）或减免必要的脚本/审核/发布环节。未保存任何方案；仅完成规划，制作、审核、发布均未执行。",
+        "reason": "三种制作方式的估算均显示超预算且无更便宜的替代方案，故报告缺口而不保存。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "incomplete",
+        "summary": "无法在给定约束内生成并保存方案。已检索到 2 条合成素材（P01 字幕工具产品演示，费用 2；P02 字幕工具图文素材，费用 0），并用其事实生成脚本 script-fd36bf79bae3。但按价格目录核算，最便宜的图文轮播方式仍需 6 单位（素材 2 + 脚本 1 + 制作 1 + 审核 1 + 发布 1），超预算 2 达 4 单位；基础剪辑需 8 单位、精剪视频需 12 单位，均不可行。时间上三种方式都能在 2026-10-29 18:00 前完成（最短 90 分钟），瓶颈仅在预算。缺口：需要提高预算至至少 6 单位（图文轮播）或减免必要的脚本/审核/发布环节。未保存任何方案；仅完成规划，制作、审核、发布均未执行。",
+        "missing_fields": []
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [
+      "P01",
+      "P02"
+    ],
+    "scripts": {
+      "script-fd36bf79bae3": {
+        "theme": "推广一款视频字幕工具",
+        "audience": "短视频创作者",
+        "angle": "字幕工具帮你快速给视频加字幕",
+        "material_ids": [
+          "P01",
+          "P02"
+        ],
+        "creative_direction": {
+          "text": "字幕工具帮你快速给视频加字幕",
+          "status": "proposal_requires_review",
+          "is_product_fact": false
+        },
+        "scenes": [
+          {
+            "index": 1,
+            "visual": "主题标题卡：推广一款视频字幕工具",
+            "narration": "面向短视频创作者，本期围绕“推广一款视频字幕工具”介绍素材中已有的功能。",
+            "source_ids": [],
+            "kind": "campaign_context"
+          },
+          {
+            "index": 2,
+            "visual": "字幕工具产品演示 / 字幕工具图文素材",
+            "narration": "支持为视频添加字幕",
+            "source_ids": [
+              "P01",
+              "P02"
+            ],
+            "kind": "product_fact"
+          },
+          {
+            "index": 3,
+            "visual": "字幕工具产品演示",
+            "narration": "支持编辑字幕文本",
+            "source_ids": [
+              "P01"
+            ],
+            "kind": "product_fact"
+          },
+          {
+            "index": 4,
+            "visual": "主题回顾与体验入口",
+            "narration": "如果你也关注“推广一款视频字幕工具”，可根据自己的需求了解和体验。",
+            "source_ids": [],
+            "kind": "call_to_action"
+          }
+        ],
+        "generator": "local_fact_template",
+        "editable": true
+      }
+    }
+  },
+  "tool_calls": 4,
+  "model_calls": 4,
+  "runs": 1,
+  "replayed": false
+}

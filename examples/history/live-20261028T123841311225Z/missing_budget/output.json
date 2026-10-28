@@ -1,0 +1,64 @@
+{
+  "request_id": "demo-missing_budget",
+  "status": "needs_input",
+  "summary": "无法生成方案：缺少必要约束「预算（budget）」。已提供的主题（推广视频字幕工具）、受众（短视频创作者）、截止时间（2026-10-29 18:00）与初始偏好（premium）已记录，请补充预算金额或上限后重新发起。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [
+    "budget"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "视频字幕工具 短视频创作者",
+        "reason": "检查素材目录，同时确认是否存在预算相关信息。"
+      },
+      "status": "failed",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "missing_input",
+          "message": "需补充必要约束",
+          "retryable": false
+        },
+        "missing_fields": [
+          "budget"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "tool": "finish",
+      "arguments": {
+        "status": "needs_input",
+        "summary": "无法生成方案：缺少必要约束「预算（budget）」。已提供的主题（推广视频字幕工具）、受众（短视频创作者）、截止时间（2026-10-29 18:00）与初始偏好（premium）已记录，请补充预算金额或上限后重新发起。",
+        "reason": "素材检索返回 missing_input，明确缺失 budget 字段，无法在不确定预算的情况下估算与保存方案。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "无法生成方案：缺少必要约束「预算（budget）」。已提供的主题（推广视频字幕工具）、受众（短视频创作者）、截止时间（2026-10-29 18:00）与初始偏好（premium）已记录，请补充预算金额或上限后重新发起。",
+        "missing_fields": [
+          "budget"
+        ]
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 2,
+  "model_calls": 2,
+  "runs": 1,
+  "replayed": false
+}

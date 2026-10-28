@@ -1,0 +1,5 @@
+[
+  {"id":"P01","title":"字幕工具产品演示","topic_terms":["字幕","剪辑","caption"],"tags":["视频","字幕","剪辑","推广","产品","caption","video"],"facts":["支持为视频添加字幕","支持编辑字幕文本"],"cost":2,"license":"合成素材，仅用于本项目演示"},
+  {"id":"P02","title":"字幕工具图文素材","topic_terms":["字幕","剪辑","caption"],"tags":["视频","字幕","剪辑","推广","产品","caption","video"],"facts":["支持为视频添加字幕"],"cost":0,"license":"合成素材，仅用于本项目演示"},
+  {"id":"P03","title":"旅行相册演示素材","topic_terms":["旅行","相册","travel"],"tags":["旅行","相册","回忆","travel"],"facts":["可将照片整理为相册视频"],"cost":1,"license":"合成素材，仅用于本项目演示"}
+]

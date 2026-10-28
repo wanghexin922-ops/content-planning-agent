@@ -1,0 +1,46 @@
+{
+  "request_id": "demo-missing_info",
+  "status": "needs_input",
+  "summary": "无法生成并保存方案：请求中只有主题（推广视频字幕工具）、受众（短视频创作者）和初始偏好 premium，缺少预算金额与截止时间这两项硬性约束。请补充预算（例如可接受的总费用上限）和截止时间，我将据此检索素材、生成脚本并核算可行性后保存方案。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [
+    "budget",
+    "deadline"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "finish",
+      "arguments": {
+        "status": "needs_input",
+        "summary": "无法生成并保存方案：请求中只有主题（推广视频字幕工具）、受众（短视频创作者）和初始偏好 premium，缺少预算金额与截止时间这两项硬性约束。请补充预算（例如可接受的总费用上限）和截止时间，我将据此检索素材、生成脚本并核算可行性后保存方案。",
+        "reason": "用户输入缺少预算和截止时间，无法核验可行性，需先请求补充。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "无法生成并保存方案：请求中只有主题（推广视频字幕工具）、受众（短视频创作者）和初始偏好 premium，缺少预算金额与截止时间这两项硬性约束。请补充预算（例如可接受的总费用上限）和截止时间，我将据此检索素材、生成脚本并核算可行性后保存方案。",
+        "missing_fields": [
+          "budget",
+          "deadline"
+        ]
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 1,
+  "model_calls": 1,
+  "runs": 1,
+  "replayed": false
+}
