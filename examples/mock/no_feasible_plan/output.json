@@ -1,7 +1,7 @@
 {
   "request_id": "demo-no_feasible_plan",
   "status": "incomplete",
-  "summary": "未找到可行方案；最低费用 4.0，预算缺口 2.0，超时 0 分钟",
+  "summary": "方案未保存；在已生成脚本及现有制作方式范围内，候选费用 4.0，预算缺口 2.0，时间缺口 0 分钟。可由用户调整预算、截止时间，或补充素材后重新规划；审核与发布等必需环节不可省略。",
   "mode": "mock",
   "model": "offline-rule-simulator",
   "evidence": "offline_mock_flow_only",
@@ -9,7 +9,7 @@
   "plan_id": null,
   "plan": null,
   "latest_estimate": {
-    "script_id": "script-fb50ee0e2efb",
+    "script_id": "script-21119bb80793",
     "production_mode": "premium",
     "total_cost": 10.0,
     "currency": "模拟单位",
@@ -186,7 +186,7 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P01"
         ],
@@ -195,16 +195,16 @@
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-c0e4d9024b0f",
+        "script_id": "script-e23d66bc1cf8",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "展示实际支持的功能",
+          "angle": "功能介绍",
           "material_ids": [
             "P01"
           ],
           "creative_direction": {
-            "text": "展示实际支持的功能",
+            "text": "功能介绍",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -253,14 +253,14 @@
       "arguments": {
         "production_mode": "premium",
         "reason": "已取得脚本，先评估初始制作偏好",
-        "script_id": "script-c0e4d9024b0f"
+        "script_id": "script-e23d66bc1cf8"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-4c8a2e98d9af",
+        "estimate_id": "estimate-909fe9a39cc5",
         "estimate": {
-          "script_id": "script-c0e4d9024b0f",
+          "script_id": "script-e23d66bc1cf8",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -365,7 +365,7 @@
       "step": 4,
       "tool": "generate_script",
       "arguments": {
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P02"
         ],
@@ -374,16 +374,16 @@
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-fb50ee0e2efb",
+        "script_id": "script-21119bb80793",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "展示实际支持的功能",
+          "angle": "功能介绍",
           "material_ids": [
             "P02"
           ],
           "creative_direction": {
-            "text": "展示实际支持的功能",
+            "text": "功能介绍",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -423,14 +423,14 @@
       "arguments": {
         "production_mode": "premium",
         "reason": "已取得脚本，先评估初始制作偏好",
-        "script_id": "script-fb50ee0e2efb"
+        "script_id": "script-21119bb80793"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-278956850ba7",
+        "estimate_id": "estimate-0e4bedf2ee17",
         "estimate": {
-          "script_id": "script-fb50ee0e2efb",
+          "script_id": "script-21119bb80793",
           "production_mode": "premium",
           "total_cost": 10.0,
           "currency": "模拟单位",
@@ -543,7 +543,8 @@
       "result": {
         "ok": true,
         "terminal_status": "incomplete",
-        "summary": "未找到可行方案；最低费用 4.0，预算缺口 2.0，超时 0 分钟",
+        "summary": "方案未保存；在已生成脚本及现有制作方式范围内，候选费用 4.0，预算缺口 2.0，时间缺口 0 分钟。可由用户调整预算、截止时间，或补充素材后重新规划；审核与发布等必需环节不可省略。",
+        "summary_source": "verified_tool_state",
         "missing_fields": []
       }
     }
@@ -554,15 +555,15 @@
       "P02"
     ],
     "scripts": {
-      "script-c0e4d9024b0f": {
+      "script-e23d66bc1cf8": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P01"
         ],
         "creative_direction": {
-          "text": "展示实际支持的功能",
+          "text": "功能介绍",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },
@@ -603,15 +604,15 @@
         "generator": "local_fact_template",
         "editable": true
       },
-      "script-fb50ee0e2efb": {
+      "script-21119bb80793": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P02"
         ],
         "creative_direction": {
-          "text": "展示实际支持的功能",
+          "text": "功能介绍",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

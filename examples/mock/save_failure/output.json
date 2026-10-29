@@ -1,7 +1,7 @@
 {
   "request_id": "demo-save_failure",
   "status": "failed",
-  "summary": "演示用工具故障：save_plan",
+  "summary": "方案未保存；失败步骤 save_plan：演示用工具故障：save_plan。成功产物已保留，可修复后显式续跑。",
   "mode": "mock",
   "model": "offline-rule-simulator",
   "evidence": "offline_mock_flow_only",
@@ -9,7 +9,7 @@
   "plan_id": null,
   "plan": null,
   "latest_estimate": {
-    "script_id": "script-c0e4d9024b0f",
+    "script_id": "script-e23d66bc1cf8",
     "production_mode": "premium",
     "total_cost": 12.0,
     "currency": "模拟单位",
@@ -186,7 +186,7 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P01"
         ],
@@ -195,16 +195,16 @@
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-c0e4d9024b0f",
+        "script_id": "script-e23d66bc1cf8",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "展示实际支持的功能",
+          "angle": "功能介绍",
           "material_ids": [
             "P01"
           ],
           "creative_direction": {
-            "text": "展示实际支持的功能",
+            "text": "功能介绍",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -253,14 +253,14 @@
       "arguments": {
         "production_mode": "premium",
         "reason": "已取得脚本，先评估初始制作偏好",
-        "script_id": "script-c0e4d9024b0f"
+        "script_id": "script-e23d66bc1cf8"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-9cb5d42d4ace",
+        "estimate_id": "estimate-e32db0be118b",
         "estimate": {
-          "script_id": "script-c0e4d9024b0f",
+          "script_id": "script-e23d66bc1cf8",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -365,7 +365,7 @@
       "step": 4,
       "tool": "save_plan",
       "arguments": {
-        "estimate_id": "estimate-9cb5d42d4ace",
+        "estimate_id": "estimate-e32db0be118b",
         "reason": "估算满足预算和截止时间"
       },
       "status": "failed",
@@ -390,7 +390,8 @@
       "result": {
         "ok": true,
         "terminal_status": "failed",
-        "summary": "演示用工具故障：save_plan",
+        "summary": "方案未保存；失败步骤 save_plan：演示用工具故障：save_plan。成功产物已保留，可修复后显式续跑。",
+        "summary_source": "verified_tool_state",
         "missing_fields": []
       }
     }
@@ -401,15 +402,15 @@
       "P02"
     ],
     "scripts": {
-      "script-c0e4d9024b0f": {
+      "script-e23d66bc1cf8": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P01"
         ],
         "creative_direction": {
-          "text": "展示实际支持的功能",
+          "text": "功能介绍",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

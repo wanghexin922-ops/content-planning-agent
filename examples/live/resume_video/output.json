@@ -1,7 +1,7 @@
 {
   "request_id": "demo-resume_video",
   "status": "completed",
-  "summary": "已生成并保存内容活动方案（plan-b57cbdd526380215）。主题为“推广带字幕的求职简历介绍视频制作”，受众应届毕业生。素材使用 P01 字幕工具产品演示与 P02 字幕工具图文素材，脚本 script-08668a2b169c 仅引用素材事实“支持为视频添加字幕/支持编辑字幕文本”。初始偏好的 premium 估算为 12，超出预算 10，故调整为 basic 制作方式：总费用 8、串行耗时 120 分钟、预计 2026-10-28T12:00 完成，早于截止 2026-10-29T18:00。方案已保存但未执行任何制作、审核或发布；发布渠道、创意文案与执行人员仍待确认。",
+  "summary": "方案 plan-b57cbdd526380215 已保存；费用 8.0 / 预算 10 模拟单位；预计耗时 120 分钟，完成时间 2026-10-28T12:00:00+08:00。制作、审核和发布均未执行。",
   "mode": "live",
   "model": "deepseek-flash",
   "evidence": "real_model_run",
@@ -14,7 +14,7 @@
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点"
+        "text": "场景引导"
       },
       "deliverables": [
         "带来源 ID 的可编辑脚本",
@@ -44,7 +44,7 @@
       "estimated_finish": "2026-10-28T12:00:00+08:00",
       "feasible": true,
       "production_mode": "basic",
-      "script_id": "script-08668a2b169c",
+      "script_id": "script-157734f36aee",
       "steps": [
         {
           "cost": 2.0,
@@ -111,12 +111,12 @@
     "execution_status": "not_executed",
     "request_id": "demo-resume_video",
     "script": {
-      "angle": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点",
+      "angle": "场景引导",
       "audience": "应届毕业生",
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点"
+        "text": "场景引导"
       },
       "editable": true,
       "generator": "local_fact_template",
@@ -174,7 +174,7 @@
     "estimated_finish": "2026-10-28T12:00:00+08:00",
     "feasible": true,
     "production_mode": "basic",
-    "script_id": "script-08668a2b169c",
+    "script_id": "script-157734f36aee",
     "steps": [
       {
         "cost": 2.0,
@@ -245,8 +245,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "求职简历介绍视频 带字幕 应届毕业生",
-        "reason": "需要先确认是否有与求职简历视频主题相关的可用素材与价格目录。"
+        "query": "求职简历介绍视频 字幕 素材",
+        "reason": "需先确认是否有与求职简历介绍视频及字幕相关的素材与价格目录。"
       },
       "status": "succeeded",
       "result": {
@@ -346,23 +346,23 @@
           "P01",
           "P02"
         ],
-        "angle": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点",
-        "reason": "两条素材都涉及字幕与视频，可作为主题脚本的事实来源。"
+        "angle": "场景引导",
+        "reason": "两个素材均围绕字幕工具且含添加字幕事实，可用于面向应届毕业生的简历视频场景脚本。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-08668a2b169c",
+        "script_id": "script-157734f36aee",
         "script": {
           "theme": "推广带字幕的求职简历介绍视频制作",
           "audience": "应届毕业生",
-          "angle": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点",
+          "angle": "场景引导",
           "material_ids": [
             "P01",
             "P02"
           ],
           "creative_direction": {
-            "text": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点",
+            "text": "场景引导",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -410,16 +410,16 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
-        "script_id": "script-08668a2b169c",
         "production_mode": "premium",
-        "reason": "先按用户初始偏好 premium 估算，确认是否在 10 预算和截止时间内。"
+        "reason": "用户初始偏好为 premium，先按精剪视频核算真实费用与串行耗时。",
+        "script_id": "script-157734f36aee"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-386d2b6528b6",
+        "estimate_id": "estimate-8707fc0a3a14",
         "estimate": {
-          "script_id": "script-08668a2b169c",
+          "script_id": "script-157734f36aee",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -525,15 +525,15 @@
       "tool": "estimate_plan",
       "arguments": {
         "production_mode": "basic",
-        "reason": "premium 超预算 2，改用 basic 方案在预算内仍保有时长可接受的剪辑质量。",
-        "script_id": "script-08668a2b169c"
+        "reason": "premium 估算超预算 2 单位，改用可负担的基础剪辑重新核算。",
+        "script_id": "script-157734f36aee"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-40232474f130",
+        "estimate_id": "estimate-0eec882b7ebf",
         "estimate": {
-          "script_id": "script-08668a2b169c",
+          "script_id": "script-157734f36aee",
           "production_mode": "basic",
           "total_cost": 8.0,
           "currency": "模拟单位",
@@ -638,8 +638,8 @@
       "step": 5,
       "tool": "save_plan",
       "arguments": {
-        "estimate_id": "estimate-40232474f130",
-        "reason": "basic 估算显示费用 8 在预算内且可在截止前完成，符合条件可保存。"
+        "estimate_id": "estimate-0eec882b7ebf",
+        "reason": "基础剪辑估算可行（8 单位、120 分钟、满足截止），用它保存方案。"
       },
       "status": "succeeded",
       "result": {
@@ -654,7 +654,7 @@
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点"
+              "text": "场景引导"
             },
             "deliverables": [
               "带来源 ID 的可编辑脚本",
@@ -684,7 +684,7 @@
             "estimated_finish": "2026-10-28T12:00:00+08:00",
             "feasible": true,
             "production_mode": "basic",
-            "script_id": "script-08668a2b169c",
+            "script_id": "script-157734f36aee",
             "steps": [
               {
                 "cost": 2.0,
@@ -751,12 +751,12 @@
           "execution_status": "not_executed",
           "request_id": "demo-resume_video",
           "script": {
-            "angle": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点",
+            "angle": "场景引导",
             "audience": "应届毕业生",
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点"
+              "text": "场景引导"
             },
             "editable": true,
             "generator": "local_fact_template",
@@ -811,14 +811,15 @@
       "tool": "finish",
       "arguments": {
         "status": "completed",
-        "summary": "已生成并保存内容活动方案（plan-b57cbdd526380215）。主题为“推广带字幕的求职简历介绍视频制作”，受众应届毕业生。素材使用 P01 字幕工具产品演示与 P02 字幕工具图文素材，脚本 script-08668a2b169c 仅引用素材事实“支持为视频添加字幕/支持编辑字幕文本”。初始偏好的 premium 估算为 12，超出预算 10，故调整为 basic 制作方式：总费用 8、串行耗时 120 分钟、预计 2026-10-28T12:00 完成，早于截止 2026-10-29T18:00。方案已保存但未执行任何制作、审核或发布；发布渠道、创意文案与执行人员仍待确认。",
-        "reason": "basic 估算可行且方案保存成功，可汇报完成状态。"
+        "summary": "已保存面向应届毕业生的“推广带字幕的求职简历介绍视频制作”内容活动方案（plan-b57cbdd526380215）。选用素材 P01、P02（均含“支持为视频添加字幕”“支持编辑字幕文本”事实），脚本 script-157734f36aee 为场景引导角度、4 个场景、可编辑。初始 premium 精剪估算 12 单位超预算 2 单位，改为基础剪辑后总费用 8 单位、串行 120 分钟，预计 2026-10-28T12:00 完成，满足预算与 2026-10-29 18:00 截止。素材准备、脚本、制作、审核、发布各阶段均已排入。注意：方案仅已保存，实际制作、审核与发布均未执行；创意角度、发布渠道与执行人员待确认。",
+        "reason": "保存返回 saved=true 且方案在预算与截止内可行，故报告完成并说明尚未执行。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
         "terminal_status": "completed",
-        "summary": "已生成并保存内容活动方案（plan-b57cbdd526380215）。主题为“推广带字幕的求职简历介绍视频制作”，受众应届毕业生。素材使用 P01 字幕工具产品演示与 P02 字幕工具图文素材，脚本 script-08668a2b169c 仅引用素材事实“支持为视频添加字幕/支持编辑字幕文本”。初始偏好的 premium 估算为 12，超出预算 10，故调整为 basic 制作方式：总费用 8、串行耗时 120 分钟、预计 2026-10-28T12:00 完成，早于截止 2026-10-29T18:00。方案已保存但未执行任何制作、审核或发布；发布渠道、创意文案与执行人员仍待确认。",
+        "summary": "方案 plan-b57cbdd526380215 已保存；费用 8.0 / 预算 10 模拟单位；预计耗时 120 分钟，完成时间 2026-10-28T12:00:00+08:00。制作、审核和发布均未执行。",
+        "summary_source": "verified_tool_state",
         "missing_fields": []
       }
     }
@@ -829,16 +830,16 @@
       "P02"
     ],
     "scripts": {
-      "script-08668a2b169c": {
+      "script-157734f36aee": {
         "theme": "推广带字幕的求职简历介绍视频制作",
         "audience": "应届毕业生",
-        "angle": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点",
+        "angle": "场景引导",
         "material_ids": [
           "P01",
           "P02"
         ],
         "creative_direction": {
-          "text": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点",
+          "text": "场景引导",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

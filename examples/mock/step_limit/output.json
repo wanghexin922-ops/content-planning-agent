@@ -113,7 +113,7 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P01"
         ],
@@ -122,16 +122,16 @@
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-c0e4d9024b0f",
+        "script_id": "script-e23d66bc1cf8",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "展示实际支持的功能",
+          "angle": "功能介绍",
           "material_ids": [
             "P01"
           ],
           "creative_direction": {
-            "text": "展示实际支持的功能",
+            "text": "功能介绍",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -181,15 +181,15 @@
       "P02"
     ],
     "scripts": {
-      "script-c0e4d9024b0f": {
+      "script-e23d66bc1cf8": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P01"
         ],
         "creative_direction": {
-          "text": "展示实际支持的功能",
+          "text": "功能介绍",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

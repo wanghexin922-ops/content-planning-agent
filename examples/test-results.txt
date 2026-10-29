@@ -1,4 +1,4 @@
-Executed at: 2026-10-29T05:25:53.886093+00:00
+Executed at: 2026-10-29T05:27:53.363992+00:00
 Python: 3.12.4
 Platform: Windows
 Command: python scripts/verify.py
@@ -10,6 +10,8 @@ test_changed_data_does_not_reuse_old_state (test_agent.AgentTests.test_changed_d
 test_deadline_forces_faster_mode (test_agent.AgentTests.test_deadline_forces_faster_mode) ... ok
 test_decimal_budget_exact_boundary (test_agent.AgentTests.test_decimal_budget_exact_boundary) ... ok
 test_duplicate_executes_no_new_tools_and_saves_once (test_agent.AgentTests.test_duplicate_executes_no_new_tools_and_saves_once) ... ok
+test_failed_resume_preserves_call_budget (test_agent.AgentTests.test_failed_resume_preserves_call_budget) ... ok
+test_failed_resume_rechecks_expired_deadline (test_agent.AgentTests.test_failed_resume_rechecks_expired_deadline) ... ok
 test_failed_task_does_not_silently_retry (test_agent.AgentTests.test_failed_task_does_not_silently_retry) ... ok
 test_failure_resume_uses_successful_script (test_agent.AgentTests.test_failure_resume_uses_successful_script) ... ok
 test_finish_does_not_publish_unverified_model_summary (test_agent.AgentTests.test_finish_does_not_publish_unverified_model_summary) ... ok
@@ -32,12 +34,14 @@ test_query_rewrite_cannot_replace_original_topic (test_agent.AgentTests.test_que
 test_real_sqlite_failure_is_explicit (test_agent.AgentTests.test_real_sqlite_failure_is_explicit) ... ok
 test_recover_plan_if_checkpoint_after_save_was_lost (test_agent.AgentTests.test_recover_plan_if_checkpoint_after_save_was_lost) ... ok
 test_replaced_material_facts_change_script (test_agent.AgentTests.test_replaced_material_facts_change_script) ... ok
+test_resume_does_not_assume_tool_recovered (test_agent.AgentTests.test_resume_does_not_assume_tool_recovered) ... ok
 test_same_id_changed_input_rejected (test_agent.AgentTests.test_same_id_changed_input_rejected) ... ok
 test_same_task_concurrent_lock_rejected (test_agent.AgentTests.test_same_task_concurrent_lock_rejected) ... ok
 test_save_cannot_bypass_budget (test_agent.AgentTests.test_save_cannot_bypass_budget) ... ok
 test_save_rechecks_elapsed_time (test_agent.AgentTests.test_save_rechecks_elapsed_time) ... ok
 test_schedule_uses_deadline_timezone (test_agent.AgentTests.test_schedule_uses_deadline_timezone) ... ok
 test_step_limit_and_resume_without_redo (test_agent.AgentTests.test_step_limit_and_resume_without_redo) ... ok
+test_terminal_failed_can_resume_and_preserves_history (test_agent.AgentTests.test_terminal_failed_can_resume_and_preserves_history) ... ok
 test_transient_failure_preserves_search (test_agent.AgentTests.test_transient_failure_preserves_search) ... ok
 test_unknown_tool_and_bad_arguments_are_observations (test_agent.AgentTests.test_unknown_tool_and_bad_arguments_are_observations) ... ok
 test_unsupported_creative_claims_are_rejected (test_agent.AgentTests.test_unsupported_creative_claims_are_rejected) ... ok
@@ -46,6 +50,7 @@ test_live_missing_key_never_reuses_mock_success (test_cli.CLITests.test_live_mis
 test_malformed_input_fails_cleanly (test_cli.CLITests.test_malformed_input_fails_cleanly) ... ok
 test_request_generator_uses_explicit_audience (test_cli.CLITests.test_request_generator_uses_explicit_audience) ... ok
 test_resume_across_separate_processes (test_cli.CLITests.test_resume_across_separate_processes) ... ok
+test_terminal_failure_resume_in_new_process (test_cli.CLITests.test_terminal_failure_resume_in_new_process) ... ok
 test_auth_error_does_not_leak_body_or_key (test_model.ModelTests.test_auth_error_does_not_leak_body_or_key) ... ok
 test_env_file_bom_quotes_and_environment_precedence (test_model.ModelTests.test_env_file_bom_quotes_and_environment_precedence) ... ok
 test_invalid_response_and_truncation (test_model.ModelTests.test_invalid_response_and_truncation) ... ok
@@ -54,6 +59,6 @@ test_native_tool_payload_and_observation_roundtrip (test_model.ModelTests.test_n
 test_network_failure_is_not_mock_fallback (test_model.ModelTests.test_network_failure_is_not_mock_fallback) ... ok
 
 ----------------------------------------------------------------------
-Ran 48 tests in 9.129s
+Ran 53 tests in 12.761s
 
 OK

@@ -1,7 +1,7 @@
 {
   "request_id": "demo-missing_deadline",
   "status": "needs_input",
-  "summary": "请补充：deadline",
+  "summary": "方案未保存，请补充：deadline",
   "mode": "mock",
   "model": "offline-rule-simulator",
   "evidence": "offline_mock_flow_only",
@@ -26,7 +26,8 @@
       "result": {
         "ok": true,
         "terminal_status": "needs_input",
-        "summary": "请补充：deadline",
+        "summary": "方案未保存，请补充：deadline",
+        "summary_source": "verified_tool_state",
         "missing_fields": [
           "deadline"
         ]

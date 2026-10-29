@@ -1,7 +1,7 @@
 {
   "mode": "mock",
   "evidence": "offline_mock_flow_only",
-  "executed_at": "2026-10-28T12:38:41.082115+00:00",
+  "executed_at": "2026-10-29T05:29:51.148464+00:00",
   "fixed_business_clock": "2026-10-28T10:00:00+08:00",
   "note": "固定业务时钟用于回放，不是当时真实业务任务。Mock 不证明模型决策效果。",
   "passed": 13,

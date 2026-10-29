@@ -1,7 +1,7 @@
 {
   "request_id": "demo-no_materials",
   "status": "needs_input",
-  "summary": "请补充相关素材或更明确的主题",
+  "summary": "方案未保存；尚无可用脚本，请补充与原始主题相关的素材或继续检索。",
   "mode": "mock",
   "model": "offline-rule-simulator",
   "evidence": "offline_mock_flow_only",
@@ -73,7 +73,8 @@
       "result": {
         "ok": true,
         "terminal_status": "needs_input",
-        "summary": "请补充相关素材或更明确的主题",
+        "summary": "方案未保存；尚无可用脚本，请补充与原始主题相关的素材或继续检索。",
+        "summary_source": "verified_tool_state",
         "missing_fields": []
       }
     }

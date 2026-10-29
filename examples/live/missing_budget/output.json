@@ -1,7 +1,7 @@
 {
   "request_id": "demo-missing_budget",
   "status": "needs_input",
-  "summary": "无法生成方案：请求中缺少预算（budget）信息。主题为推广视频字幕工具、受众为短视频创作者、截止时间为 2026-10-29T18:00:00+08:00 均已明确，但预算缺失，无法核算费用与可行性。请补充预算金额后重新提交，我将据此选择 premium/basic/slideshow 等制作方式并保存方案。",
+  "summary": "方案未保存，请补充：budget",
   "mode": "live",
   "model": "deepseek-flash",
   "evidence": "real_model_run",
@@ -19,14 +19,15 @@
       "tool": "finish",
       "arguments": {
         "status": "needs_input",
-        "summary": "无法生成方案：请求中缺少预算（budget）信息。主题为推广视频字幕工具、受众为短视频创作者、截止时间为 2026-10-29T18:00:00+08:00 均已明确，但预算缺失，无法核算费用与可行性。请补充预算金额后重新提交，我将据此选择 premium/basic/slideshow 等制作方式并保存方案。",
-        "reason": "请求中只有主题、受众和截止时间，未见预算字段，无法核算成本故请求补充。"
+        "summary": "无法开始方案制作：请求中缺少预算金额，只有截止时间 2026-10-29T18:00:00+08:00。主题为推广视频字幕工具、受众为短视频创作者，且初始偏好为 premium（高质量制作）。请补充预算上限（金额/币种），我将据此在检索素材、生成脚本与估算后保存可行方案。",
+        "reason": "输入缺少预算字段，按规则不得编造约束，需先请用户补充预算。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
         "terminal_status": "needs_input",
-        "summary": "无法生成方案：请求中缺少预算（budget）信息。主题为推广视频字幕工具、受众为短视频创作者、截止时间为 2026-10-29T18:00:00+08:00 均已明确，但预算缺失，无法核算费用与可行性。请补充预算金额后重新提交，我将据此选择 premium/basic/slideshow 等制作方式并保存方案。",
+        "summary": "方案未保存，请补充：budget",
+        "summary_source": "verified_tool_state",
         "missing_fields": [
           "budget"
         ]

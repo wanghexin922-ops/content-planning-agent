@@ -1,11 +1,11 @@
 {
   "mode": "live",
   "evidence": "real_model_run",
-  "executed_at": "2026-10-29T05:26:57.224263+00:00",
+  "executed_at": "2026-10-29T05:31:42.946713+00:00",
   "fixed_business_clock": "2026-10-28T10:00:00+08:00",
   "note": "固定业务时钟用于回放，不是当时真实业务任务。Mock 不证明模型决策效果。",
-  "passed": 3,
-  "total": 3,
+  "passed": 13,
+  "total": 13,
   "cases": [
     {
       "case": "normal",
@@ -23,6 +23,39 @@
       "total_cost": 12.0,
       "output": "live/normal/output.json",
       "trace": "live/normal/trace.jsonl"
+    },
+    {
+      "case": "missing_info",
+      "status": "needs_input",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 2,
+      "total_cost": null,
+      "output": "live/missing_info/output.json",
+      "trace": "live/missing_info/trace.jsonl"
+    },
+    {
+      "case": "tool_failure",
+      "status": "completed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "saved_and_feasible": true,
+        "budget_matches_sum": true,
+        "audience_preserved": true,
+        "script_matches_audience": true,
+        "failure_was_observed": true,
+        "successful_search_preserved": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 6,
+      "total_cost": 12.0,
+      "output": "live/tool_failure/output.json",
+      "trace": "live/tool_failure/trace.jsonl"
     },
     {
       "case": "over_budget",
@@ -43,6 +76,24 @@
       "trace": "live/over_budget/trace.jsonl"
     },
     {
+      "case": "repeated_request",
+      "status": "completed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "saved_and_feasible": true,
+        "budget_matches_sum": true,
+        "audience_preserved": true,
+        "script_matches_audience": true,
+        "idempotent": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 5,
+      "total_cost": 12.0,
+      "output": "live/repeated_request/output.json",
+      "trace": "live/repeated_request/trace.jsonl"
+    },
+    {
       "case": "no_feasible_plan",
       "status": "incomplete",
       "passed": true,
@@ -55,6 +106,107 @@
       "total_cost": 4.0,
       "output": "live/no_feasible_plan/output.json",
       "trace": "live/no_feasible_plan/trace.jsonl"
+    },
+    {
+      "case": "save_failure",
+      "status": "failed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 5,
+      "total_cost": 12.0,
+      "output": "live/save_failure/output.json",
+      "trace": "live/save_failure/trace.jsonl"
+    },
+    {
+      "case": "deadline_impossible",
+      "status": "incomplete",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 5,
+      "total_cost": 6.0,
+      "output": "live/deadline_impossible/output.json",
+      "trace": "live/deadline_impossible/trace.jsonl"
+    },
+    {
+      "case": "step_limit",
+      "status": "incomplete_limit",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 2,
+      "total_cost": null,
+      "output": "live/step_limit/output.json",
+      "trace": "live/step_limit/trace.jsonl"
+    },
+    {
+      "case": "no_materials",
+      "status": "needs_input",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 3,
+      "total_cost": null,
+      "output": "live/no_materials/output.json",
+      "trace": "live/no_materials/trace.jsonl"
+    },
+    {
+      "case": "missing_budget",
+      "status": "needs_input",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 1,
+      "total_cost": null,
+      "output": "live/missing_budget/output.json",
+      "trace": "live/missing_budget/trace.jsonl"
+    },
+    {
+      "case": "missing_deadline",
+      "status": "needs_input",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 1,
+      "total_cost": null,
+      "output": "live/missing_deadline/output.json",
+      "trace": "live/missing_deadline/trace.jsonl"
+    },
+    {
+      "case": "resume_video",
+      "status": "completed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "saved_and_feasible": true,
+        "budget_matches_sum": true,
+        "audience_preserved": true,
+        "script_matches_audience": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 6,
+      "total_cost": 8.0,
+      "output": "live/resume_video/output.json",
+      "trace": "live/resume_video/trace.jsonl"
     }
   ]
 }

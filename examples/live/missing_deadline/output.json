@@ -1,7 +1,7 @@
 {
   "request_id": "demo-missing_deadline",
   "status": "needs_input",
-  "summary": "缺少必要约束“截止时间（deadline）”，无法在有限时间内评估可行方案。已知信息：主题为推广一款视频字幕工具，受众为短视频创作者，预算为 10，初始偏好为 premium（可调整）。请补充截止时间（或可接受的完成期限），我会据此检索素材、生成脚本并核算费用与串行耗时，必要时改用更便宜/更快的制作方式，然后保存方案。",
+  "summary": "方案未保存，请补充：deadline",
   "mode": "live",
   "model": "deepseek-flash",
   "evidence": "real_model_run",
@@ -19,14 +19,15 @@
       "tool": "finish",
       "arguments": {
         "status": "needs_input",
-        "summary": "缺少必要约束“截止时间（deadline）”，无法在有限时间内评估可行方案。已知信息：主题为推广一款视频字幕工具，受众为短视频创作者，预算为 10，初始偏好为 premium（可调整）。请补充截止时间（或可接受的完成期限），我会据此检索素材、生成脚本并核算费用与串行耗时，必要时改用更便宜/更快的制作方式，然后保存方案。",
-        "reason": "输入中只有预算 10 与主题、受众，未见截止时间，属于必需约束缺失，需请求补充而非自行假设。"
+        "summary": "当前请求缺少截止时间（deadline），无法在预算内做时间可行性核算。已知信息：主题为推广一款视频字幕工具，受众为短视频创作者，预算 10，初始制作偏好为 premium。请补充截止时间后我将检索素材、生成脚本并估算保存方案。",
+        "reason": "输入仅有预算与主题，缺少截止时间这一必需约束，需向用户请求补充。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
         "terminal_status": "needs_input",
-        "summary": "缺少必要约束“截止时间（deadline）”，无法在有限时间内评估可行方案。已知信息：主题为推广一款视频字幕工具，受众为短视频创作者，预算为 10，初始偏好为 premium（可调整）。请补充截止时间（或可接受的完成期限），我会据此检索素材、生成脚本并核算费用与串行耗时，必要时改用更便宜/更快的制作方式，然后保存方案。",
+        "summary": "方案未保存，请补充：deadline",
+        "summary_source": "verified_tool_state",
         "missing_fields": [
           "deadline"
         ]

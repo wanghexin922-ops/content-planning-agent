@@ -95,6 +95,17 @@ class MockModel:
         def call(name, reason, **args):
             return tool_message(name, dict(args, reason=reason), self.counter)
 
+        if messages[-1]["role"] == "user":
+            try:
+                context = json.loads(messages[-1]["content"])
+            except ValueError:
+                context = {}
+            if context.get("operation") == "resume_task" and context.get("last_failed_action"):
+                action = context["last_failed_action"]
+                args = dict(action["arguments"])
+                args["reason"] = "用户显式请求恢复，复用成功产物并重新观察失败工具"
+                return tool_message(action["tool"], args, self.counter)
+
         missing = missing_fields(self.request)
         if missing:
             return call("finish", "输入缺少必要约束", status="needs_input", summary="请补充：" + ", ".join(missing))

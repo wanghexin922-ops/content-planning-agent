@@ -1,7 +1,7 @@
 {
   "request_id": "demo-save_failure",
   "status": "failed",
-  "summary": "已围绕“推广一款视频字幕工具”（面向短视频创作者）完成素材检索、脚本生成（script-87043a0a633a）与估算：premium 精剪方案总费用 12（预算 15）、串行耗时 240 分钟，预计 2026-10-28 14:00 完成，早于截止时间 2026-10-29 18:00，estimate_id 为 estimate-6eb93a08cc94，估算可行。但调用 save_plan 返回不可重试的注入式工具故障（injected_failure），方案未能保存，因此本次未产出已保存的活动方案；也未执行任何制作、审核或发布动作。建议工具恢复后重新提交同一估算进行保存。",
+  "summary": "方案未保存；失败步骤 save_plan：演示用工具故障：save_plan。成功产物已保留，可修复后显式续跑。",
   "mode": "live",
   "model": "deepseek-flash",
   "evidence": "real_model_run",
@@ -9,7 +9,7 @@
   "plan_id": null,
   "plan": null,
   "latest_estimate": {
-    "script_id": "script-87043a0a633a",
+    "script_id": "script-d72a2df652ac",
     "production_mode": "premium",
     "total_cost": 12.0,
     "currency": "模拟单位",
@@ -89,8 +89,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 短视频创作者",
-        "reason": "先确认是否存在与字幕工具主题相关的素材及价格目录。"
+        "query": "视频字幕工具 介绍 素材",
+        "reason": "主题是推广视频字幕工具，需要先看是否有相关素材与价格目录。"
       },
       "status": "succeeded",
       "result": {
@@ -186,27 +186,27 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
-        "angle": "字幕工具为短视频创作者节省加字幕时间，让创作者更专注于内容表达",
+        "angle": "功能介绍",
         "material_ids": [
           "P01",
           "P02"
         ],
-        "reason": "两份素材均围绕字幕工具，可用于生成事实可追溯的脚本。"
+        "reason": "已检索到与字幕工具主题匹配的 P01、P02 素材，先用其事实生成功能介绍脚本。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-87043a0a633a",
+        "script_id": "script-d72a2df652ac",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "字幕工具为短视频创作者节省加字幕时间，让创作者更专注于内容表达",
+          "angle": "功能介绍",
           "material_ids": [
             "P01",
             "P02"
           ],
           "creative_direction": {
-            "text": "字幕工具为短视频创作者节省加字幕时间，让创作者更专注于内容表达",
+            "text": "功能介绍",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -254,16 +254,16 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
-        "script_id": "script-87043a0a633a",
         "production_mode": "premium",
-        "reason": "用户初始偏好为 premium，先核验该方式在预算 15 内是否可行。"
+        "reason": "用户初始偏好为 premium，先按精剪视频核算是否满足预算与截止时间。",
+        "script_id": "script-d72a2df652ac"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-6eb93a08cc94",
+        "estimate_id": "estimate-b5034bcab9ff",
         "estimate": {
-          "script_id": "script-87043a0a633a",
+          "script_id": "script-d72a2df652ac",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -368,8 +368,8 @@
       "step": 4,
       "tool": "save_plan",
       "arguments": {
-        "estimate_id": "estimate-6eb93a08cc94",
-        "reason": "premium 估算在预算与截止时间内均可行，按用户初始偏好提交保存。"
+        "estimate_id": "estimate-b5034bcab9ff",
+        "reason": "premium 估算总费用 12 在预算 15 内且预计 2026-10-28 14:00 完成，早于截止时间，提交保存。"
       },
       "status": "failed",
       "result": {
@@ -386,14 +386,15 @@
       "tool": "finish",
       "arguments": {
         "status": "failed",
-        "summary": "已围绕“推广一款视频字幕工具”（面向短视频创作者）完成素材检索、脚本生成（script-87043a0a633a）与估算：premium 精剪方案总费用 12（预算 15）、串行耗时 240 分钟，预计 2026-10-28 14:00 完成，早于截止时间 2026-10-29 18:00，estimate_id 为 estimate-6eb93a08cc94，估算可行。但调用 save_plan 返回不可重试的注入式工具故障（injected_failure），方案未能保存，因此本次未产出已保存的活动方案；也未执行任何制作、审核或发布动作。建议工具恢复后重新提交同一估算进行保存。",
-        "reason": "save_plan 返回不可重试故障，方案未保存，无法宣称完成。"
+        "summary": "方案未保存成功。已完成：检索到主题相关素材 P01（字幕工具产品演示，含“支持为视频添加字幕”“支持编辑字幕文本”）与 P02（字幕工具图文素材，含“支持为视频添加字幕”）；生成脚本 script-d72a2df652ac（功能介绍，面向短视频创作者）；premium 估算 estimate-b5034bcab9ff 可行——总费用 12（预算 15），串行 240 分钟，预计 2026-10-28 14:00 完成，早于截止 2026-10-29 18:00。但 save_plan 返回不可重试的工具故障（injected_failure），方案未落库。制作、审核、发布均未执行。可考虑稍后重试保存或新建请求。",
+        "reason": "save_plan 返回不可重试故障，方案未保存，据实报告失败。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
         "terminal_status": "failed",
-        "summary": "已围绕“推广一款视频字幕工具”（面向短视频创作者）完成素材检索、脚本生成（script-87043a0a633a）与估算：premium 精剪方案总费用 12（预算 15）、串行耗时 240 分钟，预计 2026-10-28 14:00 完成，早于截止时间 2026-10-29 18:00，estimate_id 为 estimate-6eb93a08cc94，估算可行。但调用 save_plan 返回不可重试的注入式工具故障（injected_failure），方案未能保存，因此本次未产出已保存的活动方案；也未执行任何制作、审核或发布动作。建议工具恢复后重新提交同一估算进行保存。",
+        "summary": "方案未保存；失败步骤 save_plan：演示用工具故障：save_plan。成功产物已保留，可修复后显式续跑。",
+        "summary_source": "verified_tool_state",
         "missing_fields": []
       }
     }
@@ -404,16 +405,16 @@
       "P02"
     ],
     "scripts": {
-      "script-87043a0a633a": {
+      "script-d72a2df652ac": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "字幕工具为短视频创作者节省加字幕时间，让创作者更专注于内容表达",
+        "angle": "功能介绍",
         "material_ids": [
           "P01",
           "P02"
         ],
         "creative_direction": {
-          "text": "字幕工具为短视频创作者节省加字幕时间，让创作者更专注于内容表达",
+          "text": "功能介绍",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

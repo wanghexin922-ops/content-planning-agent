@@ -207,7 +207,7 @@ class AgentTests(unittest.TestCase):
         self.run_task(max_steps=3)  # initial premium estimate costs 12
         class ForceSave(MockModel):
             def next_message(inner, messages, tools):
-                estimate = json.loads(messages[-1]["content"])
+                estimate = json.loads(next(m["content"] for m in reversed(messages) if m["role"] == "tool"))
                 return tool_message("save_plan", {"estimate_id": estimate["estimate_id"], "reason": "测试强制保存超预算方案"})
         out = self.run_task(ForceSave(self.request), resume=True, max_steps=4)
         self.assertFalse(out["saved"])
@@ -334,6 +334,36 @@ class AgentTests(unittest.TestCase):
             "script_id":"fake", "production_mode":"slideshow", "skip_review":True,"reason":"省略审核"
         })]),max_steps=1)
         self.assertEqual(out["steps"][0]["result"]["error"]["code"],"invalid_action")
+
+    def test_terminal_failed_can_resume_and_preserves_history(self):
+        first=self.run_task(faults={"save_plan":-1})
+        self.assertEqual(first["status"],"failed")
+        old_steps=copy.deepcopy(first["steps"])
+        second=self.run_task(resume=True)
+        self.assertEqual(second["status"],"completed")
+        self.assertEqual(second["steps"][:len(old_steps)],old_steps)
+        self.assertEqual(second["successful_artifacts"],first["successful_artifacts"])
+        self.assertEqual([s["tool"] for s in second["steps"][len(old_steps):]],["save_plan","finish"])
+        self.assertEqual(self.store.db.execute("SELECT count(*) FROM plans").fetchone()[0],1)
+
+    def test_resume_does_not_assume_tool_recovered(self):
+        self.run_task(faults={"save_plan":-1})
+        out=self.run_task(resume=True,faults={"save_plan":-1})
+        self.assertEqual(out["status"],"failed")
+        self.assertFalse(out["saved"])
+        self.assertEqual(sum(s["tool"]=="generate_script" for s in out["steps"]),1)
+
+    def test_failed_resume_preserves_call_budget(self):
+        first=self.run_task(faults={"save_plan":-1})
+        out=self.run_task(resume=True,max_steps=first["tool_calls"])
+        self.assertEqual(out["status"],"incomplete_limit")
+        self.assertEqual(out["tool_calls"],first["tool_calls"])
+
+    def test_failed_resume_rechecks_expired_deadline(self):
+        first=self.run_task(faults={"save_plan":-1})
+        out=self.run_task(resume=True,max_steps=first["tool_calls"]+1,now=lambda:timestamp("2026-10-30T10:00:00+08:00"))
+        self.assertFalse(out["saved"])
+        self.assertEqual(out["steps"][-1]["result"]["error"]["code"],"constraint_violation")
 
 
 if __name__ == "__main__":

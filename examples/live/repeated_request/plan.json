@@ -5,7 +5,7 @@
     "creative_direction": {
       "is_product_fact": false,
       "status": "proposal_requires_review",
-      "text": "面向短视频创作者，突出用字幕工具快速为视频加字幕并可直接编辑文本，提升发布效率"
+      "text": "功能介绍"
     },
     "deliverables": [
       "带来源 ID 的可编辑脚本",
@@ -35,7 +35,7 @@
     "estimated_finish": "2026-10-28T14:00:00+08:00",
     "feasible": true,
     "production_mode": "premium",
-    "script_id": "script-25748677779e",
+    "script_id": "script-d72a2df652ac",
     "steps": [
       {
         "cost": 2.0,
@@ -102,12 +102,12 @@
   "execution_status": "not_executed",
   "request_id": "demo-repeated_request",
   "script": {
-    "angle": "面向短视频创作者，突出用字幕工具快速为视频加字幕并可直接编辑文本，提升发布效率",
+    "angle": "功能介绍",
     "audience": "短视频创作者",
     "creative_direction": {
       "is_product_fact": false,
       "status": "proposal_requires_review",
-      "text": "面向短视频创作者，突出用字幕工具快速为视频加字幕并可直接编辑文本，提升发布效率"
+      "text": "功能介绍"
     },
     "editable": true,
     "generator": "local_fact_template",

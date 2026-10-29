@@ -5,7 +5,7 @@
     "creative_direction": {
       "is_product_fact": false,
       "status": "proposal_requires_review",
-      "text": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点"
+      "text": "场景引导"
     },
     "deliverables": [
       "带来源 ID 的可编辑脚本",
@@ -35,7 +35,7 @@
     "estimated_finish": "2026-10-28T12:00:00+08:00",
     "feasible": true,
     "production_mode": "basic",
-    "script_id": "script-08668a2b169c",
+    "script_id": "script-157734f36aee",
     "steps": [
       {
         "cost": 2.0,
@@ -102,12 +102,12 @@
   "execution_status": "not_executed",
   "request_id": "demo-resume_video",
   "script": {
-    "angle": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点",
+    "angle": "场景引导",
     "audience": "应届毕业生",
     "creative_direction": {
       "is_product_fact": false,
       "status": "proposal_requires_review",
-      "text": "面向应届毕业生，展示用带字幕的简历介绍视频讲清个人亮点"
+      "text": "场景引导"
     },
     "editable": true,
     "generator": "local_fact_template",

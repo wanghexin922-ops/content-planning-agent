@@ -1,0 +1,138 @@
+{
+  "request_id": "demo-no_materials",
+  "status": "needs_input",
+  "summary": "已两次检索“量子芯片实验室活动”主题素材（原查询与改写查询），均返回 0 条，库内没有与量子芯片实验室相关的可用素材。为避免用无关通用素材冒充主题资料，未生成脚本、未估算、未保存方案。请补充该实验室的可用素材（如实验室环境图片/视频、量子芯片实物、活动日程、面向短视频创作者的参观或体验环节等事实信息），我再按预算 15、截止 2026-10-29 18:00、受众为短视频创作者生成并保存方案。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "量子芯片实验室 活动",
+        "reason": "先检索与用户主题相关的素材是否存在。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [],
+        "count": 0,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"
+      }
+    },
+    {
+      "step": 2,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "量子计算 芯片 科研实验室 探访 科普",
+        "reason": "首轮无匹配，按原意改写查询再试一次。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [],
+        "count": 0,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"
+      }
+    },
+    {
+      "step": 3,
+      "tool": "finish",
+      "arguments": {
+        "status": "needs_input",
+        "summary": "已两次检索“量子芯片实验室活动”主题素材（原查询与改写查询），均返回 0 条，库内没有与量子芯片实验室相关的可用素材。为避免用无关通用素材冒充主题资料，未生成脚本、未估算、未保存方案。请补充该实验室的可用素材（如实验室环境图片/视频、量子芯片实物、活动日程、面向短视频创作者的参观或体验环节等事实信息），我再按预算 15、截止 2026-10-29 18:00、受众为短视频创作者生成并保存方案。",
+        "reason": "两次改写检索均无匹配素材，缺少与原主题相关的事实资料，无法在不编造内容的前提下继续。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "已两次检索“量子芯片实验室活动”主题素材（原查询与改写查询），均返回 0 条，库内没有与量子芯片实验室相关的可用素材。为避免用无关通用素材冒充主题资料，未生成脚本、未估算、未保存方案。请补充该实验室的可用素材（如实验室环境图片/视频、量子芯片实物、活动日程、面向短视频创作者的参观或体验环节等事实信息），我再按预算 15、截止 2026-10-29 18:00、受众为短视频创作者生成并保存方案。",
+        "missing_fields": []
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 3,
+  "model_calls": 3,
+  "runs": 1,
+  "replayed": false
+}

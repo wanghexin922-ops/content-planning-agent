@@ -83,7 +83,7 @@ def main():
               "脚本仍使用本地事实模板，不以 AI 创作质量作为已证明的效果。模型的创意角度是待人工审核建议，不能视为经过核验的产品事实。",
               "素材检索是标签匹配；费用与耗时为合成的单人串行估算；未连接真实制作、审核、发布服务。所有业务阶段仍为 planned。",
               "本轮每个场景只做一次真实模型试验，没有统计稳定性或全面安全性结论；未计量真实 API token 费用。生成成功不等于业务活动已执行。",
-              "失败步骤续跑有跨进程自动化测试证据，本轮 live 矩阵未单独验证跨进程续跑。",
+              "失败步骤续跑另有三个独立 CLI 进程的真实模型验证，见 [专项汇总](../examples/live_resume/evaluation-summary.json) 和 [专项说明](06-improvements.md)。",
               "重复评估会将上一版结果复制到 examples/history 后再生成新结果；历史文件的通过率和模型状态仅代表当时版本。", ""]
     (ROOT / "docs/03-evaluation.md").write_text("\n".join(lines), encoding="utf-8")
     print("Updated docs/03-evaluation.md from actual evidence.")

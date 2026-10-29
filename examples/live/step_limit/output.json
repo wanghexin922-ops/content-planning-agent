@@ -17,7 +17,7 @@
       "tool": "search_materials",
       "arguments": {
         "query": "视频字幕工具",
-        "reason": "确认是否有与字幕工具主题相关的素材及价格目录。"
+        "reason": "主题是推广视频字幕工具，先检索与字幕工具直接相关的素材。"
       },
       "status": "succeeded",
       "result": {
@@ -113,27 +113,27 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
-        "angle": "面向短视频创作者，突出为视频添加与编辑字幕的效率",
         "material_ids": [
           "P01",
           "P02"
         ],
-        "reason": "已有两项同主题字幕工具素材，可生成事实可追溯的脚本。"
+        "angle": "功能介绍",
+        "reason": "素材事实包含添加字幕与编辑字幕文本，适合用功能介绍形式呈现。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-2d65d0f72c9f",
+        "script_id": "script-d72a2df652ac",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "面向短视频创作者，突出为视频添加与编辑字幕的效率",
+          "angle": "功能介绍",
           "material_ids": [
             "P01",
             "P02"
           ],
           "creative_direction": {
-            "text": "面向短视频创作者，突出为视频添加与编辑字幕的效率",
+            "text": "功能介绍",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -184,16 +184,16 @@
       "P02"
     ],
     "scripts": {
-      "script-2d65d0f72c9f": {
+      "script-d72a2df652ac": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "面向短视频创作者，突出为视频添加与编辑字幕的效率",
+        "angle": "功能介绍",
         "material_ids": [
           "P01",
           "P02"
         ],
         "creative_direction": {
-          "text": "面向短视频创作者，突出为视频添加与编辑字幕的效率",
+          "text": "功能介绍",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

@@ -68,6 +68,19 @@ class CLITests(unittest.TestCase):
         subprocess.run(command + ["--audience", "应届毕业生"], check=True, env=self.env, capture_output=True)
         self.assertEqual(json.loads(generated.read_text(encoding="utf-8"))["audience"], "应届毕业生")
 
+    def test_terminal_failure_resume_in_new_process(self):
+        first=self.cli("--fail","save_plan:-1")
+        self.assertEqual(first.returncode,2,first.stderr)
+        before=json.loads((self.directory/"out/output.json").read_text(encoding="utf-8"))
+        self.assertEqual(before["status"],"failed")
+        recovered=self.cli("--resume")
+        self.assertEqual(recovered.returncode,0,recovered.stderr)
+        after=json.loads((self.directory/"out/output.json").read_text(encoding="utf-8"))
+        self.assertEqual(after["successful_artifacts"],before["successful_artifacts"])
+        self.assertEqual(after["steps"][:len(before["steps"])],before["steps"])
+        again=self.cli()
+        self.assertTrue(json.loads(again.stdout)["replayed"])
+
 
 if __name__ == "__main__":
     unittest.main()

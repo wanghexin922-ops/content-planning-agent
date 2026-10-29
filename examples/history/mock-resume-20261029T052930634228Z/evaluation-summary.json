@@ -1,0 +1,45 @@
+{
+  "mode": "mock",
+  "executed_at": "2026-10-29T05:29:03.917202+00:00",
+  "fixed_business_clock": "2026-10-28T10:00:00+08:00",
+  "checks": {
+    "first_terminal_failed": true,
+    "resumed_completed": true,
+    "failure_history_unchanged": true,
+    "successful_artifacts_unchanged": true,
+    "no_repeated_search_or_script": true,
+    "exactly_one_plan": true,
+    "repeat_no_new_tools": true,
+    "exit_codes": true
+  },
+  "passed": true,
+  "processes": [
+    {
+      "stage": "first_run",
+      "exit_code": 2,
+      "mode": "mock",
+      "extra_arguments": [
+        "--fail",
+        "save_plan:-1"
+      ]
+    },
+    {
+      "stage": "resumed",
+      "exit_code": 0,
+      "mode": "mock",
+      "extra_arguments": [
+        "--resume"
+      ]
+    },
+    {
+      "stage": "repeated",
+      "exit_code": 0,
+      "mode": "mock",
+      "extra_arguments": []
+    }
+  ],
+  "resume_actions": [
+    "save_plan",
+    "finish"
+  ]
+}

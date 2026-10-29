@@ -14,7 +14,7 @@
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "展示实际支持的功能"
+        "text": "功能介绍"
       },
       "deliverables": [
         "带来源 ID 的可编辑脚本",
@@ -44,7 +44,7 @@
       "estimated_finish": "2026-10-28T14:00:00+08:00",
       "feasible": true,
       "production_mode": "premium",
-      "script_id": "script-c0e4d9024b0f",
+      "script_id": "script-e23d66bc1cf8",
       "steps": [
         {
           "cost": 2.0,
@@ -111,12 +111,12 @@
     "execution_status": "not_executed",
     "request_id": "demo-repeated_request",
     "script": {
-      "angle": "展示实际支持的功能",
+      "angle": "功能介绍",
       "audience": "短视频创作者",
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "展示实际支持的功能"
+        "text": "功能介绍"
       },
       "editable": true,
       "generator": "local_fact_template",
@@ -172,7 +172,7 @@
     "estimated_finish": "2026-10-28T14:00:00+08:00",
     "feasible": true,
     "production_mode": "premium",
-    "script_id": "script-c0e4d9024b0f",
+    "script_id": "script-e23d66bc1cf8",
     "steps": [
       {
         "cost": 2.0,
@@ -338,7 +338,7 @@
     },
     {
       "arguments": {
-        "angle": "展示实际支持的功能",
+        "angle": "功能介绍",
         "material_ids": [
           "P01"
         ],
@@ -347,12 +347,12 @@
       "result": {
         "ok": true,
         "script": {
-          "angle": "展示实际支持的功能",
+          "angle": "功能介绍",
           "audience": "短视频创作者",
           "creative_direction": {
             "is_product_fact": false,
             "status": "proposal_requires_review",
-            "text": "展示实际支持的功能"
+            "text": "功能介绍"
           },
           "editable": true,
           "generator": "local_fact_template",
@@ -395,7 +395,7 @@
           ],
           "theme": "推广一款视频字幕工具"
         },
-        "script_id": "script-c0e4d9024b0f"
+        "script_id": "script-e23d66bc1cf8"
       },
       "status": "succeeded",
       "step": 2,
@@ -405,7 +405,7 @@
       "arguments": {
         "production_mode": "premium",
         "reason": "已取得脚本，先评估初始制作偏好",
-        "script_id": "script-c0e4d9024b0f"
+        "script_id": "script-e23d66bc1cf8"
       },
       "result": {
         "alternatives": [
@@ -444,7 +444,7 @@
           "estimated_finish": "2026-10-28T14:00:00+08:00",
           "feasible": true,
           "production_mode": "premium",
-          "script_id": "script-c0e4d9024b0f",
+          "script_id": "script-e23d66bc1cf8",
           "steps": [
             {
               "cost": 2.0,
@@ -508,7 +508,7 @@
           "total_cost": 12.0,
           "total_minutes": 240
         },
-        "estimate_id": "estimate-9cb5d42d4ace",
+        "estimate_id": "estimate-e32db0be118b",
         "ok": true
       },
       "status": "succeeded",
@@ -517,7 +517,7 @@
     },
     {
       "arguments": {
-        "estimate_id": "estimate-9cb5d42d4ace",
+        "estimate_id": "estimate-e32db0be118b",
         "reason": "估算满足预算和截止时间"
       },
       "result": {
@@ -530,7 +530,7 @@
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "展示实际支持的功能"
+              "text": "功能介绍"
             },
             "deliverables": [
               "带来源 ID 的可编辑脚本",
@@ -560,7 +560,7 @@
             "estimated_finish": "2026-10-28T14:00:00+08:00",
             "feasible": true,
             "production_mode": "premium",
-            "script_id": "script-c0e4d9024b0f",
+            "script_id": "script-e23d66bc1cf8",
             "steps": [
               {
                 "cost": 2.0,
@@ -627,12 +627,12 @@
           "execution_status": "not_executed",
           "request_id": "demo-repeated_request",
           "script": {
-            "angle": "展示实际支持的功能",
+            "angle": "功能介绍",
             "audience": "短视频创作者",
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "展示实际支持的功能"
+              "text": "功能介绍"
             },
             "editable": true,
             "generator": "local_fact_template",
@@ -694,7 +694,8 @@
       "result": {
         "missing_fields": [],
         "ok": true,
-        "summary": "方案已保存，活动制作和发布尚未执行",
+        "summary": "方案 plan-cc6a9bf5063612f4 已保存；费用 12.0 / 预算 15 模拟单位；预计耗时 240 分钟，完成时间 2026-10-28T14:00:00+08:00。制作、审核和发布均未执行。",
+        "summary_source": "verified_tool_state",
         "terminal_status": "completed"
       },
       "status": "succeeded",
@@ -708,13 +709,13 @@
       "P02"
     ],
     "scripts": {
-      "script-c0e4d9024b0f": {
-        "angle": "展示实际支持的功能",
+      "script-e23d66bc1cf8": {
+        "angle": "功能介绍",
         "audience": "短视频创作者",
         "creative_direction": {
           "is_product_fact": false,
           "status": "proposal_requires_review",
-          "text": "展示实际支持的功能"
+          "text": "功能介绍"
         },
         "editable": true,
         "generator": "local_fact_template",

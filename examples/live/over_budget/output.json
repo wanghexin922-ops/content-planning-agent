@@ -245,8 +245,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 字幕识别 短视频创作者",
-        "reason": "用户主题是推广视频字幕工具，面向短视频创作者，先检索相关素材。"
+        "query": "视频字幕工具 功能介绍 短视频创作者",
+        "reason": "主题与受众已明确，先检索与该字幕工具相关的本地素材和价格目录。"
       },
       "status": "succeeded",
       "result": {
@@ -342,12 +342,12 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
+        "angle": "功能介绍",
         "material_ids": [
           "P01",
           "P02"
         ],
-        "angle": "功能介绍",
-        "reason": "两支素材均与字幕工具主题一致，用功能介绍形式呈现素材中已证明的字幕添加与编辑事实。"
+        "reason": "两条素材都围绕字幕工具且事实可追溯，按功能介绍角度生成脚本以评估预算。"
       },
       "status": "succeeded",
       "result": {
@@ -412,7 +412,7 @@
       "arguments": {
         "script_id": "script-d72a2df652ac",
         "production_mode": "premium",
-        "reason": "按用户初始偏好 premium 精剪方式估算真实费用与串行耗时。"
+        "reason": "先按用户初始 premium 偏好核算真实费用与串行耗时。"
       },
       "status": "succeeded",
       "result": {
@@ -525,7 +525,7 @@
       "tool": "estimate_plan",
       "arguments": {
         "production_mode": "basic",
-        "reason": "premium 估算总费用 12 超出预算 10，改用同脚本的基础剪辑方式估算。",
+        "reason": "premium 超预算 2 个单位，同一脚本改用基础剪辑估算，看是否在预算内。",
         "script_id": "script-d72a2df652ac"
       },
       "status": "succeeded",
@@ -639,7 +639,7 @@
       "tool": "save_plan",
       "arguments": {
         "estimate_id": "estimate-96b688592a2e",
-        "reason": "basic 估算可行且总费用 8 在预算 10 内，保存该方案。"
+        "reason": "基础剪辑估算可行且预算内，按该可行估算保存方案。"
       },
       "status": "succeeded",
       "result": {
@@ -811,8 +811,8 @@
       "tool": "finish",
       "arguments": {
         "status": "completed",
-        "summary": "方案已保存（plan_id: plan-6fdf803c8ee774fb）。主题“推广一款视频字幕工具”、受众“短视频创作者”保持不变，使用素材 P01（字幕工具产品演示）与 P02（字幕工具图文素材），脚本以“功能介绍”角度呈现素材已证明的两点：支持为视频添加字幕、支持编辑字幕文本，未附加任何未经验证的能力或效果承诺。用户初始偏好的 premium 精剪估算总费用 12，超出预算 10，故调整为 basic 基础剪辑：总费用 8、串行耗时 120 分钟，预计 2026-10-28T12:00:00+08:00 完成，早于截止时间 2026-10-29T18:00:00+08:00，预算与时间均无缺口。阶段包含素材准备、脚本整理、基础剪辑、内容审核、人工确认与发布，均未省略。需注意：创意角度与最终文案、发布渠道与账号、实际执行人员待确认；本次仅完成方案保存，制作、审核、发布均未执行，execution_status 为 not_executed。",
-        "reason": "save_plan 返回 saved=true 且 basic 估算预算与时间均可行，据此结束任务。"
+        "summary": "已为「推广一款视频字幕工具」（受众：短视频创作者）保存内容活动方案（plan-6fdf803c8ee774fb）。初始偏好 premium 精剪核算为 12 个单位，超出 10 单位预算 2 个单位，因此改用同一脚本的基础剪辑：总费用 8 个单位，串行预计 120 分钟，预计 2026-10-28 12:00 完成，早于 2026-10-29 18:00 截止，预算与时间均可行。脚本基于素材 P01（产品演示，成本 2）与 P02（图文素材，成本 0），仅使用素材事实「支持为视频添加字幕」「支持编辑字幕文本」，分镜含来源 ID 且可编辑；创意方向「功能介绍」标记为提案待审核。素材准备、脚本、制作、审核、发布五个阶段均保留在排期中。注意：本次仅保存规划，制作、审核、发布均未执行；发布渠道与账号、创意角度与最终文案、实际执行人员待确认。若需 premium 精剪，需将预算提高至至少 12 个单位。",
+        "reason": "基础剪辑估算可行并在预算内，save_plan 返回 saved: true，方案已保存。"
       },
       "status": "succeeded",
       "result": {

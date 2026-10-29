@@ -1,0 +1,60 @@
+{
+  "mode": "live",
+  "evidence": "real_model_run",
+  "executed_at": "2026-10-29T05:26:57.224263+00:00",
+  "fixed_business_clock": "2026-10-28T10:00:00+08:00",
+  "note": "固定业务时钟用于回放，不是当时真实业务任务。Mock 不证明模型决策效果。",
+  "passed": 3,
+  "total": 3,
+  "cases": [
+    {
+      "case": "normal",
+      "status": "completed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "saved_and_feasible": true,
+        "budget_matches_sum": true,
+        "audience_preserved": true,
+        "script_matches_audience": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 5,
+      "total_cost": 12.0,
+      "output": "live/normal/output.json",
+      "trace": "live/normal/trace.jsonl"
+    },
+    {
+      "case": "over_budget",
+      "status": "completed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "saved_and_feasible": true,
+        "budget_matches_sum": true,
+        "audience_preserved": true,
+        "script_matches_audience": true,
+        "observed_replanning": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 6,
+      "total_cost": 8.0,
+      "output": "live/over_budget/output.json",
+      "trace": "live/over_budget/trace.jsonl"
+    },
+    {
+      "case": "no_feasible_plan",
+      "status": "incomplete",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 6,
+      "total_cost": 4.0,
+      "output": "live/no_feasible_plan/output.json",
+      "trace": "live/no_feasible_plan/trace.jsonl"
+    }
+  ]
+}

@@ -2,26 +2,26 @@
 
 本文件由 `python scripts/update_evaluation.py` 读取实际记录生成，不手填通过率。
 
-最近生成时间：2026-10-28T20:42:41.063708+08:00。
-自动化验证：44 项测试，结果 通过。环境：Windows / Python 3.12.4。
+最近生成时间：2026-10-29T13:32:39.062101+08:00。
+自动化验证：53 项测试，结果 通过。环境：Windows / Python 3.12.4。
 [完整测试结果](../examples/test-results.txt)。协议单测使用模拟 HTTP；下方 live 记录才是真实模型证据。
 
 ## 真实模型验收
 
-实际通过 **13/13**。执行时间：2026-10-28T12:41:11.995352+00:00。
+实际通过 **13/13**。执行时间：2026-10-29T05:31:42.946713+00:00。
 业务回放时钟：2026-10-28T10:00:00+08:00，不同于实际 API 调用时刻。
 [机器可读汇总](../examples/live/evaluation-summary.json)。
 
 | 案例 | 预期 | 实际 | 费用 | 调用次数 | 检查 | 证据 |
 |---|---|---|---:|---:|---|---|
 | normal | completed | completed | 12.0 | 5 | PASS | [输入](../examples/live/normal/input.json) / [输出](../examples/live/normal/output.json) / [Trace](../examples/live/normal/trace.jsonl) |
-| missing_info | needs_input | needs_input | None | 1 | PASS | [输入](../examples/live/missing_info/input.json) / [输出](../examples/live/missing_info/output.json) / [Trace](../examples/live/missing_info/trace.jsonl) |
+| missing_info | needs_input | needs_input | None | 2 | PASS | [输入](../examples/live/missing_info/input.json) / [输出](../examples/live/missing_info/output.json) / [Trace](../examples/live/missing_info/trace.jsonl) |
 | tool_failure | completed | completed | 12.0 | 6 | PASS | [输入](../examples/live/tool_failure/input.json) / [输出](../examples/live/tool_failure/output.json) / [Trace](../examples/live/tool_failure/trace.jsonl) |
 | over_budget | completed | completed | 8.0 | 6 | PASS | [输入](../examples/live/over_budget/input.json) / [输出](../examples/live/over_budget/output.json) / [Trace](../examples/live/over_budget/trace.jsonl) |
 | repeated_request | completed | completed | 12.0 | 5 | PASS | [输入](../examples/live/repeated_request/input.json) / [输出](../examples/live/repeated_request/output.json) / [Trace](../examples/live/repeated_request/trace.jsonl) |
 | no_feasible_plan | incomplete | incomplete | 4.0 | 6 | PASS | [输入](../examples/live/no_feasible_plan/input.json) / [输出](../examples/live/no_feasible_plan/output.json) / [Trace](../examples/live/no_feasible_plan/trace.jsonl) |
 | save_failure | failed | failed | 12.0 | 5 | PASS | [输入](../examples/live/save_failure/input.json) / [输出](../examples/live/save_failure/output.json) / [Trace](../examples/live/save_failure/trace.jsonl) |
-| deadline_impossible | incomplete | incomplete | 12.0 | 4 | PASS | [输入](../examples/live/deadline_impossible/input.json) / [输出](../examples/live/deadline_impossible/output.json) / [Trace](../examples/live/deadline_impossible/trace.jsonl) |
+| deadline_impossible | incomplete | incomplete | 6.0 | 5 | PASS | [输入](../examples/live/deadline_impossible/input.json) / [输出](../examples/live/deadline_impossible/output.json) / [Trace](../examples/live/deadline_impossible/trace.jsonl) |
 | step_limit | incomplete_limit | incomplete_limit | None | 2 | PASS | [输入](../examples/live/step_limit/input.json) / [输出](../examples/live/step_limit/output.json) / [Trace](../examples/live/step_limit/trace.jsonl) |
 | no_materials | needs_input | needs_input | None | 3 | PASS | [输入](../examples/live/no_materials/input.json) / [输出](../examples/live/no_materials/output.json) / [Trace](../examples/live/no_materials/trace.jsonl) |
 | missing_budget | needs_input | needs_input | None | 1 | PASS | [输入](../examples/live/missing_budget/input.json) / [输出](../examples/live/missing_budget/output.json) / [Trace](../examples/live/missing_budget/trace.jsonl) |
@@ -35,7 +35,7 @@
 
 ## 离线流程验收
 
-实际通过 **13/13**。执行时间：2026-10-28T12:38:41.082115+00:00。
+实际通过 **13/13**。执行时间：2026-10-29T05:29:51.148464+00:00。
 业务回放时钟：2026-10-28T10:00:00+08:00，不同于实际 API 调用时刻。
 [机器可读汇总](../examples/mock/evaluation-summary.json)。
 
@@ -85,5 +85,5 @@ Trace 的 reason 是基于可见观察的一句行动依据，不是内部思维
 脚本仍使用本地事实模板，不以 AI 创作质量作为已证明的效果。模型的创意角度是待人工审核建议，不能视为经过核验的产品事实。
 素材检索是标签匹配；费用与耗时为合成的单人串行估算；未连接真实制作、审核、发布服务。所有业务阶段仍为 planned。
 本轮每个场景只做一次真实模型试验，没有统计稳定性或全面安全性结论；未计量真实 API token 费用。生成成功不等于业务活动已执行。
-失败步骤续跑有跨进程自动化测试证据，本轮 live 矩阵未单独验证跨进程续跑。
+失败步骤续跑另有三个独立 CLI 进程的真实模型验证，见 [专项汇总](../examples/live_resume/evaluation-summary.json) 和 [专项说明](06-improvements.md)。
 重复评估会将上一版结果复制到 examples/history 后再生成新结果；历史文件的通过率和模型状态仅代表当时版本。

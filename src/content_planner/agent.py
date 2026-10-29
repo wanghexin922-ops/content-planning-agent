@@ -53,6 +53,18 @@ def run_agent(request, model, store, materials, pricing, *, now=None, max_steps=
             state["trace"].append({"event": "cached_task_returned", "clock": now().isoformat(), "new_tool_calls": 0, "hint": "失败或未完成任务可显式 --resume"})
             store.checkpoint(key, owner, state)
             return result_of(state, replayed=True)
+        previous_status = state["status"]
+        if resume and state["runs"]:
+            last_business = next((s for s in reversed(state["steps"]) if s["tool"] != "finish"), None)
+            failed_action = None
+            if last_business and last_business["status"] == "failed":
+                failed_action = {"tool": last_business["tool"], "arguments": last_business["arguments"]}
+            context = {"operation": "resume_task", "previous_status": previous_status,
+                       "last_failed_action": failed_action,
+                       "existing_script_ids": list(state["scripts"]),
+                       "instruction": "用户显式请求恢复。保留成功产物和失败历史，基于当前观察选择下一动作；可重试失败步骤，但环境是否恢复以本次工具返回为准。不得清零执行上限或改变预算和截止时间。"}
+            state["messages"].append({"role": "user", "content": dumps(context)})
+            state["trace"].append({"event": "resume_requested", "clock": now().isoformat(), **context})
         state["runs"] += 1
         state["status"] = "running"
         tools = BusinessTools(store, key, owner, state, materials, pricing, now, faults)
