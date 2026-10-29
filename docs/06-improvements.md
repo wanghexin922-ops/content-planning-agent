@@ -36,7 +36,7 @@ python scripts/evaluate_resume.py --mode live
 
 [真实专项汇总](../examples/live_resume/evaluation-summary.json)；[首次失败](../examples/live_resume/first_run/output.json)；[恢复结果](../examples/live_resume/resumed/output.json)；[恢复 Trace](../examples/live_resume/resumed/trace.jsonl)；[重复提交](../examples/live_resume/repeated/output.json)。
 
-新增回归覆盖：故障未解除时仍失败、恢复时不清零步数上限、恢复时截止时间已过则拒绝保存，以及跨进程真实终态恢复。自动化测试合计 53 项。测试结果和全量模型验收以最新评估报告为准。
+新增回归覆盖：故障未解除时仍失败、恢复时不清零步数上限、恢复时截止时间已过则拒绝保存，以及跨进程真实终态恢复。第1、2项完成时自动化测试合计 53 项；后续新增数量见最新评估。测试结果和全量模型验收以最新评估报告为准。
 
 本次验证脚本曾暴露 Windows 下 sqlite3 连接上下文不自动关闭连接的问题，导致临时数据库清理失败；已改为显式 closing 并重新执行成功。这是验收脚本资源释放问题，不改变业务失败记录。
 

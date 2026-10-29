@@ -14,7 +14,7 @@
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "功能介绍"
+        "text": "操作演示"
       },
       "deliverables": [
         "带来源 ID 的可编辑脚本",
@@ -44,7 +44,7 @@
       "estimated_finish": "2026-10-28T14:00:00+08:00",
       "feasible": true,
       "production_mode": "premium",
-      "script_id": "script-d72a2df652ac",
+      "script_id": "script-24fac1231666",
       "steps": [
         {
           "cost": 2.0,
@@ -111,18 +111,17 @@
     "execution_status": "not_executed",
     "request_id": "demo-normal",
     "script": {
-      "angle": "功能介绍",
+      "angle": "操作演示",
       "audience": "短视频创作者",
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "功能介绍"
+        "text": "操作演示"
       },
       "editable": true,
       "generator": "local_fact_template",
       "material_ids": [
-        "P01",
-        "P02"
+        "P01"
       ],
       "scenes": [
         {
@@ -137,10 +136,9 @@
           "kind": "product_fact",
           "narration": "支持为视频添加字幕",
           "source_ids": [
-            "P01",
-            "P02"
+            "P01"
           ],
-          "visual": "字幕工具产品演示 / 字幕工具图文素材"
+          "visual": "字幕工具产品演示"
         },
         {
           "index": 3,
@@ -174,7 +172,7 @@
     "estimated_finish": "2026-10-28T14:00:00+08:00",
     "feasible": true,
     "production_mode": "premium",
-    "script_id": "script-d72a2df652ac",
+    "script_id": "script-24fac1231666",
     "steps": [
       {
         "cost": 2.0,
@@ -245,8 +243,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 短视频创作者",
-        "reason": "需要先确认是否存在与视频字幕工具主题相关、且符合预算的素材。"
+        "query": "视频字幕工具",
+        "reason": "已确认预算与截止时间完整，需先获取主题相关素材及价格目录。"
       },
       "status": "succeeded",
       "result": {
@@ -342,27 +340,25 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
+        "angle": "操作演示",
         "material_ids": [
-          "P01",
-          "P02"
+          "P01"
         ],
-        "angle": "功能介绍",
-        "reason": "两则素材均与字幕工具主题相关，且事实仅包含添加与编辑字幕，适合用功能介绍形式呈现。"
+        "reason": "P01 是唯一包含完整字幕事实的产品演示素材，适合操作演示角度。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-d72a2df652ac",
+        "script_id": "script-24fac1231666",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "功能介绍",
+          "angle": "操作演示",
           "material_ids": [
-            "P01",
-            "P02"
+            "P01"
           ],
           "creative_direction": {
-            "text": "功能介绍",
+            "text": "操作演示",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -376,11 +372,10 @@
             },
             {
               "index": 2,
-              "visual": "字幕工具产品演示 / 字幕工具图文素材",
+              "visual": "字幕工具产品演示",
               "narration": "支持为视频添加字幕",
               "source_ids": [
-                "P01",
-                "P02"
+                "P01"
               ],
               "kind": "product_fact"
             },
@@ -410,16 +405,16 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
-        "script_id": "script-d72a2df652ac",
         "production_mode": "premium",
-        "reason": "按用户初始偏好的精剪视频方式核算是否满足预算15与截止时间。"
+        "reason": "脚本已生成，按用户初始偏好 premium 精剪核算预算与耗时。",
+        "script_id": "script-24fac1231666"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-b5034bcab9ff",
+        "estimate_id": "estimate-bfb5023b628e",
         "estimate": {
-          "script_id": "script-d72a2df652ac",
+          "script_id": "script-24fac1231666",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -524,8 +519,8 @@
       "step": 4,
       "tool": "save_plan",
       "arguments": {
-        "estimate_id": "estimate-b5034bcab9ff",
-        "reason": "该精剪视频估算费用12未超预算15且时间早于截止，可保存为用户初始偏好方案。"
+        "estimate_id": "estimate-bfb5023b628e",
+        "reason": "premium 估算在预算与截止时间内均可行，符合用户初始偏好，直接保存。"
       },
       "status": "succeeded",
       "result": {
@@ -540,7 +535,7 @@
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "功能介绍"
+              "text": "操作演示"
             },
             "deliverables": [
               "带来源 ID 的可编辑脚本",
@@ -570,7 +565,7 @@
             "estimated_finish": "2026-10-28T14:00:00+08:00",
             "feasible": true,
             "production_mode": "premium",
-            "script_id": "script-d72a2df652ac",
+            "script_id": "script-24fac1231666",
             "steps": [
               {
                 "cost": 2.0,
@@ -637,18 +632,17 @@
           "execution_status": "not_executed",
           "request_id": "demo-normal",
           "script": {
-            "angle": "功能介绍",
+            "angle": "操作演示",
             "audience": "短视频创作者",
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "功能介绍"
+              "text": "操作演示"
             },
             "editable": true,
             "generator": "local_fact_template",
             "material_ids": [
-              "P01",
-              "P02"
+              "P01"
             ],
             "scenes": [
               {
@@ -663,10 +657,9 @@
                 "kind": "product_fact",
                 "narration": "支持为视频添加字幕",
                 "source_ids": [
-                  "P01",
-                  "P02"
+                  "P01"
                 ],
-                "visual": "字幕工具产品演示 / 字幕工具图文素材"
+                "visual": "字幕工具产品演示"
               },
               {
                 "index": 3,
@@ -697,8 +690,8 @@
       "tool": "finish",
       "arguments": {
         "status": "completed",
-        "summary": "已按初始偏好“精剪视频（premium）”保存方案（plan-85716298d8e38519，脚本 script-d72a2df652ac）。素材选用 P01《字幕工具产品演示》（费用2）与 P02《字幕工具图文素材》（费用0），脚本为功能介绍，事实仅取自素材：支持为视频添加字幕、支持编辑字幕文本。总费用12（预算15，剩余3），串行预计2026-10-28 14:00 完成，早于截止2026-10-29 18:00，共240分钟；阶段为素材准备2、脚本整理1、精剪视频7、内容审核1、发布1。另备更省钱替代：基础剪辑8、图文轮播6，均可行。创意思路仍待评审，发布渠道、最终文案与执行人员待确认。此记录仅为已保存方案，制作、审核、发布均未执行。",
-        "reason": "保存接口返回 ok 且 saved=true，方案满足预算与截止时间要求，可完成收尾。"
+        "summary": "已为“推广一款视频字幕工具”（受众：短视频创作者）生成并保存内容活动方案，plan_id=plan-85716298d8e38519，estimate_id=estimate-bfb5023b628e，脚本 script-24fac1231666（操作演示角度，事实仅取自素材 P01：支持为视频添加字幕、支持编辑字幕文本）。采用用户初始偏好的 premium 精剪：总费用 12（预算 15），串行总耗时 240 分钟，预计 2026-10-28T14:00 完成，早于 2026-10-29T18:00 截止时间，含素材准备、脚本、制作、审核、发布五个必需阶段。creative_direction 标注为提案待审核，发布渠道、账号与执行人员需用户确认；本方案仅完成保存，制作、审核、发布均未执行。",
+        "reason": "保存返回 ok=true 且已获得 plan_id，按流程完成任务。"
       },
       "status": "succeeded",
       "result": {
@@ -716,16 +709,15 @@
       "P02"
     ],
     "scripts": {
-      "script-d72a2df652ac": {
+      "script-24fac1231666": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "功能介绍",
+        "angle": "操作演示",
         "material_ids": [
-          "P01",
-          "P02"
+          "P01"
         ],
         "creative_direction": {
-          "text": "功能介绍",
+          "text": "操作演示",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },
@@ -739,11 +731,10 @@
           },
           {
             "index": 2,
-            "visual": "字幕工具产品演示 / 字幕工具图文素材",
+            "visual": "字幕工具产品演示",
             "narration": "支持为视频添加字幕",
             "source_ids": [
-              "P01",
-              "P02"
+              "P01"
             ],
             "kind": "product_fact"
           },

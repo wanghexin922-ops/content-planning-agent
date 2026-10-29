@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "step_status_matches_result": true,
+    "tool_counter_matches_records": true,
+    "successful_artifacts_preserved": true,
+    "saved_state_matches_database": true,
+    "no_false_completion": true
+  },
+  "passed": true,
+  "oracle": "原始输入+素材费用快照+独立预算/串行时间规则+SQLite实际记录"
+}

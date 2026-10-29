@@ -20,7 +20,7 @@
       "tool": "search_materials",
       "arguments": {
         "query": "视频字幕工具 短视频创作者",
-        "reason": "先检索主题相关素材，同时查看价格目录与已有产物是否记录了预算和截止时间。"
+        "reason": "先确认是否存在与主题相关的素材，同时注意到用户未提供预算与截止时间。"
       },
       "status": "failed",
       "result": {
@@ -41,8 +41,8 @@
       "tool": "finish",
       "arguments": {
         "status": "needs_input",
-        "summary": "无法生成并保存方案：请求中缺少预算（budget）与截止时间（deadline）两项必要约束。检索素材时工具返回 missing_input 并明确列出这两个缺失字段，且标记为不可重试。请补充可用的预算金额（及币种）与截止日期/时长后重新提交；主题（视频字幕工具）与受众（短视频创作者）将保持原样不变。方案本身尚未创建，制作、审核、发布也均未执行。",
-        "reason": "检索工具返回不可重试的 missing_input，指出缺少 budget 与 deadline，需用户补充后再继续。"
+        "summary": "无法生成并保存内容活动方案：用户输入缺少预算（budget）与截止时间（deadline）两项必要约束。素材检索工具返回 missing_input（不可重试），因此尚未检索到任何素材、未生成脚本、也未做费用与耗时估算。请补充这两项约束后再执行；主题「推广一款视频字幕工具」与受众「短视频创作者」保持不变，初始制作方式偏好记录为 premium（可调整）。",
+        "reason": "检索工具返回缺少 budget 与 deadline 且不可重试，按规则不编造约束并请求用户补充。"
       },
       "status": "succeeded",
       "result": {

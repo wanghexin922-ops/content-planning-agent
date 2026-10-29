@@ -1,0 +1,68 @@
+{
+  "request_id": "demo-missing_info",
+  "status": "needs_input",
+  "summary": "方案未保存，请补充：budget, deadline",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [
+    "budget",
+    "deadline"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "视频字幕工具 短视频创作者",
+        "reason": "先检索主题相关素材，同时查看价格目录与已有产物是否记录了预算和截止时间。"
+      },
+      "status": "failed",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "missing_input",
+          "message": "需补充必要约束",
+          "retryable": false
+        },
+        "missing_fields": [
+          "budget",
+          "deadline"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "tool": "finish",
+      "arguments": {
+        "status": "needs_input",
+        "summary": "无法生成并保存方案：请求中缺少预算（budget）与截止时间（deadline）两项必要约束。检索素材时工具返回 missing_input 并明确列出这两个缺失字段，且标记为不可重试。请补充可用的预算金额（及币种）与截止日期/时长后重新提交；主题（视频字幕工具）与受众（短视频创作者）将保持原样不变。方案本身尚未创建，制作、审核、发布也均未执行。",
+        "reason": "检索工具返回不可重试的 missing_input，指出缺少 budget 与 deadline，需用户补充后再继续。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "方案未保存，请补充：budget, deadline",
+        "summary_source": "verified_tool_state",
+        "missing_fields": [
+          "budget",
+          "deadline"
+        ]
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 2,
+  "model_calls": 2,
+  "runs": 1,
+  "replayed": false
+}

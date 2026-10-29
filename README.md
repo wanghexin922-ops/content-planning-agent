@@ -2,7 +2,7 @@
 
 面向小影校招 AI Agent 开发考核的 CLI 项目。用户提供主题、预算和截止时间，模型选择工具，根据实际返回值调整制作方式、替换素材或停止；程序负责预算计算、依赖检查、持久化和防重复。
 
-**当前验证状态：53 项自动化测试通过；13/13 组离线案例通过；真实 `deepseek-flash` 验收 13/13。** 已提交正常、信息不足、工具失败、超预算、重复执行等输入、实际输出和 Trace，见 [真实模型评估](docs/03-evaluation.md)。首轮真实验收的失败记录及修正说明也已保留。Mock 仅用于流程验证。
+**当前验证状态：71 项自动化测试通过；离线 17/17；真实模型 17/17；关键场景三轮独立重复 9/9。** 每个案例含独立预算/时间/依赖/引用审计，真实失败与修正历史保留。结果见 [评估报告](docs/03-evaluation.md)，小样本通过率不保证未来效果。
 
 ## 1. 环境与最快运行方式
 
@@ -16,7 +16,7 @@ python scripts/verify.py
 python scripts/evaluate.py --mode mock
 ```
 
-第二条命令会实际运行 13 组案例，将输入、输出、Trace 和检查结果写入 `examples/mock/`。测试结果在 `examples/test-results.txt`。如更喜欢 pytest，可选安装 `python -m pip install "pytest>=7,<10"` 后运行 `python -m pytest -q`。
+第二条命令会实际运行 17 组案例，将输入、输出、Trace 和检查结果写入 `examples/mock/`。测试结果在 `examples/test-results.txt`。如更喜欢 pytest，可选安装 `python -m pip install "pytest>=7,<10"` 后运行 `python -m pytest -q`。
 
 单独回放“预算 10、初始费用 12、调整后费用 8”的案例：
 
@@ -160,3 +160,15 @@ python planner.py --mode live --input runtime/resume-request.json --out runtime/
 传播角度限定为三种表达形式，产品事实只取素材原文；最终金额、时间、保存状态由工具状态生成。模型原始 summary/reason 只保留在 Trace 中作为未核验提案。
 
 真正 failed 状态也支持跨进程恢复，已用真实 DeepSeek 验证。运行 `python scripts/evaluate_resume.py --mode live` 可复现失败、恢复和重复提交三个进程；离线用 `--mode mock`。详见 [专项说明](docs/06-improvements.md)。
+
+## 9. 变化约束与独立评估
+
+新增时间紧张、费用表变化、低预算素材选择和持续故障四组场景。每次评估保存 data-snapshot.json、audit.json 及源码哈希。独立评估器不调用业务工具的计算方法；故意篡改金额、阶段、来源和保存状态的测试用于检验评估器本身。
+
+```powershell
+python scripts/evaluate.py --mode live --cases time_pressure price_changed material_switch persistent_failure
+python scripts/evaluate.py --mode live --cases normal over_budget tool_failure --repeats 3
+python scripts/update_evaluation.py
+```
+
+单次全量结果在 examples/live，重复结果在 examples/live_stability。汇总逐案例写入，中断时 complete=false；未完成不能计为全部通过。重复试验会产生实际模型调用费用。详见 [第3、4项说明](docs/07-replanning-evaluation.md)。

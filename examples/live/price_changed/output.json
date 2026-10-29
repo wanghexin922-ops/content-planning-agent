@@ -245,8 +245,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 短视频创作者 功能介绍",
-        "reason": "需要先确认是否存在与视频字幕工具主题相关的素材及价格目录。"
+        "query": "视频字幕工具 短视频创作者",
+        "reason": "需要找到与视频字幕工具主题相关的素材及价格目录，才能规划方案。"
       },
       "status": "succeeded",
       "result": {
@@ -342,12 +342,12 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
+        "angle": "功能介绍",
         "material_ids": [
           "P01",
           "P02"
         ],
-        "angle": "功能介绍",
-        "reason": "两个素材都直接说明字幕添加与编辑能力，适合用功能介绍形式呈现。"
+        "reason": "两个素材均为视频字幕工具主题素材，可用其事实生成功能介绍脚本。"
       },
       "status": "succeeded",
       "result": {
@@ -410,9 +410,9 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
-        "script_id": "script-d72a2df652ac",
         "production_mode": "premium",
-        "reason": "先按用户初始偏好的精剪方式核算真实费用与耗时，确认是否超预算。"
+        "reason": "先按用户初始偏好 premium 精剪视频估算真实费用与串行耗时，并查看替代方式。",
+        "script_id": "script-d72a2df652ac"
       },
       "status": "succeeded",
       "result": {
@@ -525,7 +525,7 @@
       "tool": "estimate_plan",
       "arguments": {
         "production_mode": "slideshow",
-        "reason": "premium 与 basic 均超预算，改用价格目录中唯一可行的图文轮播方式再核算。",
+        "reason": "premium 与 basic 均超预算，仅 slideshow 可行，故按其重新估算以获得可行 estimate。",
         "script_id": "script-d72a2df652ac"
       },
       "status": "succeeded",
@@ -639,7 +639,7 @@
       "tool": "save_plan",
       "arguments": {
         "estimate_id": "estimate-6607939e8bc6",
-        "reason": "该估算在当前预算与截止时间内可行，保存这份图文轮播方案。"
+        "reason": "该 slideshow 估算可行且总费用 6 在预算 7 内，符合截止时间，故保存此方案。"
       },
       "status": "succeeded",
       "result": {
@@ -811,8 +811,8 @@
       "tool": "finish",
       "arguments": {
         "status": "completed",
-        "summary": "已保存内容活动方案（plan-6ef7aeede2a75993），主题「推广一款视频字幕工具」，受众短视频创作者。因精剪（14）与基础剪辑（13）均超出预算 7，改用价格目录中唯一可行的图文轮播方式：总费用 6，预计 2026-10-28 11:30 完成，早于截止 2026-10-29 18:00。脚本基于素材 P01、P02 的事实，仅表达“支持为视频添加字幕”“支持编辑字幕文本”，采用功能介绍角度，创意方向待审核。素材准备、脚本、制作、审核、发布各阶段均保留在计划内，制作、审核、发布尚未实际执行，发布渠道/账号及最终文案待确认。",
-        "reason": "估算可行且保存返回 saved=true，方案已落盘。"
+        "summary": "已为“推广一款视频字幕工具”（受众：短视频创作者）检索到 2 个主题相关合成素材（P01 字幕工具产品演示、P02 字幕工具图文素材），生成功能介绍脚本（script-d72a2df652ac，仅使用素材事实：支持为视频添加字幕、支持编辑字幕文本）。按初始偏好 premium 估算为 14 单位，超预算 7；basic 13 单位也超预算；改用 slideshow 图文轮播制作，总费用 6 单位、串行 90 分钟，预计 2026-10-28T11:30 完成，早于截止时间 2026-10-29T18:00，估算可行并已保存方案（plan-6ef7aeede2a75993）。方案包含素材准备、脚本整理、制作、审核、发布各阶段。注意：任务完成仅表示方案已保存，实际制作、审核与发布均未执行；创意方向文案、发布渠道与账号、执行人员仍需人工确认。",
+        "reason": "slideshow 估算可行并已返回保存成功状态，方案已保存。"
       },
       "status": "succeeded",
       "result": {

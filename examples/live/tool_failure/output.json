@@ -245,8 +245,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 字幕生成",
-        "reason": "需要先确认存在与主题相关的素材与价格目录，再决定制作方式。"
+        "query": "视频字幕工具 字幕生成 短视频创作者",
+        "reason": "需要找到与视频字幕工具主题相关的素材及价格目录。"
       },
       "status": "succeeded",
       "result": {
@@ -342,12 +342,12 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
-        "angle": "功能介绍",
         "material_ids": [
           "P01",
           "P02"
         ],
-        "reason": "两件素材均与字幕工具主题相关，合并事实可支撑功能介绍脚本。"
+        "angle": "功能介绍",
+        "reason": "两个素材均与视频字幕工具主题相关，可组合生成事实可追溯的脚本。"
       },
       "status": "failed",
       "result": {
@@ -368,7 +368,7 @@
           "P01",
           "P02"
         ],
-        "reason": "上次生成返回可重试的临时故障，用相同素材重试一次。"
+        "reason": "上次为可重试的临时故障，按同一素材组合重试生成脚本。"
       },
       "status": "succeeded",
       "result": {
@@ -432,7 +432,7 @@
       "tool": "estimate_plan",
       "arguments": {
         "production_mode": "premium",
-        "reason": "用户初始偏好为 premium，先用该方式核算是否满足预算 15 与截止时间。",
+        "reason": "按用户初始偏好 premium 估算费用与串行耗时，先判断是否在预算内。",
         "script_id": "script-d72a2df652ac"
       },
       "status": "succeeded",
@@ -546,7 +546,7 @@
       "tool": "save_plan",
       "arguments": {
         "estimate_id": "estimate-b5034bcab9ff",
-        "reason": "premium 估算可行且符合预算 15 与截止时间，按初始偏好保存。"
+        "reason": "premium 估算总费用 12 在预算 15 内且截止前可完成，符合用户初始偏好，予以保存。"
       },
       "status": "succeeded",
       "result": {
@@ -718,8 +718,8 @@
       "tool": "finish",
       "arguments": {
         "status": "completed",
-        "summary": "已为「推广一款视频字幕工具」（受众：短视频创作者）生成并保存内容活动方案，计划 ID plan-a4a14479c3f9a4f6。方案采用用户初始偏好的精剪视频方式，脚本 script-d72a2df652ac 仅使用素材 P01、P02 的事实（支持为视频添加字幕、支持编辑字幕文本），角度为功能介绍。总费用 12（预算 15），串行预计 240 分钟，预计 2026-10-28 14:00 完成，早于截止时间 2026-10-29 18:00，含素材准备、脚本整理、精剪、审核、人工确认发布五个必需阶段。注意：规划过程中 generate_script 首次返回可重试故障，重试成功；方案保存不等于已执行，制作、审核、发布均未进行，发布渠道、创意角度与执行人员仍待确认。",
-        "reason": "save_plan 返回 saved=true 且方案费用与时间均在约束内，可以完成。"
+        "summary": "已为“推广一款视频字幕工具”（受众：短视频创作者）生成并保存内容活动方案，plan_id 为 plan-a4a14479c3f9a4f6。素材选用 P01《字幕工具产品演示》与 P02《字幕工具图文素材》，脚本 script-d72a2df652ac 采用“功能介绍”角度，仅呈现素材事实（支持为视频添加字幕、支持编辑字幕文本）。按初始偏好 premium 精剪制作，估算总费用 12（预算 15 内），串行 240 分钟，预计 2026-10-28 14:00 完成，早于截止 2026-10-29 18:00。需注意：创意方向与文案仍需审核确认，发布渠道/账号及实际执行人员待定；本次仅保存规划，制作、审核、发布均未执行。",
+        "reason": "保存接口返回 saved=true，估算在预算与截止时间内可行，故报告方案已完成保存。"
       },
       "status": "succeeded",
       "result": {

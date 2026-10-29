@@ -1,0 +1,47 @@
+{
+  "request_id": "demo-missing_info",
+  "status": "needs_input",
+  "summary": "方案未保存，请补充：budget, deadline",
+  "mode": "mock",
+  "model": "offline-rule-simulator",
+  "evidence": "offline_mock_flow_only",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [
+    "budget",
+    "deadline"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "finish",
+      "arguments": {
+        "reason": "输入缺少必要约束",
+        "status": "needs_input",
+        "summary": "请补充：budget, deadline"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "方案未保存，请补充：budget, deadline",
+        "summary_source": "verified_tool_state",
+        "missing_fields": [
+          "budget",
+          "deadline"
+        ]
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 1,
+  "model_calls": 1,
+  "runs": 1,
+  "replayed": false
+}

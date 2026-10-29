@@ -14,7 +14,7 @@
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "功能介绍"
+        "text": "操作演示"
       },
       "deliverables": [
         "带来源 ID 的可编辑脚本",
@@ -44,7 +44,7 @@
       "estimated_finish": "2026-10-28T12:00:00+08:00",
       "feasible": true,
       "production_mode": "basic",
-      "script_id": "script-d72a2df652ac",
+      "script_id": "script-529e49348f18",
       "steps": [
         {
           "cost": 2.0,
@@ -111,12 +111,12 @@
     "execution_status": "not_executed",
     "request_id": "demo-over_budget",
     "script": {
-      "angle": "功能介绍",
+      "angle": "操作演示",
       "audience": "短视频创作者",
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "功能介绍"
+        "text": "操作演示"
       },
       "editable": true,
       "generator": "local_fact_template",
@@ -174,7 +174,7 @@
     "estimated_finish": "2026-10-28T12:00:00+08:00",
     "feasible": true,
     "production_mode": "basic",
-    "script_id": "script-d72a2df652ac",
+    "script_id": "script-529e49348f18",
     "steps": [
       {
         "cost": 2.0,
@@ -245,8 +245,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 功能介绍 短视频创作者",
-        "reason": "主题与受众已明确，先检索与该字幕工具相关的本地素材和价格目录。"
+        "query": "视频字幕工具 介绍演示素材",
+        "reason": "预算10与截止时间齐全，先检索与原主题相关的字幕工具素材用于后续脚本与估算。"
       },
       "status": "succeeded",
       "result": {
@@ -342,27 +342,27 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
-        "angle": "功能介绍",
         "material_ids": [
           "P01",
           "P02"
         ],
-        "reason": "两条素材都围绕字幕工具且事实可追溯，按功能介绍角度生成脚本以评估预算。"
+        "angle": "操作演示",
+        "reason": "P01与P02均为字幕工具真实主题素材，可用其\"添加字幕、编辑字幕文本\"事实生成操作演示脚本。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-d72a2df652ac",
+        "script_id": "script-529e49348f18",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "功能介绍",
+          "angle": "操作演示",
           "material_ids": [
             "P01",
             "P02"
           ],
           "creative_direction": {
-            "text": "功能介绍",
+            "text": "操作演示",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -410,16 +410,16 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
-        "script_id": "script-d72a2df652ac",
+        "script_id": "script-529e49348f18",
         "production_mode": "premium",
-        "reason": "先按用户初始 premium 偏好核算真实费用与串行耗时。"
+        "reason": "先按用户初始偏好premium试算，验证10预算内是否可行。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-628f2479aada",
+        "estimate_id": "estimate-ec9d192d71ce",
         "estimate": {
-          "script_id": "script-d72a2df652ac",
+          "script_id": "script-529e49348f18",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -525,15 +525,15 @@
       "tool": "estimate_plan",
       "arguments": {
         "production_mode": "basic",
-        "reason": "premium 超预算 2 个单位，同一脚本改用基础剪辑估算，看是否在预算内。",
-        "script_id": "script-d72a2df652ac"
+        "reason": "premium总价12超预算2，改用同脚本的basic制作方式核算是否在预算与截止时间内可行。",
+        "script_id": "script-529e49348f18"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-96b688592a2e",
+        "estimate_id": "estimate-e2328fbc058b",
         "estimate": {
-          "script_id": "script-d72a2df652ac",
+          "script_id": "script-529e49348f18",
           "production_mode": "basic",
           "total_cost": 8.0,
           "currency": "模拟单位",
@@ -638,8 +638,8 @@
       "step": 5,
       "tool": "save_plan",
       "arguments": {
-        "estimate_id": "estimate-96b688592a2e",
-        "reason": "基础剪辑估算可行且预算内，按该可行估算保存方案。"
+        "estimate_id": "estimate-e2328fbc058b",
+        "reason": "basic方案总价8在预算10内、串行120分钟早于截止时间，为当前可行估算，提交保存。"
       },
       "status": "succeeded",
       "result": {
@@ -654,7 +654,7 @@
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "功能介绍"
+              "text": "操作演示"
             },
             "deliverables": [
               "带来源 ID 的可编辑脚本",
@@ -684,7 +684,7 @@
             "estimated_finish": "2026-10-28T12:00:00+08:00",
             "feasible": true,
             "production_mode": "basic",
-            "script_id": "script-d72a2df652ac",
+            "script_id": "script-529e49348f18",
             "steps": [
               {
                 "cost": 2.0,
@@ -751,12 +751,12 @@
           "execution_status": "not_executed",
           "request_id": "demo-over_budget",
           "script": {
-            "angle": "功能介绍",
+            "angle": "操作演示",
             "audience": "短视频创作者",
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "功能介绍"
+              "text": "操作演示"
             },
             "editable": true,
             "generator": "local_fact_template",
@@ -811,8 +811,8 @@
       "tool": "finish",
       "arguments": {
         "status": "completed",
-        "summary": "已为「推广一款视频字幕工具」（受众：短视频创作者）保存内容活动方案（plan-6fdf803c8ee774fb）。初始偏好 premium 精剪核算为 12 个单位，超出 10 单位预算 2 个单位，因此改用同一脚本的基础剪辑：总费用 8 个单位，串行预计 120 分钟，预计 2026-10-28 12:00 完成，早于 2026-10-29 18:00 截止，预算与时间均可行。脚本基于素材 P01（产品演示，成本 2）与 P02（图文素材，成本 0），仅使用素材事实「支持为视频添加字幕」「支持编辑字幕文本」，分镜含来源 ID 且可编辑；创意方向「功能介绍」标记为提案待审核。素材准备、脚本、制作、审核、发布五个阶段均保留在排期中。注意：本次仅保存规划，制作、审核、发布均未执行；发布渠道与账号、创意角度与最终文案、实际执行人员待确认。若需 premium 精剪，需将预算提高至至少 12 个单位。",
-        "reason": "基础剪辑估算可行并在预算内，save_plan 返回 saved: true，方案已保存。"
+        "summary": "已保存方案（plan-6fdf803c8ee774fb），主题为“推广一款视频字幕工具”，受众为短视频创作者。初始 premium 精剪方案总价12超出10预算，已改用 basic 基础剪辑：总费用8（预算内），串行预计120分钟，预计2026-10-28 12:00完成，早于截止时间，含素材准备、脚本整理、基础剪辑、内容审核、人工发布五个阶段。脚本基于素材P01/P02事实，仅表述“支持为视频添加字幕”“支持编辑字幕文本”，角度为操作演示，待人工审核确认。注意：本任务仅保存方案，制作、审核、发布均未执行；创意方向、发布渠道与账号、执行人员仍需确认。",
+        "reason": "保存返回 saved=true 且幂等无重复，方案可行，故报告完成并说明未执行的后续阶段。"
       },
       "status": "succeeded",
       "result": {
@@ -830,16 +830,16 @@
       "P02"
     ],
     "scripts": {
-      "script-d72a2df652ac": {
+      "script-529e49348f18": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "功能介绍",
+        "angle": "操作演示",
         "material_ids": [
           "P01",
           "P02"
         ],
         "creative_direction": {
-          "text": "功能介绍",
+          "text": "操作演示",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

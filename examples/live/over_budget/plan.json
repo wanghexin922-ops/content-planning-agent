@@ -5,7 +5,7 @@
     "creative_direction": {
       "is_product_fact": false,
       "status": "proposal_requires_review",
-      "text": "功能介绍"
+      "text": "操作演示"
     },
     "deliverables": [
       "带来源 ID 的可编辑脚本",
@@ -35,7 +35,7 @@
     "estimated_finish": "2026-10-28T12:00:00+08:00",
     "feasible": true,
     "production_mode": "basic",
-    "script_id": "script-d72a2df652ac",
+    "script_id": "script-529e49348f18",
     "steps": [
       {
         "cost": 2.0,
@@ -102,12 +102,12 @@
   "execution_status": "not_executed",
   "request_id": "demo-over_budget",
   "script": {
-    "angle": "功能介绍",
+    "angle": "操作演示",
     "audience": "短视频创作者",
     "creative_direction": {
       "is_product_fact": false,
       "status": "proposal_requires_review",
-      "text": "功能介绍"
+      "text": "操作演示"
     },
     "editable": true,
     "generator": "local_fact_template",

@@ -1,0 +1,48 @@
+{
+  "updated_at": "2026-10-29T13:54:40.288787+08:00",
+  "tests_passed": 71,
+  "offline": {
+    "passed": 17,
+    "total": 17
+  },
+  "live": {
+    "passed": 17,
+    "total": 17
+  },
+  "repeat": {
+    "passed": 9,
+    "total": 9,
+    "per_case": {
+      "normal": {
+        "passed": 3,
+        "runs": 3,
+        "status_counts": {
+          "completed": 3
+        },
+        "mean_tool_calls": 5.0,
+        "mean_elapsed_seconds": 9.825
+      },
+      "over_budget": {
+        "passed": 3,
+        "runs": 3,
+        "status_counts": {
+          "completed": 3
+        },
+        "mean_tool_calls": 6.0,
+        "mean_elapsed_seconds": 11.464
+      },
+      "tool_failure": {
+        "passed": 3,
+        "runs": 3,
+        "status_counts": {
+          "completed": 3
+        },
+        "mean_tool_calls": 6.0,
+        "mean_elapsed_seconds": 12.12
+      }
+    }
+  },
+  "scope": "Agreed improvements 3 and 4",
+  "phase3_commit": "03e364c",
+  "github_published": false
+}

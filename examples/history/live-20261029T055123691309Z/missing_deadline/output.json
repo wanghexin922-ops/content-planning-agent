@@ -1,0 +1,45 @@
+{
+  "request_id": "demo-missing_deadline",
+  "status": "needs_input",
+  "summary": "方案未保存，请补充：deadline",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [
+    "deadline"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "finish",
+      "arguments": {
+        "status": "needs_input",
+        "summary": "缺少截止时间约束，无法评估生成、制作、审核、发布的串行耗时是否可行，因此尚未生成并保存方案。请补充截止时间（以及预算单位是否为当地货币金额），确认后再继续；主题「面向短视频创作者推广一款视频字幕工具」、预算 10 保持不变。",
+        "reason": "用户输入包含预算10与主题，但缺少 deadline，规则要求缺失约束时先请求补充而不编造。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "方案未保存，请补充：deadline",
+        "summary_source": "verified_tool_state",
+        "missing_fields": [
+          "deadline"
+        ]
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 1,
+  "model_calls": 1,
+  "runs": 1,
+  "replayed": false
+}

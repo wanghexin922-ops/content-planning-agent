@@ -16,8 +16,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 字幕识别 短视频创作者",
-        "reason": "需要先确认是否有与视频字幕工具主题相关的可用素材及价格目录。"
+        "query": "视频字幕工具 短视频创作者",
+        "reason": "需先获取与“视频字幕工具”主题相关的可用素材与价格目录才能规划。"
       },
       "status": "succeeded",
       "result": {
@@ -118,7 +118,7 @@
           "P01",
           "P02"
         ],
-        "reason": "两款素材均围绕字幕工具的加字幕与编辑能力，适合用功能介绍角度生成脚本。"
+        "reason": "两条素材均为字幕工具主题事实，适合按功能介绍角度生成脚本。"
       },
       "status": "failed",
       "result": {
@@ -134,70 +134,30 @@
       "step": 3,
       "tool": "generate_script",
       "arguments": {
-        "angle": "功能简报",
+        "angle": "功能介绍",
         "material_ids": [
-          "P01"
+          "P01",
+          "P02"
         ],
-        "reason": "上一次生成脚本报注入式故障，改用单个素材再试以确认故障是否持续。"
+        "reason": "首次调用返回可重试标记为否的注入故障，再试一次以确认是否为持续故障。"
       },
       "status": "failed",
       "result": {
         "ok": false,
         "error": {
-          "code": "invalid_action",
-          "message": "angle 不在允许范围内",
+          "code": "injected_failure",
+          "message": "演示用工具故障：generate_script",
           "retryable": false
         }
       }
     },
     {
       "step": 4,
-      "tool": "generate_script",
-      "arguments": {
-        "angle": "操作演示",
-        "material_ids": [
-          "P01"
-        ],
-        "reason": "上一次是角度参数不合法，本次改用允许范围内的操作演示角度重试生成脚本。"
-      },
-      "status": "failed",
-      "result": {
-        "ok": false,
-        "error": {
-          "code": "injected_failure",
-          "message": "演示用工具故障：generate_script",
-          "retryable": false
-        }
-      }
-    },
-    {
-      "step": 5,
-      "tool": "generate_script",
-      "arguments": {
-        "angle": "场景引导",
-        "material_ids": [
-          "P01",
-          "P02"
-        ],
-        "reason": "前两次均为不可重试的注入式故障，换场景引导角度做最后一次确认性重试。"
-      },
-      "status": "failed",
-      "result": {
-        "ok": false,
-        "error": {
-          "code": "injected_failure",
-          "message": "演示用工具故障：generate_script",
-          "retryable": false
-        }
-      }
-    },
-    {
-      "step": 6,
       "tool": "finish",
       "arguments": {
         "status": "failed",
-        "summary": "未能生成并保存方案：主题“视频字幕工具”的检索成功（素材 P01、P02，价格目录已获取），但 generate_script 连续三次返回不可重试的 injected_failure（期间还修正过一次非法的 angle 参数仍同样失败）。由于无法获得 script_id，estimate_plan 与 save_plan 无法执行，方案未保存。预算 15 与截止时间 2026-10-29T18:00 均未改动；按价格表，精剪视频方案（脚本1+精剪7+审核1+发布1=10）在预算内，若工具恢复可继续。素材准备、脚本、制作、审核、发布均未执行。",
-        "reason": "脚本生成工具连续三次不可重试故障，导致无法获得脚本进行估算与保存。"
+        "summary": "已检索到与“视频字幕工具”主题相关的素材（P01 字幕工具产品演示、P02 字幕工具图文素材），但生成脚本的工具 generate_script 连续两次返回不可重试的注入故障，因此未能产出脚本 ID、无法进行费用与时间估算，也无法保存方案。预算 15 与截止时间 2026-10-29T18:00 的约束本身没有暴露可行性问题，缺口在于脚本生成环节的工具故障；待该工具恢复后可继续：用 P01+P02 生成“功能介绍”脚本，再按估算选择制作方式并保存。当前未保存任何方案，制作、审核、发布均未执行。",
+        "reason": "脚本生成工具多次返回不可重试故障，关键产物缺失导致无法估算与保存。"
       },
       "status": "succeeded",
       "result": {
@@ -216,8 +176,8 @@
     ],
     "scripts": {}
   },
-  "tool_calls": 6,
-  "model_calls": 6,
+  "tool_calls": 4,
+  "model_calls": 4,
   "runs": 1,
   "replayed": false
 }

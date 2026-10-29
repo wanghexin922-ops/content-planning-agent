@@ -8,7 +8,7 @@
 - 离线检查：`python scripts/verify.py`、`python scripts/evaluate.py --mode mock`
 - 真实模型检查：配置本地 `.env` 后执行 `python scripts/evaluate.py --mode live`
 
-当前提交准备状态：53 项测试通过；离线 13/13；真实模型 13/13。真实记录在 examples/live/，历史失败和修正在 docs/03-evaluation.md。个人贡献补充、正式题号、目标 GitHub 仓库、上传及最终 SHA 尚待完成。
+当前提交准备状态：71 项测试通过；离线 17/17；真实模型 17/17；关键场景重复 9/9。真实记录在 examples/live/，历史失败和修正在 docs/03-evaluation.md。个人贡献补充、正式题号、目标 GitHub 仓库、上传及最终 SHA 尚待完成。
 
 如果提交页面只有文件上传，可把本说明填写完整后另存为 TXT/PDF 上传，并在备注栏同步填写仓库 URL。所有代码、文档、测试、实际输出与 Trace 应在同一 GitHub 仓库。私有仓库须为指定评审账号开放读取权限。
 

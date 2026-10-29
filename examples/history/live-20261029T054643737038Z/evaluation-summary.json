@@ -1,0 +1,80 @@
+{
+  "mode": "live",
+  "evidence": "real_model_run",
+  "executed_at": "2026-10-29T05:44:16.628492+00:00",
+  "fixed_business_clock": "2026-10-28T10:00:00+08:00",
+  "note": "固定业务时钟用于回放，不是当时真实业务任务。Mock 不证明模型决策效果。",
+  "passed": 4,
+  "total": 4,
+  "cases": [
+    {
+      "case": "time_pressure",
+      "status": "completed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "saved_and_feasible": true,
+        "budget_matches_sum": true,
+        "audience_preserved": true,
+        "script_matches_audience": true,
+        "observed_replanning": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 6,
+      "total_cost": 6.0,
+      "output": "live/time_pressure/output.json",
+      "trace": "live/time_pressure/trace.jsonl"
+    },
+    {
+      "case": "price_changed",
+      "status": "completed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "saved_and_feasible": true,
+        "budget_matches_sum": true,
+        "audience_preserved": true,
+        "script_matches_audience": true,
+        "observed_replanning": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 6,
+      "total_cost": 6.0,
+      "output": "live/price_changed/output.json",
+      "trace": "live/price_changed/trace.jsonl"
+    },
+    {
+      "case": "material_switch",
+      "status": "completed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "saved_and_feasible": true,
+        "budget_matches_sum": true,
+        "audience_preserved": true,
+        "script_matches_audience": true,
+        "affordable_material_selected": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 7,
+      "total_cost": 4.0,
+      "output": "live/material_switch/output.json",
+      "trace": "live/material_switch/trace.jsonl"
+    },
+    {
+      "case": "persistent_failure",
+      "status": "failed",
+      "passed": true,
+      "checks": {
+        "expected_status": true,
+        "no_false_save": true,
+        "persistent_error_observed": true,
+        "database_plan_count": true
+      },
+      "tool_calls": 6,
+      "total_cost": null,
+      "output": "live/persistent_failure/output.json",
+      "trace": "live/persistent_failure/trace.jsonl"
+    }
+  ]
+}

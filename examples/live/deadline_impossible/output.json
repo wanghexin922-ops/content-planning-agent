@@ -89,8 +89,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 字幕生成 功能",
-        "reason": "需要先确认是否有与视频字幕工具主题相关的素材及价格目录。"
+        "query": "视频字幕工具 功能介绍 面向短视频创作者",
+        "reason": "需要先确认是否存在与字幕工具主题相关的素材及其价格与耗时目录。"
       },
       "status": "succeeded",
       "result": {
@@ -191,7 +191,7 @@
           "P02"
         ],
         "angle": "功能介绍",
-        "reason": "两条素材均为视频字幕工具主题，事实支持添加与编辑字幕，适合按功能介绍角度生成脚本。"
+        "reason": "两款字幕工具素材均与原主题符合，可用于生成事实可追溯的脚本。"
       },
       "status": "succeeded",
       "result": {
@@ -254,9 +254,9 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
+        "script_id": "script-d72a2df652ac",
         "production_mode": "premium",
-        "reason": "用户 initial_mode 为 premium，先按该偏好评估真实费用与串行耗时。",
-        "script_id": "script-d72a2df652ac"
+        "reason": "按用户初始偏好 premium 精剪方式核算真实费用与串行耗时。"
       },
       "status": "succeeded",
       "result": {
@@ -369,7 +369,7 @@
       "tool": "estimate_plan",
       "arguments": {
         "production_mode": "slideshow",
-        "reason": "premium 与 basic 均超出截止时间，需确认最省时的图文轮播方式是否可行。",
+        "reason": "premium 与 basic 均超出截止时间，需核实最轻量的图文轮播方式能否满足时限。",
         "script_id": "script-d72a2df652ac"
       },
       "status": "succeeded",
@@ -483,8 +483,8 @@
       "tool": "finish",
       "arguments": {
         "status": "incomplete",
-        "summary": "针对“推广一款视频字幕工具 / 面向短视频创作者”已检索到两条主题相关素材（P01 字暮工具产品演示、P02 字暮工具图文素材），并生成脚本 script-d72a2df652ac（功能介绍角度，事实仅含“支持为视频添加字幕”“支持编辑字幕文本”）。预算 15 充足：premium 12、basic 8、slideshow 6 均未超预算；但截止时间 2026-10-28T10:10:00+08:00 过紧，在固定必需阶段（素材准备、脚本、制作、审核、发布）串行执行下，最快图文轮播方式也需 90 分钟、预计 11:30 完成，超时 80 分钟；premium 超时 230 分钟、basic 超时 110 分钟。三种方式均不可行，故未保存方案。可调整的只有用户方条件：延后截止时间（至少到 11:30 以支持图文轮播方式）或放宽必需阶段约束；本次未改变主题、受众、预算与截止时间。",
-        "reason": "三种制作方式的估算均 feasible=false 且缺口为时间，最省的 slideshow 也超时 80 分钟，无可保存的可行方案。"
+        "summary": "已检索到符合“视频字幕工具”主题的素材 P01、P02，并生成脚本 script-d72a2df652ac（功能介绍角度）。但按目录价格核算，三种制作方式在预算 15 内均超时：premium 精剪 12 单位/240 分钟、预计 14:00 完成（超 230 分钟）；basic 8 单位/120 分钟、预计 11:50 完成（超 110 分钟）；最轻量 slideshow 6 单位/90 分钟、预计 11:30 完成（仍超 80 分钟）。素材准备、脚本、制作、审核、发布均为必需阶段，无法再压缩，故未保存方案。建议放宽截止时间（至少到 11:30 之后）或提前开工时间。",
+        "reason": "三种制作方式虽均在预算内，但全部超出截止时间，无可保存的可行方案。"
       },
       "status": "succeeded",
       "result": {

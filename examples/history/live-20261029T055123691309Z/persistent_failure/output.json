@@ -1,0 +1,182 @@
+{
+  "request_id": "demo-persistent_failure",
+  "status": "failed",
+  "summary": "方案未保存；失败步骤 generate_script：演示用工具故障：generate_script。成功产物已保留，可修复后显式续跑。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "视频字幕工具 短视频创作者 字幕生成",
+        "reason": "需要先确认存在与字幕工具主题相关的可用素材。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "字幕工具产品演示",
+            "topic_terms": [
+              "字幕",
+              "剪辑",
+              "caption"
+            ],
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕",
+              "支持编辑字幕文本"
+            ],
+            "cost": 2,
+            "license": "合成素材，仅用于本项目演示"
+          },
+          {
+            "id": "P02",
+            "title": "字幕工具图文素材",
+            "topic_terms": [
+              "字幕",
+              "剪辑",
+              "caption"
+            ],
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕"
+            ],
+            "cost": 0,
+            "license": "合成素材，仅用于本项目演示"
+          }
+        ],
+        "count": 2,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"
+      }
+    },
+    {
+      "step": 2,
+      "tool": "generate_script",
+      "arguments": {
+        "angle": "操作演示",
+        "material_ids": [
+          "P01",
+          "P02"
+        ],
+        "reason": "两条素材均为字幕工具主题，且含添加字幕与编辑字幕的事实，适合做操作演示。"
+      },
+      "status": "failed",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "injected_failure",
+          "message": "演示用工具故障：generate_script",
+          "retryable": false
+        }
+      }
+    },
+    {
+      "step": 3,
+      "tool": "generate_script",
+      "arguments": {
+        "angle": "功能介绍",
+        "material_ids": [
+          "P01"
+        ],
+        "reason": "更换角度与素材范围重试，以确认脚本工具是否持续故障。"
+      },
+      "status": "failed",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "injected_failure",
+          "message": "演示用工具故障：generate_script",
+          "retryable": false
+        }
+      }
+    },
+    {
+      "step": 4,
+      "tool": "finish",
+      "arguments": {
+        "status": "failed",
+        "summary": "无法完成方案保存：素材检索成功（字幕工具产品演示 P01、图文素材 P02，主题与受众匹配），但脚本生成工具 generate_script 连续两次返回不可重试的 injected_failure 故障，两次分别更换了角度与素材范围。由于脚本阶段是必需阶段，缺少脚本 ID 就无法进行可行估算与保存，因此未生成或保存任何方案。已获取的素材结果保留，制作、审核、发布均未执行。建议在脚本工具恢复后按原主题（字幕工具推广，面向短视频创作者，预算 15，截止 2026-10-29 18:00）重试。",
+        "reason": "脚本生成工具连续两次返回不可重试故障，缺少 script_id 无法估算与保存。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "failed",
+        "summary": "方案未保存；失败步骤 generate_script：演示用工具故障：generate_script。成功产物已保留，可修复后显式续跑。",
+        "summary_source": "verified_tool_state",
+        "missing_fields": []
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [
+      "P01",
+      "P02"
+    ],
+    "scripts": {}
+  },
+  "tool_calls": 4,
+  "model_calls": 4,
+  "runs": 1,
+  "replayed": false
+}

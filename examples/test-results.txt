@@ -1,4 +1,4 @@
-Executed at: 2026-10-29T05:39:09.246108+00:00
+Executed at: 2026-10-29T05:46:40.885518+00:00
 Python: 3.12.4
 Platform: Windows
 Command: python scripts/verify.py
@@ -30,6 +30,7 @@ test_normal_saved_plan_has_dependencies_and_grounded_facts (test_agent.AgentTest
 test_over_budget_changes_mode_after_observation (test_agent.AgentTests.test_over_budget_changes_mode_after_observation) ... ok
 test_parallel_calls_have_no_side_effects (test_agent.AgentTests.test_parallel_calls_have_no_side_effects) ... ok
 test_permanent_save_failure_not_reported_success (test_agent.AgentTests.test_permanent_save_failure_not_reported_success) ... ok
+test_persistent_tool_error_cannot_be_reported_as_missing_materials (test_agent.AgentTests.test_persistent_tool_error_cannot_be_reported_as_missing_materials) ... ok
 test_query_rewrite_cannot_replace_original_topic (test_agent.AgentTests.test_query_rewrite_cannot_replace_original_topic) ... ok
 test_real_sqlite_failure_is_explicit (test_agent.AgentTests.test_real_sqlite_failure_is_explicit) ... ok
 test_recover_plan_if_checkpoint_after_save_was_lost (test_agent.AgentTests.test_recover_plan_if_checkpoint_after_save_was_lost) ... ok
@@ -45,6 +46,19 @@ test_terminal_failed_can_resume_and_preserves_history (test_agent.AgentTests.tes
 test_transient_failure_preserves_search (test_agent.AgentTests.test_transient_failure_preserves_search) ... ok
 test_unknown_tool_and_bad_arguments_are_observations (test_agent.AgentTests.test_unknown_tool_and_bad_arguments_are_observations) ... ok
 test_unsupported_creative_claims_are_rejected (test_agent.AgentTests.test_unsupported_creative_claims_are_rejected) ... ok
+test_broken_dependencies_fail (test_audit.AuditTests.test_broken_dependencies_fail) ... ok
+test_changed_theme_fails (test_audit.AuditTests.test_changed_theme_fails) ... ok
+test_changed_user_budget_fails (test_audit.AuditTests.test_changed_user_budget_fails) ... ok
+test_claimed_save_without_database_fails (test_audit.AuditTests.test_claimed_save_without_database_fails) ... ok
+test_failed_step_labelled_success_fails (test_audit.AuditTests.test_failed_step_labelled_success_fails) ... ok
+test_fake_feasibility_flag_fails (test_audit.AuditTests.test_fake_feasibility_flag_fails) ... ok
+test_fake_time_and_feasibility_fail (test_audit.AuditTests.test_fake_time_and_feasibility_fail) ... ok
+test_false_source_id_fails (test_audit.AuditTests.test_false_source_id_fails) ... ok
+test_lost_successful_artifact_fails (test_audit.AuditTests.test_lost_successful_artifact_fails) ... ok
+test_omitted_review_fails (test_audit.AuditTests.test_omitted_review_fails) ... ok
+test_self_consistent_fake_price_fails (test_audit.AuditTests.test_self_consistent_fake_price_fails) ... ok
+test_unsupported_fact_fails (test_audit.AuditTests.test_unsupported_fact_fails) ... ok
+test_valid_plan_passes (test_audit.AuditTests.test_valid_plan_passes) ... ok
 test_cli_runs_outside_repo_and_exports_artifacts (test_cli.CLITests.test_cli_runs_outside_repo_and_exports_artifacts) ... ok
 test_live_missing_key_never_reuses_mock_success (test_cli.CLITests.test_live_missing_key_never_reuses_mock_success) ... ok
 test_malformed_input_fails_cleanly (test_cli.CLITests.test_malformed_input_fails_cleanly) ... ok
@@ -63,6 +77,6 @@ test_persistent_failure_stops_without_losing_search (test_replanning.ReplanningT
 test_tight_time_selects_faster_feasible_plan (test_replanning.ReplanningTests.test_tight_time_selects_faster_feasible_plan) ... ok
 
 ----------------------------------------------------------------------
-Ran 57 tests in 12.749s
+Ran 71 tests in 12.568s
 
 OK

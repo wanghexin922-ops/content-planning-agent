@@ -37,9 +37,9 @@ def main():
                     "missing_budget":"needs_input","missing_deadline":"needs_input","resume_video":"completed"}
         for case in summary["cases"]:
             name = case["case"]
-            base = f"../examples/{mode}/{name}"
+            base = "../examples/" + str(Path(case['output']).parent).replace('\\','/')
             links = f"[输入]({base}/input.json) / [输出]({base}/output.json) / [Trace]({base}/trace.jsonl)"
-            lines.append(f"| {name} | {expected.get(name, '参见案例定义')} | {case['status']} | {case['total_cost']} | {case['tool_calls']} | {'PASS' if case['passed'] else 'FAIL'} | {links} |")
+            lines.append(f"| {name} | {case.get('expected_status',expected.get(name, '参见案例定义'))} | {case['status']} | {case['total_cost']} | {case['tool_calls']} | {'PASS' if case['passed'] else 'FAIL'} | {links} |")
         lines += ["", "非完成案例的费用列仅表示最近一次候选估算，不是实际扣费，也不表示已保存。",
                   f"重复执行第二次记录：[输出](../examples/{mode}/repeated_request/second_run/output.json) / [Trace](../examples/{mode}/repeated_request/second_run/trace.jsonl)。", ""]
         failed = [c for c in summary["cases"] if not c["passed"]]
@@ -53,6 +53,8 @@ def main():
     lines += ["## 历史真实失败记录", ""]
     for history in sorted((ROOT / "examples/history").glob("live-*/evaluation-summary.json")):
         old = read(history)
+        if 'cases' not in old or 'total' not in old:
+            continue
         if old["passed"] < old["total"]:
             bad = ", ".join(c["case"] for c in old["cases"] if not c["passed"])
             relative = history.relative_to(ROOT).as_posix()
@@ -82,9 +84,25 @@ def main():
               "首次真实简历案例存在受众默认值不匹配、总结未明确 UTC 时区的问题；原记录保存在 examples/history/first-live-demo，未改写历史输出。现通过显式 --audience 和时区统一修正，新增回归测试并重新运行真实案例 resume_video。",
               "脚本仍使用本地事实模板，不以 AI 创作质量作为已证明的效果。模型的创意角度是待人工审核建议，不能视为经过核验的产品事实。",
               "素材检索是标签匹配；费用与耗时为合成的单人串行估算；未连接真实制作、审核、发布服务。所有业务阶段仍为 planned。",
-              "本轮每个场景只做一次真实模型试验，没有统计稳定性或全面安全性结论；未计量真实 API token 费用。生成成功不等于业务活动已执行。",
+              "全量场景单次验证，关键场景另有小样本重复试验（见后文），不保证未来成功率或全面安全性；未计量真实 API token 费用。生成成功不等于业务活动已执行。",
               "失败步骤续跑另有三个独立 CLI 进程的真实模型验证，见 [专项汇总](../examples/live_resume/evaluation-summary.json) 和 [专项说明](06-improvements.md)。",
               "重复评估会将上一版结果复制到 examples/history 后再生成新结果；历史文件的通过率和模型状态仅代表当时版本。", ""]
+    lines += ['## 独立评估与重复真实运行','',
+              '最新评估器从原始输入、费用和素材快照独立复算，不调用业务工具的 calculate 方法；每个案例的 audit.json 给出逐项检查。源码哈希与本次数据快照随结果保存。详见 [第3、4项说明](07-replanning-evaluation.md)。','']
+    repeat_path=ROOT/'examples/live_stability/evaluation-summary.json'
+    if repeat_path.exists():
+        repeated=read(repeat_path)
+        lines += [f"实际通过 {repeated['passed']}/{repeated['total']}，计划试验 {repeated['expected_runs']} 次，complete={repeated['complete']}。",
+                  '[汇总与全部结果路径](../examples/live_stability/evaluation-summary.json)。','',
+                  '| 场景 | 通过/执行 | 平均工具调用 | 平均墙钟耗时（秒） |','|---|---:|---:|---:|']
+        for name,row in repeated.get('per_case',{}).items():
+            lines.append(f"| {name} | {row['passed']}/{row['runs']} | {row['mean_tool_calls']} | {row['mean_elapsed_seconds']} |")
+        lines += ['', '每次试验独立请求和状态，无旧结果缓存；三次重复只说明本次小样本观察，不构成可靠性保证。失败记录也计入分母，未用后续成功替换失败。','']
+        for row in repeated['cases']:
+            if not row['passed']:
+                lines += [f"- 第{row['trial']}轮 {row['case']} 未通过："+', '.join(k for k,v in row['checks'].items() if not v)]
+    else:
+        lines += ['尚无重复真实运行记录。','']
     (ROOT / "docs/03-evaluation.md").write_text("\n".join(lines), encoding="utf-8")
     print("Updated docs/03-evaluation.md from actual evidence.")
 

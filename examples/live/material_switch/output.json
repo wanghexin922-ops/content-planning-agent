@@ -14,7 +14,7 @@
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "功能介绍"
+        "text": "场景引导"
       },
       "deliverables": [
         "带来源 ID 的可编辑脚本",
@@ -44,7 +44,7 @@
       "estimated_finish": "2026-10-28T11:30:00+08:00",
       "feasible": true,
       "production_mode": "slideshow",
-      "script_id": "script-21119bb80793",
+      "script_id": "script-24d00f6a7ec9",
       "steps": [
         {
           "cost": 0.0,
@@ -111,12 +111,12 @@
     "execution_status": "not_executed",
     "request_id": "demo-material_switch",
     "script": {
-      "angle": "功能介绍",
+      "angle": "场景引导",
       "audience": "短视频创作者",
       "creative_direction": {
         "is_product_fact": false,
         "status": "proposal_requires_review",
-        "text": "功能介绍"
+        "text": "场景引导"
       },
       "editable": true,
       "generator": "local_fact_template",
@@ -163,7 +163,7 @@
     "estimated_finish": "2026-10-28T11:30:00+08:00",
     "feasible": true,
     "production_mode": "slideshow",
-    "script_id": "script-21119bb80793",
+    "script_id": "script-24d00f6a7ec9",
     "steps": [
       {
         "cost": 0.0,
@@ -234,8 +234,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 字幕生成 功能演示",
-        "reason": "需要先确认是否有与视频字幕工具主题相关的可用素材及价格目录。"
+        "query": "视频字幕工具 短视频创作者 字幕自动生成 功能演示",
+        "reason": "需要确认是否存在与视频字幕工具主题相关的素材及价格信息。"
       },
       "status": "succeeded",
       "result": {
@@ -331,27 +331,27 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
+        "angle": "操作演示",
         "material_ids": [
           "P01",
           "P02"
         ],
-        "angle": "功能介绍",
-        "reason": "两个素材均与视频字幕工具主题相关，用其事实生成功能介绍脚本。"
+        "reason": "两份素材均与字幕工具主题相关，用产品演示素材做操作演示最贴合创作者受众。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-d72a2df652ac",
+        "script_id": "script-529e49348f18",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "功能介绍",
+          "angle": "操作演示",
           "material_ids": [
             "P01",
             "P02"
           ],
           "creative_direction": {
-            "text": "功能介绍",
+            "text": "操作演示",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -399,16 +399,16 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
-        "script_id": "script-d72a2df652ac",
         "production_mode": "premium",
-        "reason": "按用户初始偏好 premium 精剪核算真实费用与耗时。"
+        "reason": "按用户初始 premium 偏好估算真实费用与串行耗时，核对是否在预算4与截止时间内。",
+        "script_id": "script-529e49348f18"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-8b38ef43384c",
+        "estimate_id": "estimate-892a1abaa0ba",
         "estimate": {
-          "script_id": "script-d72a2df652ac",
+          "script_id": "script-529e49348f18",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -513,25 +513,25 @@
       "step": 4,
       "tool": "generate_script",
       "arguments": {
+        "angle": "场景引导",
         "material_ids": [
           "P02"
         ],
-        "angle": "功能介绍",
-        "reason": "P02 为免费素材且事实与主题相关，改用可降低素材准备费用。"
+        "reason": "P02 为免费素材且主题相关，替换付费素材可降低素材成本，先看 cheapest 方式是否可行。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-21119bb80793",
+        "script_id": "script-24d00f6a7ec9",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "功能介绍",
+          "angle": "场景引导",
           "material_ids": [
             "P02"
           ],
           "creative_direction": {
-            "text": "功能介绍",
+            "text": "场景引导",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -570,15 +570,15 @@
       "tool": "estimate_plan",
       "arguments": {
         "production_mode": "slideshow",
-        "reason": "素材成本已降为 0，用最便宜的图文轮播方式核算是否落在预算 4 内。",
-        "script_id": "script-21119bb80793"
+        "reason": "使用免费素材的最便宜制作方式估算，验证能否压入预算4。",
+        "script_id": "script-24d00f6a7ec9"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-8221ff05523c",
+        "estimate_id": "estimate-817568a59590",
         "estimate": {
-          "script_id": "script-21119bb80793",
+          "script_id": "script-24d00f6a7ec9",
           "production_mode": "slideshow",
           "total_cost": 4.0,
           "currency": "模拟单位",
@@ -683,8 +683,8 @@
       "step": 6,
       "tool": "save_plan",
       "arguments": {
-        "estimate_id": "estimate-8221ff05523c",
-        "reason": "该估算在预算 4 内且时间充裕、可行，提交保存。"
+        "estimate_id": "estimate-817568a59590",
+        "reason": "该估算显示总成本4、耗时90分钟，均满足预算与截止时间，符合保存条件。"
       },
       "status": "succeeded",
       "result": {
@@ -699,7 +699,7 @@
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "功能介绍"
+              "text": "场景引导"
             },
             "deliverables": [
               "带来源 ID 的可编辑脚本",
@@ -729,7 +729,7 @@
             "estimated_finish": "2026-10-28T11:30:00+08:00",
             "feasible": true,
             "production_mode": "slideshow",
-            "script_id": "script-21119bb80793",
+            "script_id": "script-24d00f6a7ec9",
             "steps": [
               {
                 "cost": 0.0,
@@ -796,12 +796,12 @@
           "execution_status": "not_executed",
           "request_id": "demo-material_switch",
           "script": {
-            "angle": "功能介绍",
+            "angle": "场景引导",
             "audience": "短视频创作者",
             "creative_direction": {
               "is_product_fact": false,
               "status": "proposal_requires_review",
-              "text": "功能介绍"
+              "text": "场景引导"
             },
             "editable": true,
             "generator": "local_fact_template",
@@ -845,8 +845,8 @@
       "tool": "finish",
       "arguments": {
         "status": "completed",
-        "summary": "已为“推广一款视频字幕工具”（受众：短视频创作者）生成并保存内容活动方案，plan_id=plan-543ad44cf61c66ac，script_id=script-21119bb80793，estimate_id=estimate-8221ff05523c。初始 premium 精剪估算 12 单位超预算（缺口 8），basic 为 8 单位仍超；改用免费素材 P02 并切换为图文轮播（slideshow）后，总费用 4 单位、串行耗时 90 分钟、预计 2026-10-28 11:30 完成，在预算 4 与截止 2026-10-29 18:00 内可行。脚本仅使用素材事实“支持为视频添加字幕”，角度为功能介绍。方案的创意方向与发布渠道、账号、执行人员仍待确认；素材准备、制作、审核、发布均未执行。",
-        "reason": "方案已成功保存且估算在预算与截止时间内可行，故完成任务。"
+        "summary": "已保存方案 plan-543ad44cf61c66ac（request_id: demo-material_switch）。主题为“推广一款视频字幕工具”，受众为短视频创作者。初始 premium 偏好估算为 12（超预算 8），改用免费素材 P02 并将制作方式降为图文轮播视频 slideshow 后，总成本 4（预算 4，无缺口），串行耗时 90 分钟，预计 2026-10-28T11:30 完成，早于 2026-10-29T18:00 截止。脚本 script-24d00f6a7ec9（场景引导）仅使用素材事实“支持为视频添加字幕”，来源可追溯。创意角度与最终文案、发布渠道与账号、实际执行人员仍待人工确认。本方案仅完成规划与保存，素材准备、脚本制作、审核、发布均未执行。",
+        "reason": "保存返回 saved=true 且重新核算的成本与时间均满足约束，故报告完成。"
       },
       "status": "succeeded",
       "result": {
@@ -864,16 +864,16 @@
       "P02"
     ],
     "scripts": {
-      "script-d72a2df652ac": {
+      "script-529e49348f18": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "功能介绍",
+        "angle": "操作演示",
         "material_ids": [
           "P01",
           "P02"
         ],
         "creative_direction": {
-          "text": "功能介绍",
+          "text": "操作演示",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },
@@ -915,15 +915,15 @@
         "generator": "local_fact_template",
         "editable": true
       },
-      "script-21119bb80793": {
+      "script-24d00f6a7ec9": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "功能介绍",
+        "angle": "场景引导",
         "material_ids": [
           "P02"
         ],
         "creative_direction": {
-          "text": "功能介绍",
+          "text": "场景引导",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

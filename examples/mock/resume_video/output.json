@@ -32,7 +32,7 @@
         "串行预计完成时间不晚于截止时间",
         "发布前完成人工审核"
       ],
-      "theme": "推广带字幕的求职简历介绍视频制作"
+      "theme": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历"
     },
     "estimate": {
       "assumptions": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。",
@@ -44,7 +44,7 @@
       "estimated_finish": "2026-10-28T12:00:00+08:00",
       "feasible": true,
       "production_mode": "basic",
-      "script_id": "script-0e1beb864126",
+      "script_id": "script-287a0171a8a1",
       "steps": [
         {
           "cost": 2.0,
@@ -127,9 +127,9 @@
         {
           "index": 1,
           "kind": "campaign_context",
-          "narration": "面向应届毕业生，本期围绕“推广带字幕的求职简历介绍视频制作”介绍素材中已有的功能。",
+          "narration": "面向应届毕业生，本期围绕“推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历”介绍素材中已有的功能。",
           "source_ids": [],
-          "visual": "主题标题卡：推广带字幕的求职简历介绍视频制作"
+          "visual": "主题标题卡：推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历"
         },
         {
           "index": 2,
@@ -152,15 +152,15 @@
         {
           "index": 4,
           "kind": "call_to_action",
-          "narration": "如果你也关注“推广带字幕的求职简历介绍视频制作”，可根据自己的需求了解和体验。",
+          "narration": "如果你也关注“推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历”，可根据自己的需求了解和体验。",
           "source_ids": [],
           "visual": "主题回顾与体验入口"
         }
       ],
-      "theme": "推广带字幕的求职简历介绍视频制作"
+      "theme": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历"
     },
     "source_mode": "mock",
-    "theme": "推广带字幕的求职简历介绍视频制作"
+    "theme": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历"
   },
   "latest_estimate": {
     "assumptions": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。",
@@ -172,7 +172,7 @@
     "estimated_finish": "2026-10-28T12:00:00+08:00",
     "feasible": true,
     "production_mode": "basic",
-    "script_id": "script-0e1beb864126",
+    "script_id": "script-287a0171a8a1",
     "steps": [
       {
         "cost": 2.0,
@@ -243,7 +243,7 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "推广带字幕的求职简历介绍视频制作",
+        "query": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历",
         "reason": "需要找到主题对应的素材事实"
       },
       "status": "succeeded",
@@ -349,9 +349,9 @@
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-0e1beb864126",
+        "script_id": "script-287a0171a8a1",
         "script": {
-          "theme": "推广带字幕的求职简历介绍视频制作",
+          "theme": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历",
           "audience": "应届毕业生",
           "angle": "功能介绍",
           "material_ids": [
@@ -365,8 +365,8 @@
           "scenes": [
             {
               "index": 1,
-              "visual": "主题标题卡：推广带字幕的求职简历介绍视频制作",
-              "narration": "面向应届毕业生，本期围绕“推广带字幕的求职简历介绍视频制作”介绍素材中已有的功能。",
+              "visual": "主题标题卡：推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历",
+              "narration": "面向应届毕业生，本期围绕“推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历”介绍素材中已有的功能。",
               "source_ids": [],
               "kind": "campaign_context"
             },
@@ -391,7 +391,7 @@
             {
               "index": 4,
               "visual": "主题回顾与体验入口",
-              "narration": "如果你也关注“推广带字幕的求职简历介绍视频制作”，可根据自己的需求了解和体验。",
+              "narration": "如果你也关注“推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历”，可根据自己的需求了解和体验。",
               "source_ids": [],
               "kind": "call_to_action"
             }
@@ -407,14 +407,14 @@
       "arguments": {
         "production_mode": "premium",
         "reason": "已取得脚本，先评估初始制作偏好",
-        "script_id": "script-0e1beb864126"
+        "script_id": "script-287a0171a8a1"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-86ef16749f43",
+        "estimate_id": "estimate-e1912779b0a2",
         "estimate": {
-          "script_id": "script-0e1beb864126",
+          "script_id": "script-287a0171a8a1",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -521,14 +521,14 @@
       "arguments": {
         "production_mode": "basic",
         "reason": "当前方案不可行，改用工具给出的可行制作方式并复核",
-        "script_id": "script-0e1beb864126"
+        "script_id": "script-287a0171a8a1"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-532e5b5499f8",
+        "estimate_id": "estimate-5f792b963ddf",
         "estimate": {
-          "script_id": "script-0e1beb864126",
+          "script_id": "script-287a0171a8a1",
           "production_mode": "basic",
           "total_cost": 8.0,
           "currency": "模拟单位",
@@ -633,7 +633,7 @@
       "step": 5,
       "tool": "save_plan",
       "arguments": {
-        "estimate_id": "estimate-532e5b5499f8",
+        "estimate_id": "estimate-5f792b963ddf",
         "reason": "估算满足预算和截止时间"
       },
       "status": "succeeded",
@@ -667,7 +667,7 @@
               "串行预计完成时间不晚于截止时间",
               "发布前完成人工审核"
             ],
-            "theme": "推广带字幕的求职简历介绍视频制作"
+            "theme": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历"
           },
           "estimate": {
             "assumptions": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。",
@@ -679,7 +679,7 @@
             "estimated_finish": "2026-10-28T12:00:00+08:00",
             "feasible": true,
             "production_mode": "basic",
-            "script_id": "script-0e1beb864126",
+            "script_id": "script-287a0171a8a1",
             "steps": [
               {
                 "cost": 2.0,
@@ -762,9 +762,9 @@
               {
                 "index": 1,
                 "kind": "campaign_context",
-                "narration": "面向应届毕业生，本期围绕“推广带字幕的求职简历介绍视频制作”介绍素材中已有的功能。",
+                "narration": "面向应届毕业生，本期围绕“推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历”介绍素材中已有的功能。",
                 "source_ids": [],
-                "visual": "主题标题卡：推广带字幕的求职简历介绍视频制作"
+                "visual": "主题标题卡：推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历"
               },
               {
                 "index": 2,
@@ -787,15 +787,15 @@
               {
                 "index": 4,
                 "kind": "call_to_action",
-                "narration": "如果你也关注“推广带字幕的求职简历介绍视频制作”，可根据自己的需求了解和体验。",
+                "narration": "如果你也关注“推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历”，可根据自己的需求了解和体验。",
                 "source_ids": [],
                 "visual": "主题回顾与体验入口"
               }
             ],
-            "theme": "推广带字幕的求职简历介绍视频制作"
+            "theme": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历"
           },
           "source_mode": "mock",
-          "theme": "推广带字幕的求职简历介绍视频制作"
+          "theme": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历"
         }
       }
     },
@@ -823,8 +823,8 @@
       "P02"
     ],
     "scripts": {
-      "script-0e1beb864126": {
-        "theme": "推广带字幕的求职简历介绍视频制作",
+      "script-287a0171a8a1": {
+        "theme": "推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历",
         "audience": "应届毕业生",
         "angle": "功能介绍",
         "material_ids": [
@@ -838,8 +838,8 @@
         "scenes": [
           {
             "index": 1,
-            "visual": "主题标题卡：推广带字幕的求职简历介绍视频制作",
-            "narration": "面向应届毕业生，本期围绕“推广带字幕的求职简历介绍视频制作”介绍素材中已有的功能。",
+            "visual": "主题标题卡：推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历",
+            "narration": "面向应届毕业生，本期围绕“推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历”介绍素材中已有的功能。",
             "source_ids": [],
             "kind": "campaign_context"
           },
@@ -864,7 +864,7 @@
           {
             "index": 4,
             "visual": "主题回顾与体验入口",
-            "narration": "如果你也关注“推广带字幕的求职简历介绍视频制作”，可根据自己的需求了解和体验。",
+            "narration": "如果你也关注“推广字幕工具：以应届毕业生的求职简历介绍视频为使用场景，仅介绍字幕添加和编辑能力，不生成个人简历”，可根据自己的需求了解和体验。",
             "source_ids": [],
             "kind": "call_to_action"
           }

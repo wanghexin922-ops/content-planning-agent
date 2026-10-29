@@ -1,0 +1,161 @@
+{
+  "request_id": "demo-persistent_failure",
+  "status": "failed",
+  "summary": "方案未保存；失败步骤 generate_script：演示用工具故障：generate_script。成功产物已保留，可修复后显式续跑。",
+  "mode": "mock",
+  "model": "offline-rule-simulator",
+  "evidence": "offline_mock_flow_only",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "推广一款视频字幕工具",
+        "reason": "需要找到主题对应的素材事实"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "字幕工具产品演示",
+            "topic_terms": [
+              "字幕",
+              "剪辑",
+              "caption"
+            ],
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕",
+              "支持编辑字幕文本"
+            ],
+            "cost": 2,
+            "license": "合成素材，仅用于本项目演示"
+          },
+          {
+            "id": "P02",
+            "title": "字幕工具图文素材",
+            "topic_terms": [
+              "字幕",
+              "剪辑",
+              "caption"
+            ],
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕"
+            ],
+            "cost": 0,
+            "license": "合成素材，仅用于本项目演示"
+          }
+        ],
+        "count": 2,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"
+      }
+    },
+    {
+      "step": 2,
+      "tool": "generate_script",
+      "arguments": {
+        "angle": "功能介绍",
+        "material_ids": [
+          "P01"
+        ],
+        "reason": "使用检索返回的首个相关素材生成脚本"
+      },
+      "status": "failed",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "injected_failure",
+          "message": "演示用工具故障：generate_script",
+          "retryable": false
+        }
+      }
+    },
+    {
+      "step": 3,
+      "tool": "finish",
+      "arguments": {
+        "reason": "观察到无法恢复的工具错误",
+        "status": "failed",
+        "summary": "演示用工具故障：generate_script"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "failed",
+        "summary": "方案未保存；失败步骤 generate_script：演示用工具故障：generate_script。成功产物已保留，可修复后显式续跑。",
+        "summary_source": "verified_tool_state",
+        "missing_fields": []
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [
+      "P01",
+      "P02"
+    ],
+    "scripts": {}
+  },
+  "tool_calls": 3,
+  "model_calls": 3,
+  "runs": 1,
+  "replayed": false
+}

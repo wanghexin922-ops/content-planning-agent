@@ -245,8 +245,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 短视频创作者",
-        "reason": "需要检索与字幕工具主题相关的素材以生成方案。"
+        "query": "视频字幕工具 功能与操作素材",
+        "reason": "用户要求推广视频字幕工具，需先确认是否有该主题相关的可用素材与价格目录。"
       },
       "status": "succeeded",
       "result": {
@@ -347,7 +347,7 @@
           "P01",
           "P02"
         ],
-        "reason": "两个素材均与字幕工具相关，可用其可见事实生成功能介绍脚本。"
+        "reason": "两个素材均与视频字幕主题相关，P01 事实更完整，用功能介绍角度生成可追溯脚本。"
       },
       "status": "succeeded",
       "result": {
@@ -410,9 +410,9 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
-        "script_id": "script-d72a2df652ac",
         "production_mode": "premium",
-        "reason": "先按用户初始偏好 premium 估算真实费用与耗时。"
+        "script_id": "script-d72a2df652ac",
+        "reason": "用户初始偏好为 premium，先按精剪视频估算真实费用与串行耗时。"
       },
       "status": "succeeded",
       "result": {
@@ -525,7 +525,7 @@
       "tool": "save_plan",
       "arguments": {
         "estimate_id": "estimate-b5034bcab9ff",
-        "reason": "premium 估算可行（费用 12 ≤ 15，完成时间早于截止），符合用户初始偏好。"
+        "reason": "premium 估算在预算与截止时间内均可行，按用户初始偏好保存该方案。"
       },
       "status": "succeeded",
       "result": {
@@ -697,8 +697,8 @@
       "tool": "finish",
       "arguments": {
         "status": "completed",
-        "summary": "已按用户初始偏好 premium 生成并保存内容活动方案（plan-4e8b57da2b20d0c4，脚本 script-d72a2df652ac）。素材选用 P01、P02，均与视频字幕工具主题相关；脚本以功能介绍角度仅引用素材事实“支持为视频添加字幕”“支持编辑字幕文本”。估算费用 12（预算 15 以内），串行预计完成时间 2026-10-28T14:00:00+08:00，早于截止 2026-10-29T18:00:00+08:00，含素材准备、脚本整理、精剪视频、内容审核、人工确认与发布五个阶段。方案仅完成保存，制作、审核、发布均未执行；发布渠道账号、创意角度最终文案、执行人员仍待确认。",
-        "reason": "保存返回 saved=true 且估算可行，方案已按初始偏好落库。"
+        "summary": "已按用户初始偏好 premium 生成并保存内容活动方案（plan-4e8b57da2b20d0c4）。主题“推广一款视频字幕工具”，受众为短视频创作者。采用素材 P01、P02，脚本 script-d72a2df652ac 采用功能介绍角度，只引用素材事实“支持为视频添加字幕”“支持编辑字幕文本”。估算总费用 12（预算 15），串行耗时 240 分钟，预计 2026-10-28T14:00 完成，不晚于截止 2026-10-29T18:00，估算可行并已通过保存核验。待确认项：发布渠道与账号、创意角度与最终文案、实际执行人员。注意：本次仅保存方案，素材准备、脚本制作、审核、发布均未执行。",
+        "reason": "保存操作返回 saved=true，方案在预算与截止时间内可行，任务完成。"
       },
       "status": "succeeded",
       "result": {

@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "step_status_matches_result": true,
+    "tool_counter_matches_records": true,
+    "retrieval_matches_source": true,
+    "script_uses_observed_materials": true,
+    "valid_material_ids": true,
+    "theme_and_audience_preserved": true,
+    "no_unverified_angle": true,
+    "creative_proposal_is_bounded": true,
+    "original_topic_supported": true,
+    "product_claims_have_sources": true,
+    "citations_support_claims": true,
+    "successful_artifacts_preserved": true,
+    "saved_state_matches_database": true,
+    "no_false_completion": true
+  },
+  "passed": true,
+  "oracle": "原始输入+素材费用快照+独立预算/串行时间规则+SQLite实际记录"
+}
