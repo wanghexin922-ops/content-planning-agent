@@ -1,119 +1,111 @@
 # 内容任务规划 Agent
 
-面向小影校招 AI Agent 开发考核的 CLI 项目。用户提供主题、预算和截止时间，模型选择工具，根据实际返回值调整制作方式、替换素材或停止；程序负责预算计算、依赖检查、持久化和防重复。
+小影校招 AI Agent 开发考核项目。输入活动主题、预算和截止时间，Agent 调用素材检索、脚本生成、成本估算与方案保存工具，根据实际结果调整计划，并输出方案、步骤状态、费用和未完成原因。
 
-**当前验证状态：71 项自动化测试通过；离线 17/17；真实模型 17/17；关键场景三轮独立重复 9/9。** 每个案例含独立预算/时间/依赖/引用审计，真实失败与修正历史保留。结果见 [评估报告](docs/03-evaluation.md)，小样本通过率不保证未来效果。
+采用 **Python 标准库 + SQLite + DeepSeek 原生工具调用**，提供 CLI 和离线 Mock。模型负责选动作与重规划，工具负责预算、时间、依赖和保存结果的确定性校验。交付的是内容活动方案，实际制作、审核和发布仍为待执行阶段。
 
-## 1. 环境与最快运行方式
+## 评审快速入口
 
-- Python 3.10+；本次验证：Windows、Python 3.12.4。
-- 运行和内置测试均只使用标准库，无须安装框架或运行时依赖。
-- 在项目根目录运行命令。Windows PowerShell 示例：
+| 检查内容 | 入口 |
+|---|---|
+| 需求、范围及验收映射 | [需求说明](docs/01-requirements.md) |
+| 决策循环和工程取舍 | [方案设计](docs/02-solution.md) |
+| 真实结果、失败历史与局限 | [评估报告](docs/03-evaluation.md) |
+| AI 使用范围与个人贡献 | [AI 使用记录](docs/04-ai-usage.md) |
+| 复盘、用时及未完成内容 | [复盘](docs/05-retrospective.md) |
+| 事实约束与失败续跑 | [优化说明 1、2](docs/06-improvements.md) |
+| 约束变化与独立评估 | [优化说明 3、4](docs/07-replanning-evaluation.md) |
+| 提交方式 | [提交说明](SUBMISSION.md) |
+
+已保存的验证结果：**71 项自动化测试通过，离线验收 17/17，真实模型验收 17/17，关键场景三轮独立重复 9/9**。真实失败终态的跨进程续跑专项通过 8 项检查。记录来自本次实际运行，样本规模有限，不代表未来调用必然成功。
+
+## 1. 安装与离线运行
+
+环境：Python 3.10+；已在 Windows、Python 3.12.4 验证。运行及内置测试只使用标准库，无须安装第三方包；[requirements.txt](requirements.txt) 说明可选测试依赖。
 
 ```powershell
-cd 'F:\找工作简历项目\小影科技笔试项目\内容任务规划 Agent'
+git clone https://github.com/wanghexin922-ops/content-planning-agent.git
+cd content-planning-agent
 python scripts/verify.py
 python scripts/evaluate.py --mode mock
 ```
 
-第二条命令会实际运行 17 组案例，将输入、输出、Trace 和检查结果写入 `examples/mock/`。测试结果在 `examples/test-results.txt`。如更喜欢 pytest，可选安装 `python -m pip install "pytest>=7,<10"` 后运行 `python -m pytest -q`。
+第一条 Python 命令运行自动化测试并写入 `examples/test-results.txt`；第二条运行 17 个离线案例，生成 `examples/mock/` 下的输入、输出、Trace 和审计结果。Mock 采用模拟决策，仅验证流程，不证明真实模型决策效果。
 
-单独回放“预算 10、初始费用 12、调整后费用 8”的案例：
+单独运行超预算案例：
 
 ```powershell
-python planner.py --mode mock --input examples/inputs/over_budget.json --now '2026-10-28T10:00:00+08:00' --out runtime/demo
+python planner.py --mode mock --input examples/inputs/over_budget.json --now "2026-10-28T10:00:00+08:00" --out runtime/demo
 ```
 
-`--now` 固定业务时钟，仅用于历史案例回放。正常使用省略它，程序会按真实时间检查截止时间。
+`--now` 固定业务时钟，用于历史案例回放。日常任务省略该选项，程序按当前时间检查截止时间。
 
-## 2. 填写 Key，运行 DeepSeek
+## 2. 配置真实模型
 
-项目交付目录包含空密钥的 `.env`。若从 GitHub 克隆，先复制：
+仓库仅包含空密钥模板 `.env.example`，不包含 `.env`。在 PowerShell 中执行：
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-只需修改 `.env` 第一项：
+在本地 `.env` 中填写自己的密钥：
 
 ```dotenv
-DEEPSEEK_API_KEY=在本地填入你的密钥
+DEEPSEEK_API_KEY=填写你的密钥
 DEEPSEEK_BASE_URL=https://api.deepseek.com
 DEEPSEEK_MODEL=deepseek-flash
 DEEPSEEK_TIMEOUT=60
 ```
 
-已有系统环境变量优先于 `.env`。Key 不进入提示词、Trace 或数据库；`.env` 已被 Git 忽略。模型调用会产生模型服务商的实际 API 费用，不计入本项目的模拟活动预算。
+系统环境变量优先于 `.env`；`.env` 已被 Git 忽略。真实调用需要相应模型访问权限，会产生服务商 API 费用，与题目中的模拟活动预算分开计算。缺少密钥或接口失败会明确报错，不会自动切换成 Mock。
 
-创建从当前时间起 24 小时内截止的新任务并运行：
+生成截止时间为当前时间后 24 小时的新任务，再执行：
 
 ```powershell
 python scripts/new_request.py --budget 10 --audience "短视频创作者"
 python planner.py --mode live --input runtime/request.json --out runtime/live-demo
 ```
 
-结果文件：
+可编辑 `runtime/request.json` 修改主题、预算、截止时间和受众。补齐或改变输入时使用新的 `request_id`；同一 ID 的不同输入会被拒绝。
 
-- `output.json`：任务状态、步骤及工具实际结果、费用和保存状态。
-- `plan.json`：成功保存的活动方案、可编辑脚本、阶段依赖和时间安排；未保存时不存在。
-- `trace.jsonl`：每步动作参数、简要依据、返回摘要、下一动作。
-- `runtime/planner.sqlite`：任务和方案持久化，仅存本地，不提交。
+输出目录包含 `output.json`（任务状态、工具结果、费用、保存状态）、`trace.jsonl`（动作、参数、简要依据、返回摘要、后续动作），成功保存时另有 `plan.json`（方案、脚本、依赖与排期）。任务状态保存在本地 `runtime/planner.sqlite`。
 
-真实模型使用 DeepSeek 原生 function calling，关闭 thinking 模式以简化接入。模型返回函数调用，执行器执行工具后将结果以 `role=tool` 反馈，模型再选择后续动作。没有 Key、请求超时、限流或认证失败时会明确报错，**绝不静默回退 Mock**。
+## 3. 决策闭环与边界
 
-接入依据（2026-10-28 核对）：[模型名称及接口地址](https://api-docs.deepseek.com/quick_start/agent_integrations/)、[工具调用](https://api-docs.deepseek.com/guides/tool_calls/)。
-
-## 3. 真实模型验收与提交前步骤
-
-先运行核心案例，检查真实工具结果是否改变后续动作：
-
-```powershell
-python scripts/evaluate.py --mode live --cases normal over_budget missing_info tool_failure repeated_request
+```text
+用户主题、预算、截止时间
+         ↓
+模型选择动作 → 执行工具 → 工具结果反馈模型
+         ↑                       ↓
+         └── 补查 / 替换 / 重估 ──┘
+                                 ↓
+                    保存可行方案 / 说明未完成
 ```
 
-完整验收：
+模型采用原生 function calling；执行器将工具结果以 `role=tool` 反馈，再由模型选择下一步。可用工具为 `search_materials`、`generate_script`、`estimate_plan`、`save_plan`，另有 `finish` 结束动作。没有使用 Agent 框架。
 
-```powershell
-python scripts/evaluate.py --mode live
-```
+- **预算调整**：真实记录中，初始费用 12 超过预算 10；模型观察结果后改用费用 8 的方案，重新估算并保存。见 [输出](examples/live/over_budget/output.json) 和 [Trace](examples/live/over_budget/trace.jsonl)。
+- **正常路径**：检索、生成、估算可行后保存，见 [输出](examples/live/normal/output.json) 和 [Trace](examples/live/normal/trace.jsonl)。
+- **失败处理**：记录真实工具错误，保留成功步骤；模型可调整方案、再尝试或停止。持续失败不能记为成功。
+- **硬性约束**：模型不能改变预算或截止时间；保存前再次核算费用、当前时间与步骤依赖。最终保存状态以工具和数据库为准。
+- **事实来源**：素材和价格均为合成数据。脚本工具基于素材原文生成本地模板，模型负责规划决策；不将模板质量当作模型创作效果。检索改写不能替换用户原始主题。
 
-记录独立保存到 `examples/live/`，不会冒充离线记录。每次评估使用临时数据库，因此重复运行评估会重新调用模型；旧结果先完整复制到 `examples/history/`，再生成所选案例的新结果。评估使用固定业务时钟，不代表当时正在执行真实业务。
+费用由素材、脚本整理、制作、审核和发布构成；耗时按单人串行估算。活动执行阶段的 `planned` 与 Agent 工具步骤的 `succeeded` 分开记录，保存方案不代表执行了活动。
 
-必须阅读 `examples/live/evaluation-summary.json`，核对至少两条真实模型路径。例如：正常估算后保存；观察超预算后改选制作方式、重新估算再保存。真实模型也可能产生不同选择或失败，检查器会如实标出，不修改记录来凑通过。运行 `python scripts/update_evaluation.py` 可从实际记录重新生成评估文档。
+## 4. 重复执行、故障与续跑
 
-提交前还需要本人填写 `docs/04-ai-usage.md`、`docs/05-retrospective.md` 中明确标出的待补充项；将所有代码、文档、测试和案例放到一个 GitHub 仓库。文件上传入口可提交 `SUBMISSION.md` 的 PDF/TXT 版本，但仍须提供仓库链接与最终 commit SHA。这里不猜测官方题号。
+同一模式、同一 `request_id`、相同输入重复执行会返回已有结果，不重复保存；Mock 和 live 的状态隔离。SQLite 唯一约束与任务锁用于防止重复方案。
 
-## 4. 输入与约束
-
-```json
-{
-  "request_id": "campaign-001",
-  "theme": "推广一款视频字幕工具",
-  "budget": 10,
-  "deadline": "2026-10-30T18:00:00+08:00",
-  "initial_mode": "premium",
-  "audience": "短视频创作者"
-}
-```
-
-`request_id`、`theme` 必需。缺少 `budget` 或 `deadline` 是合法的资料不足场景，返回待补充状态；无效数字、无时区时间等属于输入错误。`initial_mode` 是可调整的初始偏好，支持 `premium/basic/slideshow`，不是硬性要求。预算和截止时间不能被模型改变。
-
-费用来自 `data/pricing.json`，素材来自 `data/materials.json`，均为合成数据。最终方案费用 = 素材成本 + 脚本整理 + 制作 + 审核 + 发布。采用单人串行耗时估算。所有活动执行阶段状态为 `planned`；Agent 步骤的 `succeeded` 仅表示对应规划工具执行成功。
-
-## 5. 异常、重复执行与续跑
-
-相同模式、相同 `request_id`、相同输入重复提交，读取已有结果，不重新保存；同一 ID 改变输入会拒绝。Mock 与 live 的存储命名空间隔离。修改数据源后请换新请求 ID，防止混用旧估算。
-
-模拟首次脚本工具失败：
+模拟脚本工具首次失败：
 
 ```powershell
 python scripts/new_request.py --out runtime/failure-request.json
 python planner.py --mode mock --input runtime/failure-request.json --fail generate_script:1 --out runtime/failure-demo
 ```
 
-永久保存失败使用 `--fail save_plan:-1`。故障注入只用于验证，完整写入 Trace。
+`--fail save_plan:-1` 表示持续保存失败。故障注入会记录在 Trace 中。
 
-验证跨进程续跑：
+跨进程续跑演示：
 
 ```powershell
 python scripts/new_request.py --out runtime/resume-request.json
@@ -121,54 +113,50 @@ python planner.py --mode mock --input runtime/resume-request.json --max-steps 2 
 python planner.py --mode mock --input runtime/resume-request.json --resume --max-steps 16 --out runtime/resume-demo
 ```
 
-`--resume` 保留成功步骤，继续从工具观察处决策。默认同一任务累计最多 16 次工具动作（含 finish）、20 轮模型调用；重新启动不会隐式清零。达到上限返回 `incomplete_limit`，续跑时需显式提高原有上限。未成功任务不加 `--resume` 只返回既有结果。补齐缺失输入时使用新的 `request_id`。
+默认同一任务累计最多 16 次工具动作（含 finish）、20 轮模型调用；达到上限返回 `incomplete_limit`，进程重启不清零。续跑需显式 `--resume`，若耗尽原有上限，还需提高上限。失败终态也支持续跑，保留原有成功产物及失败记录。
 
-退出码：`0` 已完成，`2` 待补充/失败/未完成等有效业务结果，`1` 配置、输入或基础设施错误。评估脚本对预期内失败按用例验收，不因为业务结果是 failed 就误报整个测试失败。
+CLI 退出码：`0` 已完成；`2` 待补充、失败或未完成等有效业务结果；`1` 配置、输入或基础设施错误。评估脚本根据用例预期判断通过与否。
 
-## 6. 评审导航
+## 5. 验证与复现
 
-| 内容 | 入口 |
-|---|---|
-| 需求与验收映射 | [docs/01-requirements.md](docs/01-requirements.md) |
-| 模型决策、状态和取舍 | [docs/02-solution.md](docs/02-solution.md) |
-| 实际验证与不足 | [docs/03-evaluation.md](docs/03-evaluation.md) |
-| AI 辅助范围 | [docs/04-ai-usage.md](docs/04-ai-usage.md) |
-| 复盘与后续计划 | [docs/05-retrospective.md](docs/05-retrospective.md) |
-| 决策循环 | [src/content_planner/agent.py](src/content_planner/agent.py) |
-| 模型与 Mock | [src/content_planner/model.py](src/content_planner/model.py) |
-| 工具与预算守卫 | [src/content_planner/tools.py](src/content_planner/tools.py) |
-| 全部自动化检查 | [tests/](tests/) |
-| 离线验收汇总 | [examples/mock/evaluation-summary.json](examples/mock/evaluation-summary.json) |
+| 验证层次 | 已提交结果 | 说明 |
+|---|---|---|
+| 自动化测试 | [71 项通过](examples/test-results.txt) | 不调用真实模型，包含协议模拟与错误路径 |
+| 离线流程 | [17/17](examples/mock/evaluation-summary.json) | 不能证明模型决策效果 |
+| 真实模型 | [17/17](examples/live/evaluation-summary.json) | 正常、缺信息、超预算、工具失败、重复等 |
+| 独立重复运行 | [9/9](examples/live_stability/evaluation-summary.json) | 正常、超预算、工具失败各 3 轮 |
+| 失败后跨进程恢复 | [8 项检查通过](examples/live_resume/evaluation-summary.json) | 首次失败、恢复、重复提交三个进程 |
 
-不包含 UI、真实素材平台、真实发布、多 Agent 或生产级分布式 Runtime。业务脚本是基于素材事实的本地模板；模型负责决策和调整，不把模板输出包装为模型创作效果。
-
-## 7. 简历视频主题示例与当前提交状态
+真实模型复现命令（需要本地密钥）：
 
 ```powershell
-python scripts/new_request.py --budget 10 --theme "推广带字幕的求职简历介绍视频制作" --audience "应届毕业生" --out runtime/resume-request.json
-python planner.py --mode live --input runtime/resume-request.json --out runtime/resume-demo
-```
-
-受众省略时保持未指定，不擅自套用默认人群。脚本开头和结尾带入主题、受众，产品事实合并来源；创意角度标记为待审核建议。活动简报列出交付物和待确认的发布渠道、账号、执行人员。
-
-`data/materials.json` 的 `topic_terms` 限制素材适用领域。检索改写不能把缺资料的活动替换成另一产品的宣传。当前规则基于领域关键词，有意限制支持范围；复杂同义词可能需要扩充词表。更改数据后使用新的 request_id。
-
-本地工程与真实验收记录已具备评审条件；发布到 GitHub 仍需确定目标仓库、配置本地 Git 提交姓名/邮箱并提交。个人经历、实际用时及官方题号需本人补充。GitHub 连接与本地 Git 作者/推送凭据是不同配置。
-
-## 8. 事实边界与失败恢复专项
-
-传播角度限定为三种表达形式，产品事实只取素材原文；最终金额、时间、保存状态由工具状态生成。模型原始 summary/reason 只保留在 Trace 中作为未核验提案。
-
-真正 failed 状态也支持跨进程恢复，已用真实 DeepSeek 验证。运行 `python scripts/evaluate_resume.py --mode live` 可复现失败、恢复和重复提交三个进程；离线用 `--mode mock`。详见 [专项说明](docs/06-improvements.md)。
-
-## 9. 变化约束与独立评估
-
-新增时间紧张、费用表变化、低预算素材选择和持续故障四组场景。每次评估保存 data-snapshot.json、audit.json 及源码哈希。独立评估器不调用业务工具的计算方法；故意篡改金额、阶段、来源和保存状态的测试用于检验评估器本身。
-
-```powershell
-python scripts/evaluate.py --mode live --cases time_pressure price_changed material_switch persistent_failure
+python scripts/evaluate.py --mode live
 python scripts/evaluate.py --mode live --cases normal over_budget tool_failure --repeats 3
+python scripts/evaluate_resume.py --mode live
 python scripts/update_evaluation.py
 ```
 
-单次全量结果在 examples/live，重复结果在 examples/live_stability。汇总逐案例写入，中断时 complete=false；未完成不能计为全部通过。重复试验会产生实际模型调用费用。详见 [第3、4项说明](docs/07-replanning-evaluation.md)。
+验收包括时间紧张、费用表变化、素材替换、持续故障和无可行方案。每个案例保留实际输入、输出及 Trace；独立审计器从数据快照复算金额、时间、依赖与来源，不调用业务工具的计算方法。篡改反例用于验证审计器能识别错误。
+
+评估采用固定业务时钟，执行时间另行记录；每轮使用独立状态。源码哈希和数据快照用于追溯运行版本。旧结果保留在 `examples/history/`，不删除真实失败来凑通过率。中断的汇总标记 `complete=false`，不算全量通过。
+
+## 6. 项目结构
+
+```text
+planner.py                  CLI 入口
+src/content_planner/        决策循环、模型适配、工具、存储、独立审计
+tests/                      可执行测试
+scripts/                    请求生成、验收、续跑与报告脚本
+data/                       合成素材和费用、耗时规则
+examples/                   输入、实际输出、Trace、测试结果与历史记录
+docs/                       需求、设计、评估、AI 使用、复盘和优化说明
+.env.example                本地配置模板
+requirements.txt            依赖说明
+SUBMISSION.md               提交说明
+```
+
+## 7. 已知限制与贡献说明
+
+检索依赖领域词表，复杂同义词可能需要扩充；素材、费用和耗时是合成数据，串行排期未模拟多人资源；脚本为有来源约束的模板。项目提供 CLI，没有前端、真实内容平台或生产级分布式运行环境。小样本评估不构成线上可靠性保证。
+
+本项目使用 Codex 辅助实现代码、测试和文档，范围及候选人已确认的贡献见 [AI 使用记录](docs/04-ai-usage.md)。候选人的个人阅读、修改、自测、学习收获和实际投入时间仍有待本人填写的部分，未以 AI 执行记录代替个人经历。
