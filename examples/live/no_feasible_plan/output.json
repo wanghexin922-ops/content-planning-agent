@@ -1,7 +1,7 @@
 {
   "request_id": "demo-no_feasible_plan",
   "status": "incomplete",
-  "summary": "未保存方案：预算 2 内无可行解。已检索到主题相关素材（P01 字幕工具产品演示，费用 2；P02 字幕工具图文素材，免费），生成两份事实可追溯脚本（script-b254a25eef5f、script-a4f7327842a7）。估算结果：premium 12、basic 8、slideshow 6（P01+P02 脚本）；改用免费素材 P02 后最低为 slideshow 4 单位，仍超预算 2 单位。超支主要来自必需环节的固定成本（脚本 1 + 制作 1 + 审核 1 + 发布 1）。时间宽裕（最省方案约 90 分钟，截止前完成），缺口仅在预算。可调整方向：将预算至少提高至 4 个模拟单位，或接受省略审核/发布等环节的方案规范。方案未保存，制作、审核、发布均未执行。",
+  "summary": "方案未保存；在已生成脚本及现有制作方式范围内，候选费用 4.0，预算缺口 2.0，时间缺口 0 分钟。可由用户调整预算、截止时间，或补充素材后重新规划；审核与发布等必需环节不可省略。",
   "mode": "live",
   "model": "deepseek-flash",
   "evidence": "real_model_run",
@@ -9,7 +9,7 @@
   "plan_id": null,
   "plan": null,
   "latest_estimate": {
-    "script_id": "script-a4f7327842a7",
+    "script_id": "script-24d00f6a7ec9",
     "production_mode": "slideshow",
     "total_cost": 4.0,
     "currency": "模拟单位",
@@ -89,8 +89,8 @@
       "step": 1,
       "tool": "search_materials",
       "arguments": {
-        "query": "视频字幕工具 推广素材",
-        "reason": "需要为用户主题“视频字幕工具推广”检索本地相关素材及价格目录。"
+        "query": "视频字幕工具",
+        "reason": "用户主题为推广视频字幕工具，需先检索与该主题直接相关的素材。"
       },
       "status": "succeeded",
       "result": {
@@ -186,27 +186,25 @@
       "step": 2,
       "tool": "generate_script",
       "arguments": {
-        "angle": "面向短视频创作者，演示字幕工具如何快速加字幕与改字幕",
+        "angle": "功能介绍",
         "material_ids": [
-          "P01",
-          "P02"
+          "P01"
         ],
-        "reason": "两个素材主题与“视频字幕工具”一致，可用于生成事实可追溯的脚本。"
+        "reason": "P01 为字幕工具产品演示、事实最完整，适合生成功能介绍脚本。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-b254a25eef5f",
+        "script_id": "script-e23d66bc1cf8",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "面向短视频创作者，演示字幕工具如何快速加字幕与改字幕",
+          "angle": "功能介绍",
           "material_ids": [
-            "P01",
-            "P02"
+            "P01"
           ],
           "creative_direction": {
-            "text": "面向短视频创作者，演示字幕工具如何快速加字幕与改字幕",
+            "text": "功能介绍",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -220,11 +218,10 @@
             },
             {
               "index": 2,
-              "visual": "字幕工具产品演示 / 字幕工具图文素材",
+              "visual": "字幕工具产品演示",
               "narration": "支持为视频添加字幕",
               "source_ids": [
-                "P01",
-                "P02"
+                "P01"
               ],
               "kind": "product_fact"
             },
@@ -254,16 +251,16 @@
       "step": 3,
       "tool": "estimate_plan",
       "arguments": {
-        "script_id": "script-b254a25eef5f",
+        "script_id": "script-e23d66bc1cf8",
         "production_mode": "premium",
-        "reason": "用户初始偏好为 premium，先核验该制作方式在预算 2 与截止时间下是否可行。"
+        "reason": "用户初始偏好为 premium，先用该方式核算真实费用与串行耗时。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-89064520c07e",
+        "estimate_id": "estimate-909fe9a39cc5",
         "estimate": {
-          "script_id": "script-b254a25eef5f",
+          "script_id": "script-e23d66bc1cf8",
           "production_mode": "premium",
           "total_cost": 12.0,
           "currency": "模拟单位",
@@ -368,25 +365,25 @@
       "step": 4,
       "tool": "generate_script",
       "arguments": {
-        "angle": "面向短视频创作者，展示字幕工具为视频添加字幕的能力",
+        "angle": "场景引导",
         "material_ids": [
           "P02"
         ],
-        "reason": "仅使用免费素材 P02 生成脚本，以减少素材费用，尝试在预算 2 内找到可行方案。"
+        "reason": "P02 素材费为 0，用它生成脚本可降低素材成本，尝试把总费用压进预算。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "script_id": "script-a4f7327842a7",
+        "script_id": "script-24d00f6a7ec9",
         "script": {
           "theme": "推广一款视频字幕工具",
           "audience": "短视频创作者",
-          "angle": "面向短视频创作者，展示字幕工具为视频添加字幕的能力",
+          "angle": "场景引导",
           "material_ids": [
             "P02"
           ],
           "creative_direction": {
-            "text": "面向短视频创作者，展示字幕工具为视频添加字幕的能力",
+            "text": "场景引导",
             "status": "proposal_requires_review",
             "is_product_fact": false
           },
@@ -425,15 +422,15 @@
       "tool": "estimate_plan",
       "arguments": {
         "production_mode": "slideshow",
-        "reason": "使用免费素材 P02 与最便宜的图文轮播方式，核验在预算 2 下是否可行。",
-        "script_id": "script-a4f7327842a7"
+        "reason": "零成本素材配合最便宜的图文轮播，核算能否落入预算 2。",
+        "script_id": "script-24d00f6a7ec9"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
-        "estimate_id": "estimate-e4d81ae0e667",
+        "estimate_id": "estimate-681ff4840046",
         "estimate": {
-          "script_id": "script-a4f7327842a7",
+          "script_id": "script-24d00f6a7ec9",
           "production_mode": "slideshow",
           "total_cost": 4.0,
           "currency": "模拟单位",
@@ -539,14 +536,15 @@
       "tool": "finish",
       "arguments": {
         "status": "incomplete",
-        "summary": "未保存方案：预算 2 内无可行解。已检索到主题相关素材（P01 字幕工具产品演示，费用 2；P02 字幕工具图文素材，免费），生成两份事实可追溯脚本（script-b254a25eef5f、script-a4f7327842a7）。估算结果：premium 12、basic 8、slideshow 6（P01+P02 脚本）；改用免费素材 P02 后最低为 slideshow 4 单位，仍超预算 2 单位。超支主要来自必需环节的固定成本（脚本 1 + 制作 1 + 审核 1 + 发布 1）。时间宽裕（最省方案约 90 分钟，截止前完成），缺口仅在预算。可调整方向：将预算至少提高至 4 个模拟单位，或接受省略审核/发布等环节的方案规范。方案未保存，制作、审核、发布均未执行。",
-        "reason": "最便宜的免费素材 + 图文轮播组合仍需 4 单位，超出预算 2 单位，无可行估算可保存。"
+        "summary": "已检索到主题相关资料（P01 字幕工具产品演示、P02 字幕工具图文素材），并生成两版事实可追溯脚本（script-e23d66bc1cf8 功能介绍、script-24d00f6a7ec9 场景引导）。但预算 2 无可行解：脚本整理 1 + 内容审核 1 + 人工确认与发布 1 已占 3，加最便宜的图文轮播制作 1 后总费用 4，超预算 2；若用 P01 素材还需另加素材费 2，总费用 6。时间上各方案均可在 2026-10-29 18:00 前完成，瓶颈是预算而非截止时间。素材准备、脚本、制作、审核、发布为固定必需阶段，无法省略以降费，故未保存方案。建议提高预算至至少 4（用 P02、图文轮播）或调整需求后再规划。",
+        "reason": "所有估算（premium/basic/slideshow 及零成本素材组合）均超预算且必需阶段不可省，无可行解。"
       },
       "status": "succeeded",
       "result": {
         "ok": true,
         "terminal_status": "incomplete",
-        "summary": "未保存方案：预算 2 内无可行解。已检索到主题相关素材（P01 字幕工具产品演示，费用 2；P02 字幕工具图文素材，免费），生成两份事实可追溯脚本（script-b254a25eef5f、script-a4f7327842a7）。估算结果：premium 12、basic 8、slideshow 6（P01+P02 脚本）；改用免费素材 P02 后最低为 slideshow 4 单位，仍超预算 2 单位。超支主要来自必需环节的固定成本（脚本 1 + 制作 1 + 审核 1 + 发布 1）。时间宽裕（最省方案约 90 分钟，截止前完成），缺口仅在预算。可调整方向：将预算至少提高至 4 个模拟单位，或接受省略审核/发布等环节的方案规范。方案未保存，制作、审核、发布均未执行。",
+        "summary": "方案未保存；在已生成脚本及现有制作方式范围内，候选费用 4.0，预算缺口 2.0，时间缺口 0 分钟。可由用户调整预算、截止时间，或补充素材后重新规划；审核与发布等必需环节不可省略。",
+        "summary_source": "verified_tool_state",
         "missing_fields": []
       }
     }
@@ -557,16 +555,15 @@
       "P02"
     ],
     "scripts": {
-      "script-b254a25eef5f": {
+      "script-e23d66bc1cf8": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "面向短视频创作者，演示字幕工具如何快速加字幕与改字幕",
+        "angle": "功能介绍",
         "material_ids": [
-          "P01",
-          "P02"
+          "P01"
         ],
         "creative_direction": {
-          "text": "面向短视频创作者，演示字幕工具如何快速加字幕与改字幕",
+          "text": "功能介绍",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },
@@ -580,11 +577,10 @@
           },
           {
             "index": 2,
-            "visual": "字幕工具产品演示 / 字幕工具图文素材",
+            "visual": "字幕工具产品演示",
             "narration": "支持为视频添加字幕",
             "source_ids": [
-              "P01",
-              "P02"
+              "P01"
             ],
             "kind": "product_fact"
           },
@@ -608,15 +604,15 @@
         "generator": "local_fact_template",
         "editable": true
       },
-      "script-a4f7327842a7": {
+      "script-24d00f6a7ec9": {
         "theme": "推广一款视频字幕工具",
         "audience": "短视频创作者",
-        "angle": "面向短视频创作者，展示字幕工具为视频添加字幕的能力",
+        "angle": "场景引导",
         "material_ids": [
           "P02"
         ],
         "creative_direction": {
-          "text": "面向短视频创作者，展示字幕工具为视频添加字幕的能力",
+          "text": "场景引导",
           "status": "proposal_requires_review",
           "is_product_fact": false
         },

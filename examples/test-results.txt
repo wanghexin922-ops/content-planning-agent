@@ -1,19 +1,22 @@
-Executed at: 2026-10-28T12:38:38.689012+00:00
+Executed at: 2026-10-29T05:25:53.886093+00:00
 Python: 3.12.4
 Platform: Windows
 Command: python scripts/verify.py
 External model API: NOT called (transport tests use simulated responses)
 
 test_audience_and_theme_reach_script_and_campaign_brief (test_agent.AgentTests.test_audience_and_theme_reach_script_and_campaign_brief) ... ok
+test_cannot_pass_skip_steps_to_estimate (test_agent.AgentTests.test_cannot_pass_skip_steps_to_estimate) ... ok
 test_changed_data_does_not_reuse_old_state (test_agent.AgentTests.test_changed_data_does_not_reuse_old_state) ... ok
 test_deadline_forces_faster_mode (test_agent.AgentTests.test_deadline_forces_faster_mode) ... ok
 test_decimal_budget_exact_boundary (test_agent.AgentTests.test_decimal_budget_exact_boundary) ... ok
 test_duplicate_executes_no_new_tools_and_saves_once (test_agent.AgentTests.test_duplicate_executes_no_new_tools_and_saves_once) ... ok
 test_failed_task_does_not_silently_retry (test_agent.AgentTests.test_failed_task_does_not_silently_retry) ... ok
 test_failure_resume_uses_successful_script (test_agent.AgentTests.test_failure_resume_uses_successful_script) ... ok
+test_finish_does_not_publish_unverified_model_summary (test_agent.AgentTests.test_finish_does_not_publish_unverified_model_summary) ... ok
 test_hallucinated_completion_rejected (test_agent.AgentTests.test_hallucinated_completion_rejected) ... ok
 test_impossible_budget_has_no_saved_plan (test_agent.AgentTests.test_impossible_budget_has_no_saved_plan) ... ok
 test_impossible_deadline_stops (test_agent.AgentTests.test_impossible_deadline_stops) ... ok
+test_incomplete_summary_keeps_mandatory_steps (test_agent.AgentTests.test_incomplete_summary_keeps_mandatory_steps) ... ok
 test_invalid_budgets_and_unzoned_deadlines (test_agent.AgentTests.test_invalid_budgets_and_unzoned_deadlines) ... ok
 test_invalid_json_becomes_tool_error (test_agent.AgentTests.test_invalid_json_becomes_tool_error) ... ok
 test_missing_constraints_never_invented (test_agent.AgentTests.test_missing_constraints_never_invented) ... ok
@@ -37,6 +40,7 @@ test_schedule_uses_deadline_timezone (test_agent.AgentTests.test_schedule_uses_d
 test_step_limit_and_resume_without_redo (test_agent.AgentTests.test_step_limit_and_resume_without_redo) ... ok
 test_transient_failure_preserves_search (test_agent.AgentTests.test_transient_failure_preserves_search) ... ok
 test_unknown_tool_and_bad_arguments_are_observations (test_agent.AgentTests.test_unknown_tool_and_bad_arguments_are_observations) ... ok
+test_unsupported_creative_claims_are_rejected (test_agent.AgentTests.test_unsupported_creative_claims_are_rejected) ... ok
 test_cli_runs_outside_repo_and_exports_artifacts (test_cli.CLITests.test_cli_runs_outside_repo_and_exports_artifacts) ... ok
 test_live_missing_key_never_reuses_mock_success (test_cli.CLITests.test_live_missing_key_never_reuses_mock_success) ... ok
 test_malformed_input_fails_cleanly (test_cli.CLITests.test_malformed_input_fails_cleanly) ... ok
@@ -50,6 +54,6 @@ test_native_tool_payload_and_observation_roundtrip (test_model.ModelTests.test_n
 test_network_failure_is_not_mock_fallback (test_model.ModelTests.test_network_failure_is_not_mock_fallback) ... ok
 
 ----------------------------------------------------------------------
-Ran 44 tests in 7.209s
+Ran 48 tests in 9.129s
 
 OK

@@ -302,6 +302,39 @@ class AgentTests(unittest.TestCase):
         self.assertFalse(out["successful_artifacts"]["retrieved_ids"])
         self.assertFalse(out["saved"])
 
+    def test_unsupported_creative_claims_are_rejected(self):
+        out = self.run_task(SequenceModel([
+            tool_message("search_materials", {"query":"字幕", "reason":"检索"}),
+            tool_message("generate_script", {"material_ids":["P01"], "angle":"一键添加字幕，效率提升80%", "reason":"测试不实声明"})
+        ]), max_steps=2)
+        self.assertEqual(out["steps"][-1]["status"], "failed")
+        self.assertFalse(out["successful_artifacts"]["scripts"])
+
+    def test_finish_does_not_publish_unverified_model_summary(self):
+        self.run_task(max_steps=4)
+        # Test the finish tool before the executor's saved-plan recovery path.
+        from content_planner.tools import BusinessTools
+        from content_planner.common import read_json
+        import json
+        state=json.loads(self.store.db.execute("SELECT state FROM tasks").fetchone()[0])
+        tool=BusinessTools(self.store,"mock:test-1","unused",state,self.materials,self.pricing,lambda: NOW)
+        result=tool.finish({"status":"completed","summary":"已经发布，费用0，效率提升80%","reason":"测试"})
+        self.assertIn("12.0",result["summary"])
+        self.assertIn("均未执行",result["summary"])
+        self.assertNotIn("效率提升",result["summary"])
+
+    def test_incomplete_summary_keeps_mandatory_steps(self):
+        self.request["budget"]=2
+        out=self.run_task()
+        self.assertIn("必需环节不可省略",out["summary"])
+        self.assertIn("预算缺口 2.0",out["summary"])
+
+    def test_cannot_pass_skip_steps_to_estimate(self):
+        out=self.run_task(SequenceModel([tool_message("estimate_plan", {
+            "script_id":"fake", "production_mode":"slideshow", "skip_review":True,"reason":"省略审核"
+        })]),max_steps=1)
+        self.assertEqual(out["steps"][0]["result"]["error"]["code"],"invalid_action")
+
 
 if __name__ == "__main__":
     unittest.main()

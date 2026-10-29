@@ -114,7 +114,7 @@ class MockModel:
         if "materials" in last:
             if not last["materials"]:
                 return call("finish", "检索结果为空，缺少事实依据", status="needs_input", summary="请补充相关素材或更明确的主题")
-            return call("generate_script", "使用检索返回的首个相关素材生成脚本", material_ids=[last["materials"][0]["id"]], angle="展示实际支持的功能")
+            return call("generate_script", "使用检索返回的首个相关素材生成脚本", material_ids=[last["materials"][0]["id"]], angle="功能介绍")
         if "estimate" in last:
             estimate = last["estimate"]
             if estimate["feasible"]:
@@ -127,7 +127,7 @@ class MockModel:
             found = [m for _, o in observations for m in o.get("materials", [])]
             cheaper = sorted((m for m in found if (m["id"],) not in seen), key=lambda m: m["cost"])
             if cheaper:
-                return call("generate_script", "所有制作方式均不可行，尝试已检索到的更低成本素材", material_ids=[cheaper[0]["id"]], angle="展示实际支持的功能")
+                return call("generate_script", "所有制作方式均不可行，尝试已检索到的更低成本素材", material_ids=[cheaper[0]["id"]], angle="功能介绍")
             best = min(last["alternatives"], key=lambda a: (a["budget_gap"], a["deadline_gap_minutes"]))
             return call("finish", "工具估算没有可行替代方案", status="incomplete", summary=f"未找到可行方案；最低费用 {best['total_cost']}，预算缺口 {best['budget_gap']}，超时 {best['deadline_gap_minutes']} 分钟")
         if "script_id" in last:

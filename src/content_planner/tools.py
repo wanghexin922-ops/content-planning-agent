@@ -5,6 +5,8 @@ import sqlite3
 
 from .common import dumps, fingerprint, missing_fields, money, timestamp
 
+SAFE_ANGLES = ["功能介绍", "操作演示", "场景引导"]
+
 
 def schema(name, description, properties, required):
     properties = dict(properties, reason={"type": "string", "description": "一句基于可见结果的行动理由"})
@@ -17,7 +19,7 @@ TOOL_SCHEMAS = [
     schema("search_materials", "检索本地合成素材；返回匹配素材及费用耗时目录", {"query": {"type": "string"}}, ["query"]),
     schema("generate_script", "从已检索素材生成事实可追溯的本地模板脚本", {
         "material_ids": {"type": "array", "items": {"type": "string"}},
-        "angle": {"type": "string", "description": "活动传播角度，不作为产品事实"}}, ["material_ids", "angle"]),
+        "angle": {"type": "string", "enum": SAFE_ANGLES, "description": "选择表达形式；产品能力只能取自素材事实，不能附加一键、自动或效果承诺"}}, ["material_ids", "angle"]),
     schema("estimate_plan", "按价格表核算预算与串行完成时间；返回替代制作方式的估算", {
         "script_id": {"type": "string"}, "production_mode": {"type": "string", "enum": ["premium", "basic", "slideshow"]}}, ["script_id", "production_mode"]),
     schema("save_plan", "重新核验可行性并幂等保存方案；返回确切保存状态", {"estimate_id": {"type": "string"}}, ["estimate_id"]),
@@ -103,6 +105,8 @@ class BusinessTools:
                 "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"}
 
     def generate_script(self, material_ids, angle):
+        if angle not in SAFE_ANGLES:
+            return error("unsupported_claim", "请仅选择功能介绍、操作演示或场景引导；不能自由添加产品能力")
         if any(mid not in self.state["retrieved_ids"] or mid not in self.materials for mid in material_ids):
             return error("unknown_material", "只能使用当前任务已检索到的素材 ID")
         if any(not any(term.lower() in self.state["request"]["theme"].lower() for term in self.materials[mid]["topic_terms"]) for mid in material_ids):
@@ -177,6 +181,12 @@ class BusinessTools:
         estimate = self.state["estimates"].get(estimate_id)
         if not estimate:
             return error("missing_dependency", "不存在该估算，请先调用 estimate_plan")
+        script = self.state["scripts"][estimate["script_id"]]
+        if script.get("angle") not in SAFE_ANGLES or any(
+            scene["narration"] not in self.materials[mid]["facts"]
+            for scene in script["scenes"] for mid in scene["source_ids"]
+        ):
+            return error("unsupported_claim", "脚本未通过当前事实规则，请重新生成；旧版自由创意不可直接保存")
         # Recompute to prevent changed time or forged model feasibility from bypassing constraints.
         verified = self.calculate(estimate["script_id"], estimate["production_mode"])
         if not verified["feasible"]:
@@ -205,5 +215,24 @@ class BusinessTools:
             return error("completion_rejected", "数据库中没有已保存方案，不能宣称完成")
         if saved and args["status"] != "completed":
             return error("status_mismatch", "方案已保存，请根据观察结果结束为 completed")
-        return {"ok": True, "terminal_status": args["status"], "summary": args["summary"],
+        # Model prose remains an untrusted proposal in the trace, not the final report.
+        status = args["status"]
+        missing = missing_fields(self.state["request"])
+        if saved:
+            e = saved["plan"]["estimate"]
+            summary = f"方案 {saved['plan_id']} 已保存；费用 {e['total_cost']} / 预算 {e['budget']} {e['currency']}；预计耗时 {e['total_minutes']} 分钟，完成时间 {e['estimated_finish']}。制作、审核和发布均未执行。"
+        elif missing:
+            summary = "方案未保存，请补充：" + ", ".join(missing)
+        elif status == "failed":
+            last = next((s for s in reversed(self.state["steps"]) if s["status"] == "failed"), None)
+            summary = "方案未保存；" + (f"失败步骤 {last['tool']}：{last['result']['error']['message']}。" if last else "模型停止执行，未报告可核验的工具失败。") + "成功产物已保留，可修复后显式续跑。"
+        elif not self.state["scripts"]:
+            summary = "方案未保存；尚无可用脚本，请补充与原始主题相关的素材或继续检索。"
+        else:
+            candidates = [self.calculate(sid, mode) for sid in self.state["scripts"] for mode in self.pricing["production_modes"]]
+            best = min(candidates, key=lambda e: (e["budget_gap"], e["deadline_gap_minutes"]))
+            summary = f"方案未保存；在已生成脚本及现有制作方式范围内，候选费用 {best['total_cost']}，预算缺口 {best['budget_gap']}，时间缺口 {best['deadline_gap_minutes']} 分钟。"
+            summary += "可由用户调整预算、截止时间，或补充素材后重新规划；审核与发布等必需环节不可省略。"
+        return {"ok": True, "terminal_status": status, "summary": summary,
+                "summary_source": "verified_tool_state",
                 "missing_fields": missing_fields(self.state["request"])}
