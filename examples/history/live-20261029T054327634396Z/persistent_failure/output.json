@@ -1,0 +1,182 @@
+{
+  "request_id": "demo-persistent_failure",
+  "status": "incomplete",
+  "summary": "方案未保存；尚无可用脚本，请补充与原始主题相关的素材或继续检索。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "视频字幕工具 字幕生成",
+        "reason": "用户需求是推广视频字幕工具，先检索主题相关素材与价格目录。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "字幕工具产品演示",
+            "topic_terms": [
+              "字幕",
+              "剪辑",
+              "caption"
+            ],
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕",
+              "支持编辑字幕文本"
+            ],
+            "cost": 2,
+            "license": "合成素材，仅用于本项目演示"
+          },
+          {
+            "id": "P02",
+            "title": "字幕工具图文素材",
+            "topic_terms": [
+              "字幕",
+              "剪辑",
+              "caption"
+            ],
+            "tags": [
+              "视频",
+              "字幕",
+              "剪辑",
+              "推广",
+              "产品",
+              "caption",
+              "video"
+            ],
+            "facts": [
+              "支持为视频添加字幕"
+            ],
+            "cost": 0,
+            "license": "合成素材，仅用于本项目演示"
+          }
+        ],
+        "count": 2,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"
+      }
+    },
+    {
+      "step": 2,
+      "tool": "generate_script",
+      "arguments": {
+        "material_ids": [
+          "P01",
+          "P02"
+        ],
+        "angle": "功能介绍",
+        "reason": "检索到两款主题相关素材，用其事实生成面向短视频创作者的字幕工具介绍脚本。"
+      },
+      "status": "failed",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "injected_failure",
+          "message": "演示用工具故障：generate_script",
+          "retryable": false
+        }
+      }
+    },
+    {
+      "step": 3,
+      "tool": "generate_script",
+      "arguments": {
+        "angle": "功能介绍",
+        "material_ids": [
+          "P01"
+        ],
+        "reason": "工具返回永久错误，改用单一素材再次尝试生成脚本以确认是否可继续。"
+      },
+      "status": "failed",
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "injected_failure",
+          "message": "演示用工具故障：generate_script",
+          "retryable": false
+        }
+      }
+    },
+    {
+      "step": 4,
+      "tool": "finish",
+      "arguments": {
+        "status": "incomplete",
+        "summary": "已完成主题素材检索（找到“字幕工具产品演示”P01 与“字幕工具图文素材”P02，内容符合视频字幕工具推广主题），但脚本生成工具连续两次返回不可重试的永久故障（injected_failure），无法产生脚本 ID，因此无法进入估算与保存环节。方案未生成、未保存；预算 15 与截止时间 2026-10-29T18:00+08:00 未受影响，制作、审核、发布均未执行。建议在脚本生成工具恢复后重新运行本次规划。",
+        "reason": "脚本生成工具返回不可重试的永久错误，缺少 script_id 无法估算与保存方案。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "incomplete",
+        "summary": "方案未保存；尚无可用脚本，请补充与原始主题相关的素材或继续检索。",
+        "summary_source": "verified_tool_state",
+        "missing_fields": []
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [
+      "P01",
+      "P02"
+    ],
+    "scripts": {}
+  },
+  "tool_calls": 4,
+  "model_calls": 4,
+  "runs": 1,
+  "replayed": false
+}

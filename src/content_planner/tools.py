@@ -211,6 +211,11 @@ class BusinessTools:
 
     def finish(self, args):
         saved = self.store.get_plan(self.key)
+        last_business = next((s for s in reversed(self.state["steps"]) if s["tool"] != "finish"), None)
+        if (last_business and not last_business["result"]["ok"]
+                and last_business["result"]["error"]["code"] in {"injected_failure", "storage_error"}
+                and args["status"] != "failed" and not saved):
+            return error("status_mismatch", "最后业务工具发生执行故障，尚未恢复；请选择 failed，不应报告为素材不足或约束不可行")
         if args["status"] == "completed" and not saved:
             return error("completion_rejected", "数据库中没有已保存方案，不能宣称完成")
         if saved and args["status"] != "completed":
@@ -224,7 +229,7 @@ class BusinessTools:
         elif missing:
             summary = "方案未保存，请补充：" + ", ".join(missing)
         elif status == "failed":
-            last = next((s for s in reversed(self.state["steps"]) if s["status"] == "failed"), None)
+            last = next((s for s in reversed(self.state["steps"]) if s["status"] == "failed" and s["tool"] != "finish"), None)
             summary = "方案未保存；" + (f"失败步骤 {last['tool']}：{last['result']['error']['message']}。" if last else "模型停止执行，未报告可核验的工具失败。") + "成功产物已保留，可修复后显式续跑。"
         elif not self.state["scripts"]:
             summary = "方案未保存；尚无可用脚本，请补充与原始主题相关的素材或继续检索。"

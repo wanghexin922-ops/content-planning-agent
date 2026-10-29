@@ -1,0 +1,139 @@
+{
+  "request_id": "demo-no_materials",
+  "status": "needs_input",
+  "summary": "方案未保存；尚无可用脚本，请补充与原始主题相关的素材或继续检索。",
+  "mode": "live",
+  "model": "deepseek-flash",
+  "evidence": "real_model_run",
+  "saved": false,
+  "plan_id": null,
+  "plan": null,
+  "latest_estimate": null,
+  "total_cost": null,
+  "missing_fields": [],
+  "steps": [
+    {
+      "step": 1,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "量子芯片实验室 活动",
+        "reason": "先检索与用户主题相关的本地素材，确认是否存在可用资料。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [],
+        "count": 0,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"
+      }
+    },
+    {
+      "step": 2,
+      "tool": "search_materials",
+      "arguments": {
+        "query": "量子芯片 实验室 科普 参观",
+        "reason": "首次检索无结果，按原意换关键词再检索一次。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "materials": [],
+        "count": 0,
+        "pricing": {
+          "currency": "模拟单位",
+          "version": "2026-10-28-demo-v1",
+          "script": {
+            "cost": 1,
+            "minutes": 20
+          },
+          "production_modes": {
+            "premium": {
+              "label": "精剪视频",
+              "cost": 7,
+              "minutes": 180
+            },
+            "basic": {
+              "label": "基础剪辑",
+              "cost": 3,
+              "minutes": 60
+            },
+            "slideshow": {
+              "label": "图文轮播视频",
+              "cost": 1,
+              "minutes": 30
+            }
+          },
+          "review": {
+            "cost": 1,
+            "minutes": 30
+          },
+          "publish": {
+            "cost": 1,
+            "minutes": 10
+          },
+          "assumption": "业务执行阶段串行，费用为最终方案执行预算，不代表真实模型 API 账单。检索、估算、保存免费；被放弃的规划草稿不重复计费。"
+        },
+        "hint": "只返回原始主题符合素材适用领域的结果。无匹配时可保持原意改写查询或请求补充；不得把用户主题替换为其他产品宣传"
+      }
+    },
+    {
+      "step": 3,
+      "tool": "finish",
+      "arguments": {
+        "status": "needs_input",
+        "summary": "已按原主题（量子芯片实验室的活动，面向短视频创作者）进行两次检索，本地素材库均返回 0 条与主题相关的素材。没有可用素材就无法生成只依据素材事实的脚本，因此无法在预算 15、截止 2026-10-29T18:00:00+08:00 内产出可保存的方案。请补充该实验室的实拍素材、场地/活动图文或官方资料后再继续。我不会用无关的通用视频素材替代主题资料。此外，本次未生成脚本、未估算、未保存任何方案。",
+        "reason": "连续两次检索都没有与主题相关的素材，缺少可追溯的事实依据，需要用户补充资料。"
+      },
+      "status": "succeeded",
+      "result": {
+        "ok": true,
+        "terminal_status": "needs_input",
+        "summary": "方案未保存；尚无可用脚本，请补充与原始主题相关的素材或继续检索。",
+        "summary_source": "verified_tool_state",
+        "missing_fields": []
+      }
+    }
+  ],
+  "successful_artifacts": {
+    "retrieved_ids": [],
+    "scripts": {}
+  },
+  "tool_calls": 3,
+  "model_calls": 3,
+  "runs": 1,
+  "replayed": false
+}

@@ -365,6 +365,18 @@ class AgentTests(unittest.TestCase):
         self.assertFalse(out["saved"])
         self.assertEqual(out["steps"][-1]["result"]["error"]["code"],"constraint_violation")
 
+    def test_persistent_tool_error_cannot_be_reported_as_missing_materials(self):
+        model=SequenceModel([
+            tool_message('search_materials',{'query':'字幕','reason':'检索'}),
+            tool_message('generate_script',{'material_ids':['P01'],'angle':'功能介绍','reason':'生成'}),
+            tool_message('finish',{'status':'incomplete','summary':'资料不足','reason':'测试错误归因'}),
+            tool_message('finish',{'status':'failed','summary':'工具故障','reason':'根据返回修正状态'})
+        ])
+        out=self.run_task(model,faults={'generate_script':-1})
+        self.assertEqual(out['steps'][2]['result']['error']['code'],'status_mismatch')
+        self.assertEqual(out['status'],'failed')
+        self.assertIn('generate_script',out['summary'])
+
 
 if __name__ == "__main__":
     unittest.main()
